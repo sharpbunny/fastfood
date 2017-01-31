@@ -13,6 +13,9 @@ namespace fastfood
 		//Constructeur
 
 		//Methode
+		/// <summary>
+		/// 
+		/// </summary>
 		public void PreparationCommande()
 		{
 
