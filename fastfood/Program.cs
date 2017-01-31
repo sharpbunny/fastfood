@@ -10,7 +10,7 @@ namespace fastfood
 	{
 		static void Main(string[] args)
 		{
-			Commande c = new Commande();
+
 		}
 	}
 }

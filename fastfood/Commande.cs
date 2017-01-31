@@ -36,7 +36,9 @@ namespace fastfood
 											// **********************************
 											//			GETTERS - SETTERS
 											// **********************************
-
+		/// <summary>
+		/// Permet de lire ou de définir le type de la commande
+		/// </summary>
 		public int Numero
 		{
 			get
@@ -51,7 +53,7 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Permet de lire ou de définir le type de la commande
+		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter
 		/// </summary>
 		/// 
 		public string Type
