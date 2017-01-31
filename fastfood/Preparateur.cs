@@ -11,6 +11,10 @@ namespace fastfood
 		//Attribut
 
 		//Constructeur
+		public Preparateur()
+		{
+
+		}
 
 		//Methode
 		/// <summary>
