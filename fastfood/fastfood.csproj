@@ -44,20 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Caissier.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="Commande.cs" />
     <Compile Include="Manager.cs" />
-    <Compile Include="Personnel.cs" />
     <Compile Include="Preparateur.cs" />
-    <Compile Include="Caissier.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="Commande.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Personnel.cs" />
->>>>>>> 20301779be904e3d1abab76fe82e53b37be42183
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
