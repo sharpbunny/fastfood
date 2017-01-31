@@ -24,7 +24,7 @@ namespace fastfood
 		  set{ _nom = value; }
 		}
 
-		protected float Prix
+		public float Prix
 		{ get{ return _prix; }
 		set{ _prix = value; }
 		}
