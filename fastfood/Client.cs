@@ -9,14 +9,14 @@ namespace fastfood
 	class Client
 	{
 		// Attributs.
-		private int IDClient;
+		private int _IDClient;
 
 		// Constructeurs.
 
 		// Getters & Setters.
-		public int IDClient1
+		public int IDClient
 		{
-			get	{ return IDClient; }
+			get	{ return _IDClient; }
 		}
 
 		// Fonctions.
