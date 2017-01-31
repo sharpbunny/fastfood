@@ -8,18 +8,16 @@ namespace fastfood
 {
     class Caissier:Personnel
     {   
-        //Attributs
+        // Attributs.
 
+        // Constructeurs.
 
-        //Constructeurs
-
-
-        //Accesseurs     
+        // Accesseurs.   
         
-        
+        // Fonctions.
         /// <summary>
-    /// Methode pour l'encaissement
-    /// </summary>
+		/// Methode pour l'encaissement
+		/// </summary>
         public void Encaisser()
         {
             

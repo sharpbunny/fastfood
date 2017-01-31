@@ -15,47 +15,32 @@ namespace fastfood
     /// <summary>
     /// Classe qui permet de gérer les menus, les prix et les quantités d'articles commandés
     /// </summary>
-    
     class Menu
     {
-        //Attributs
+        // Attributs.
         private Article[] _composant;
         private string _taille;
 
-        //Constructeurs
+        // Constructeurs.
         public Menu()
         {
 
         }
         
-        //Accesseurs
+        // Accesseurs.
         public Article[] Composant
         {
-            get
-            {
-                return _composant;
-            }
-
-            set
-            {
-                _composant = value;
-            }
+            get { return _composant; }
+            set { _composant = value; }
         }
 
         public string Taille
         {
-            get
-            {
-                return _taille;
-            }
-
-            set
-            {
-                _taille = value;
-            }
+            get { return _taille; }
+            set  {_taille = value; }
         }
 
-        //Methodes
+        // Methodes.
         /// <summary>
         /// Somme du prix du menu en fonction d'un ou plusieurs articles.
         /// </summary>
@@ -63,7 +48,7 @@ namespace fastfood
         /// <returns></returns>
         public double CalculerPrixMenu(Article[] tableauArticle)
         {
-            int somme = 0;
+            float somme = 0;
             for(int i = 0; i < tableauArticle.Length; i++)
             {
                 somme = somme + tableauArticle[i].Prix;

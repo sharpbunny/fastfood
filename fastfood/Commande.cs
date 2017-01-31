@@ -24,9 +24,9 @@ namespace fastfood
 											// **********************************
 											//			CONSTRUCTEURS
 											// **********************************
-	/// <summary>
-	/// Constructeur de la classe Commande
-	/// </summary>
+		/// <summary>
+		/// Constructeur de la classe Commande
+		/// </summary>
 		public Commande()
 		{
 			Numero++; //Le numéro de commande est incrémenté à chaque création de Commande
@@ -41,15 +41,8 @@ namespace fastfood
 		/// </summary>
 		public int Numero
 		{
-			get
-			{
-				return _numero;
-			}
-
-			set
-			{
-				_numero = value;
-			}
+			get { return _numero; }
+			set	{ _numero = value; }
 		}
 
 		/// <summary>
@@ -58,15 +51,8 @@ namespace fastfood
 		/// 
 		public string Type
 		{
-			get
-			{
-				return _type;
-			}
-
-			set
-			{
-				_type = value;
-			}
+			get { return _type;	}
+			set	{ _type = value; }
 		}
 
 		// **********************************
