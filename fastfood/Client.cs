@@ -20,9 +20,14 @@ namespace fastfood
 		}
 
 		// Fonctions.
-		public Article[] ChoixArticle()
+		public Article[] ChoixArticle(Article[]tabArticle, Article newArticle)
 		{
-			Article[] tabArticle;
+			if (tabArticle.Length == 0)
+				tabArticle[0] = newArticle;
+			else
+			{
+				tabArticle[tabArticle.Length] = newArticle;
+			}
 			return tabArticle;
 		}
 
