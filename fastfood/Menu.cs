@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 
 namespace fastfood
 {
+    /// <summary>
+    /// Classe qui permet de gérer les menus, les prix et les quantités d'articles commandés
+    /// </summary>
+    
     class Menu
     {
         //Attributs
@@ -52,12 +56,17 @@ namespace fastfood
         }
 
         //Methodes
-        public double CalculerPrixMenu()
+        /// <summary>
+        /// Somme du prix du menu en fonction d'un ou plusieurs articles.
+        /// </summary>
+        /// <param name="tableauArticle">Tableau d'Article(s).</param>
+        /// <returns></returns>
+        public double CalculerPrixMenu(Article[] tableauArticle)
         {
             int somme = 0;
-            for(int i = 0; i < Composant.Length; i++)
+            for(int i = 0; i < tableauArticle.Length; i++)
             {
-                somme = somme + Composant[i].Prix;
+                somme = somme + tableauArticle[i].Prix;
             }
 
             return somme;

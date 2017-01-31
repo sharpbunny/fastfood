@@ -47,9 +47,13 @@
     <Compile Include="Caissier.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Commande.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="Personnel.cs" />
     <Compile Include="Preparateur.cs" />
+    <Compile Include="Caissier.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Commande.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Personnel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
