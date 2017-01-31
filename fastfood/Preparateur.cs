@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace fastfood
 {
-	class Program
+	class Preparateur:Personnel
 	{
-		static void Main(string[] args)
+		//Attribut
+
+		//Constructeur
+
+		//Methode
+		public void PreparationCommande()
 		{
-			Commande c = new Commande();
+
 		}
+
+		//Accesseur et Mutateur
 	}
 }
