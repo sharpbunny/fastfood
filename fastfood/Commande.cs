@@ -9,10 +9,14 @@ namespace fastfood
 	class Commande
 	{
 		/// <summary>
-		/// Déclaration des variables
+		/// Numéro de la commande
 		/// </summary>
-		static private int _numero { get; set; }
-		private string _type { get; set; }
+		static public int _numero { get; set; }
+
+		/// <summary>
+		/// Le type représente le choix du client de manger sur place ou à emporter
+		/// </summary>
+		public string _type { get; set; }
 
 											// **********************************
 											//			CONSTRUCTEURS
