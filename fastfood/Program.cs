@@ -10,7 +10,10 @@ namespace fastfood
 	{
 		static void Main(string[] args)
 		{
-
+			Client test = new Client();
+			Article[] tabArticle = new Article[0];
+			Article patate = new Article(1, "patate", 1);
+			test.ChoixArticle(tabArticle, patate, 3);
 		}
 	}
 }
