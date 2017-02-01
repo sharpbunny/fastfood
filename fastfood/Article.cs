@@ -10,13 +10,13 @@ namespace fastfood
 	class Article : Database<Article>
 	{
 		// Attributs.
-		protected int _IDArticle;
+		protected long _IDArticle;
 		protected string _nom;
 		private int quantite;
-		protected float _prix;
+		protected double _prix;
 
         // Getters & Setters
-        public int IDArticle
+        public long IDArticle
 		{
 			get
 			{
@@ -40,7 +40,7 @@ namespace fastfood
 			}
 		}
 
-		public float Prix
+		public double Prix
 		{
 			get
 			{
@@ -80,15 +80,16 @@ namespace fastfood
 
         }
 
-		///<summary>
-		///récupère un article avec son ID
-		///</summary>
-		///<param name="idArticle"></param>
-		public Article getArticleByID(int idArticle)
+		/// <summary>
+		/// récupère un article avec son ID
+		/// </summary>
+		/// <param name="idArticle"></param>
+		/// <returns></returns>
+		public Article getArticleByID(long idArticle)
 		{
 			var sql = string.Format("SELECT * FROM Article WHERE ID={0}", idArticle);
 
-            return GetUniqueItem(sql, this.MapArticle);
+            return GetUniqueItem(sql, MapArticle);
         }
 
 		/// <summary>
@@ -100,7 +101,7 @@ namespace fastfood
         {
             var sql = string.Format("SELECT * FROM Article WHERE Nom LIKE '%{0}%'", Nom);
 
-            return GetUniqueItem(sql, this.MapArticle);
+            return GetUniqueItem(sql, MapArticle);
         }
 
 		/// <summary>
@@ -111,7 +112,7 @@ namespace fastfood
         {
             string sql = "SELECT * FROM Article";
 
-            return (IEnumerable<Article>)GetItems(sql, this.MapArticle);
+            return GetItems(sql, MapArticle);
         }
 
 		/// <summary>
@@ -131,7 +132,7 @@ namespace fastfood
 		/// </summary>
 		/// <param name="idArticle"></param>
 		/// <returns></returns>
-		public bool DeleteArticle(int idArticle)
+		public bool DeleteArticle(long idArticle)
         {
             var sql = string.Format("DELETE FROM Article WHERE ID = {0}", idArticle);
 
@@ -145,13 +146,17 @@ namespace fastfood
 		/// <returns></returns>
 		private Article MapArticle(SQLiteDataReader reader)
         {
+			//Console.WriteLine((long)reader["ID"]);
+			//Console.WriteLine(reader["Nom"].ToString());
+			//Console.WriteLine((int)reader["Quantite"]);
+			//Console.WriteLine((double)reader["Prix"]);
 			return new Article(ConnectionString)
 			{
-				IDArticle = (int)reader["ID"],
+				IDArticle = (long)reader["ID"],
 				Nom = reader["Nom"].ToString(),
 				Quantite = (int)reader["Quantite"],
-                Prix = (float)reader["Prix"],
-            };
+				Prix = (double)reader["Prix"],
+			};
         }
     }
 	

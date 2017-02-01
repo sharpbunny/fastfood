@@ -48,7 +48,7 @@ namespace fastfood
         /// <returns></returns>
         public double CalculerPrixMenu(Article[] tableauArticle)
         {
-            float somme = 0;
+            double somme = 0;
             for(int i = 0; i < tableauArticle.Length; i++)
             {
                 somme = somme + tableauArticle[i].Prix;

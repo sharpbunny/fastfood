@@ -23,8 +23,6 @@ namespace fastfood
         {
             var connection = new SQLiteConnection(this.ConnectionString);
             connection.Open();
-            Console.WriteLine(this.ConnectionString);
-            Console.WriteLine(sql);
 
             try
             {
@@ -52,8 +50,6 @@ namespace fastfood
         {
             var connection = new SQLiteConnection(this.ConnectionString);
             connection.Open();
-            Console.WriteLine(this.ConnectionString);
-            Console.WriteLine(sql);
 
             try
             {
@@ -83,8 +79,6 @@ namespace fastfood
         {
             SQLiteConnection connection = new SQLiteConnection(this.ConnectionString);
             connection.Open();
-            Console.WriteLine(this.ConnectionString);
-            Console.WriteLine(sql);
             try
             {
                 var command = new SQLiteCommand(sql, connection);
