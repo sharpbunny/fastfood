@@ -12,10 +12,12 @@ namespace fastfood
         // Attributs pour EncaisserEspece
         int saissirEspeceClient = 0;
         int sommeTotalCommande = 0;
-        int sommeRestant = 0; //Apres avoir compter le nimbre de billet de 10E à rendre
+        int sommeARendreEnBilletdeDix = 0;
+        int sommeARendreEnBilletdeCinq = 0;
+        int sommeARendreEnPiece = 0;
         int compteur10E = 0;
         int compteur5E = 0;
-        int sommeARendreEnPiece = 0;
+        
 
         // Constructeurs.
 
@@ -27,20 +29,20 @@ namespace fastfood
         /// </summary>
         public void EncaisserEspece()
         {
-            
-            int sommeARendre = saissirEspeceClient - sommeTotalCommande;
+            //Calcul pour avoir la somme à rendre au client
+            sommeARendreEnBilletdeDix = saissirEspeceClient - sommeTotalCommande; 
 
-            if(sommeARendre>0)
+            if(sommeARendreEnBilletdeDix > 0)
             {
                 
-                while (sommeARendre > 10)
+                while (sommeARendreEnBilletdeDix >= 10)
                 {
-                    sommeRestant = sommeARendre - 10;
+                    sommeARendreEnBilletdeCinq = sommeARendreEnBilletdeDix - 10;
                     compteur10E++;                    
                 }
-                if (sommeRestant > 5)
+                if (sommeARendreEnBilletdeCinq >= 5)
                 {
-                    sommeARendreEnPiece = sommeRestant - 5;
+                    sommeARendreEnPiece = sommeARendreEnBilletdeCinq - 5;
                     compteur5E++; 
                 }
                     
@@ -52,6 +54,7 @@ namespace fastfood
         /// </summary>
         public void EncaisserCB()
         {
+            
 
         }
         /// <summary>
