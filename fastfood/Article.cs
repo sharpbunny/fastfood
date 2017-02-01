@@ -12,7 +12,7 @@ namespace fastfood
 		// Attributs.
 		protected long _IDArticle;
 		protected string _nom;
-		private int quantite;
+		protected int _quantite;
 		protected double _prix;
 
         // Getters & Setters
@@ -52,16 +52,16 @@ namespace fastfood
 			}
 		}
 
-		protected int Quantite
+		public int Quantite
 		{
 			get
 			{
-				return quantite;
+				return _quantite;
 			}
 
 			set
 			{
-				quantite = value;
+				_quantite = value;
 			}
 		}
 
