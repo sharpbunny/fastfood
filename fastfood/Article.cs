@@ -12,6 +12,7 @@ namespace fastfood
 		// Attributs.
 		protected int _IDArticle;
 		protected string _nom;
+		private int quantite;
 		protected float _prix;
 
         // Getters & Setters
@@ -31,6 +32,19 @@ namespace fastfood
 		{
 			get { return _prix; }
 			set{ _prix = value; }
+		}
+
+		protected int Quantite
+		{
+			get
+			{
+				return quantite;
+			}
+
+			set
+			{
+				quantite = value;
+			}
 		}
 
 		protected enum MyEnum
@@ -67,7 +81,7 @@ namespace fastfood
         // recupère la liste des articles
         public IEnumerable<Article> GetArticles()
         {
-            var sql = "SELECT * FROM Article";
+            string sql = "SELECT * FROM Article";
 
             return (IEnumerable<Article>)GetItems(sql, this.MapArticle);
         }
@@ -91,10 +105,11 @@ namespace fastfood
         // effectue le mappage entre les champs de la bdd et les attributs
         private Article MapArticle(SQLiteDataReader reader)
         {
-            return new Article(ConnectionString)
-            {
-                IDArticle = (int)reader["ID"],
-                Nom = reader["Nom"].ToString(),
+			return new Article(ConnectionString)
+			{
+				IDArticle = (int)reader["ID"],
+				Nom = reader["Nom"].ToString(),
+				Quantite = (int)reader["Quantite"],
                 Prix = (float)reader["Prix"],
             };
         }

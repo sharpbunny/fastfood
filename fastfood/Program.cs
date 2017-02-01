@@ -19,18 +19,19 @@ namespace fastfood
                 SQLiteConnection maConnexion;
                 maConnexion = new SQLiteConnection("Data Source=BaseDuFastFood.sqlite;Version=3;");
                 maConnexion.Open();
-                string sql = "CREATE TABLE Article ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Nom' VARCHAR(30), 'Prix' DOUBLE)";
+                string sql = "CREATE TABLE Article ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Nom' VARCHAR(30), 'Quantite' INT, 'Prix' DOUBLE)";
                 SQLiteCommand commande = new SQLiteCommand(sql, maConnexion);
                 commande.ExecuteNonQuery();
-                sql = "INSERT INTO Article ('Nom', 'Prix') VALUES ('Burger', 10.5)";
+                sql = "INSERT INTO Article ('Nom', 'Quantite', 'Prix') VALUES ('Burger', 10, 10.5)";
                 SQLiteCommand commande2 = new SQLiteCommand(sql, maConnexion);
                 commande2.ExecuteNonQuery();
             }
         
                 
             Article article = new Article ("Data Source=BaseDuFastFood.sqlite;Version=3;");
-            article.getArticleByID(0);
-            Console.WriteLine(article.Nom);
+            article.getArticleByID(1);
+			Console.WriteLine(article.IDArticle);
+			Console.WriteLine(article.Nom);
             Console.WriteLine(article.Prix);
 		}
 	}
