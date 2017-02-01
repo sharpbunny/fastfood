@@ -16,7 +16,9 @@ namespace fastfood
             this.ConnectionString = connectionString;
         }
         
-        // execute une requète qui renvoie une seule donnée ex: select * from table where id=xx
+        ///<summary>
+		/// execute une requète qui renvoie une seule donnée ex: select * from table where id=xx
+		///</summary>
         protected T GetUniqueItem(string sql, Func<SQLiteDataReader, T> mappingMethod)
         {
             var connection = new SQLiteConnection(this.ConnectionString);
@@ -42,9 +44,11 @@ namespace fastfood
 
             return default(T);
         }
-        
-        // execute une requète qui renvoie des données ex: select * from table
-        protected IEnumerable<T> GetItems(string sql, Func<SQLiteDataReader, T> mappingMethod)
+
+		///<summary>
+		/// execute une requète qui renvoie des données ex: select * from table
+		///</summary>
+		protected IEnumerable<T> GetItems(string sql, Func<SQLiteDataReader, T> mappingMethod)
         {
             var connection = new SQLiteConnection(this.ConnectionString);
             connection.Open();
@@ -71,9 +75,11 @@ namespace fastfood
                 connection.Close();
             }
         }
-        
-        // execute une requète qui ne renvoie pas de données ex insert create delete
-        protected int ExecuteNonQuery(string sql)
+
+		///<summary>
+		/// execute une requète qui ne renvoie pas de données ex insert create delete
+		///</summary>
+		protected int ExecuteNonQuery(string sql)
         {
             SQLiteConnection connection = new SQLiteConnection(this.ConnectionString);
             connection.Open();

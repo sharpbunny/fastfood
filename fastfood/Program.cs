@@ -29,7 +29,7 @@ namespace fastfood
         
                 
             Article article = new Article ("Data Source=BaseDuFastFood.sqlite;Version=3;");
-            article.getArticleByID(1);
+			article.getArticleByID(1);
 			Console.WriteLine(article.IDArticle);
 			Console.WriteLine(article.Nom);
             Console.WriteLine(article.Prix);

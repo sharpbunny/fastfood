@@ -18,20 +18,38 @@ namespace fastfood
         // Getters & Setters
         public int IDArticle
 		{
-			get { return _IDArticle; }
-			set { _IDArticle = value; }
+			get
+			{
+				return _IDArticle;
+			}
+			set
+			{
+				_IDArticle = value;
+			}
 		}
 	
 		public string Nom
 		{
-			get { return _nom; }
-			set{ _nom = value; }
+			get
+			{
+				return _nom;
+			}
+			set
+			{
+				_nom = value;
+			}
 		}
 
 		public float Prix
 		{
-			get { return _prix; }
-			set{ _prix = value; }
+			get
+			{
+				return _prix;
+			}
+			set
+			{
+				_prix = value;
+			}
 		}
 
 		protected int Quantite
@@ -62,48 +80,70 @@ namespace fastfood
 
         }
 
-        // récupère un article avec son ID
-        public Article getArticleByID(int idArticle)
+		///<summary>
+		///récupère un article avec son ID
+		///</summary>
+		///<param name="idArticle"></param>
+		public Article getArticleByID(int idArticle)
 		{
 			var sql = string.Format("SELECT * FROM Article WHERE ID={0}", idArticle);
 
             return GetUniqueItem(sql, this.MapArticle);
         }
-        
-        // recupère la liste des articles qui contient Nom
-        public Article getArticleByName(string Nom)
+
+		/// <summary>
+		/// recupère la liste des articles qui contient Nom
+		/// </summary>
+		/// <param name="Nom"></param>
+		/// <returns></returns>
+		public Article getArticleByName(string Nom)
         {
             var sql = string.Format("SELECT * FROM Article WHERE Nom LIKE '%{0}%'", Nom);
 
             return GetUniqueItem(sql, this.MapArticle);
         }
-        
-        // recupère la liste des articles
-        public IEnumerable<Article> GetArticles()
+
+		/// <summary>
+		/// recupère la liste des articles
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<Article> GetArticles()
         {
             string sql = "SELECT * FROM Article";
 
             return (IEnumerable<Article>)GetItems(sql, this.MapArticle);
         }
-        
-        // ajoute un article
-        public bool AddArticle(Article article)
+
+		/// <summary>
+		/// ajoute un article
+		/// </summary>
+		/// <param name="article"></param>
+		/// <returns></returns>
+		public bool AddArticle(Article article)
         {
             var sql = string.Format("INSERT INTO Article (Nom, Prix) VALUES ('{0}', '{1}')", article.Nom, article.Prix);
 
             return ExecuteNonQuery(sql) == 1;
         }
 
-        // supprime un article
-        public bool DeleteArticle(int idArticle)
+		/// <summary>
+		/// supprime un article
+		/// </summary>
+		/// <param name="idArticle"></param>
+		/// <returns></returns>
+		public bool DeleteArticle(int idArticle)
         {
             var sql = string.Format("DELETE FROM Article WHERE ID = {0}", idArticle);
 
             return ExecuteNonQuery(sql) == 1;
         }
 
-        // effectue le mappage entre les champs de la bdd et les attributs
-        private Article MapArticle(SQLiteDataReader reader)
+		/// <summary>
+		/// effectue le mappage entre les champs de la bdd et les attributs
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
+		private Article MapArticle(SQLiteDataReader reader)
         {
 			return new Article(ConnectionString)
 			{
