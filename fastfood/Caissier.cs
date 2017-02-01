@@ -48,6 +48,7 @@ namespace fastfood
                     
             }
             
+            
         }
         /// <summary>
         /// Paiement en carte bancaire par le client
