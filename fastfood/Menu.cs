@@ -17,30 +17,47 @@ namespace fastfood
     /// </summary>
     class Menu
     {
-        // Attributs.
+        // Attributs
         private Article[] _composant;
         private string _taille;
 
-        // Constructeurs.
+        // Constructeurs
         public Menu()
         {
 
         }
-        
-        // Accesseurs.
-        public Article[] Composant
-        {
-            get { return _composant; }
-            set { _composant = value; }
-        }
 
+        // Accesseurs
         public string Taille
         {
-            get { return _taille; }
-            set  {_taille = value; }
+            get
+            {
+                return _taille;
+            }
+
+            set
+            {
+                _taille = value;
+            }
         }
 
-        // Methodes.
+        public Article[] Composant
+        {
+            get
+            {
+                return _composant;
+            }
+
+            set
+            {
+                _composant = value;
+            }
+        }
+
+        
+
+
+        // Methodes
         /// <summary>
         /// Somme du prix du menu en fonction d'un ou plusieurs articles.
         /// </summary>
