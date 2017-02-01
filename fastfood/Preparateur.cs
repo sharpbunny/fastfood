@@ -10,7 +10,11 @@ namespace fastfood
 	{
 		// Attribut.
 
-		// Constructeur.
+		// Constructeur
+		public Preparateur()
+		{
+
+		}
 
 		// Accesseur et Mutateur.
 

@@ -27,7 +27,7 @@ namespace fastfood
 				_IDArticle = value;
 			}
 		}
-	
+
 		public string Nom
 		{
 			get
