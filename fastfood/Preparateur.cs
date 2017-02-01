@@ -8,23 +8,20 @@ namespace fastfood
 {
 	class Preparateur:Personnel
 	{
-		//Attribut
+		// Attribut.
 
-		//Constructeur
+		// Constructeur
 		public Preparateur()
 		{
 
 		}
 
-		//Methode
-		/// <summary>
-		/// 
-		/// </summary>
+		// Accesseur et Mutateur.
+
+		// Methode
 		public void PreparationCommande()
 		{
 
 		}
-
-		//Accesseur et Mutateur
 	}
 }

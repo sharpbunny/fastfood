@@ -8,12 +8,12 @@ namespace fastfood
 {
 	class Manager:Personnel
 	{
-		//Attribut
+		// Attribut.
 
-		//Constructeur
+		// Constructeur.
 
-		//Methode
+		// Methode.
 
-		//Accesseur et Mutateur
+		// Accesseur et Mutateur.
 	}
 }

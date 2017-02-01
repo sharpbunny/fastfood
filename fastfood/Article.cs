@@ -8,6 +8,7 @@ namespace fastfood
 {
 	class Article
 	{
+		// Attributs.
 		protected int _IDArticle;
 		protected string _nom;
 		protected float _prix;
@@ -20,13 +21,15 @@ namespace fastfood
 		}
 	
 		protected string Nom
-		{ get { return _nom; }
-		  set{ _nom = value; }
+		{
+			get { return _nom; }
+			set{ _nom = value; }
 		}
 
 		public float Prix
-		{ get{ return _prix; }
-		set{ _prix = value; }
+		{
+			get { return _prix; }
+			set{ _prix = value; }
 		}
 
 		protected enum MyEnum
@@ -38,13 +41,12 @@ namespace fastfood
 			Sauce
 		}
 		
-		//Constructors
-		public Article(int _IDArticle, string _nom, float _prix)
+		// Constructeurrs
+		public Article(int idArticle, string nom, float prix)
 		{
-			this._nom = Nom;
-			this._prix = Prix;
-			this._IDArticle = IDArticle;
-			
+			IDArticle = idArticle;
+			Nom = nom;
+			Prix = prix;
 		}
 	}
 	

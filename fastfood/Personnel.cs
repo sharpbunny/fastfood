@@ -8,38 +8,23 @@ namespace fastfood
 {
     abstract class Personnel
     {
-        //attributs
+        // Attributs.
         private string _nom;
         private string _prenom;
-
-
-        //accesseur et muttateur
+		
+        // Accesseurs et muttateurs.
         public string Nom
         {
-            get
-            {
-                return _nom;
-            }
-
-            set
-            {
-                _nom = value;
-            }
+            get { return _nom; }
+            set { _nom = value; }
         }
         public string Prenom
         {
-            get
-            {
-                return _prenom;
-            }
-
-            set
-            {
-                _prenom = value;
-            }
+            get {  return _prenom; }
+            set { _prenom = value; }
         }
 
-        //methode
+        // Methodes.
 
         public void ConsultePlanning()
         {
