@@ -22,25 +22,39 @@ namespace fastfood
 		/// </summary>
 		public int IDClient
 		{
-			get	{ return _IDClient; }
+			get { return _IDClient; }
 		}
 
+		// Fonctions.
 		/// <summary>
 		/// Lors du premier choix d'un article créer un tableau de choix puis ajoute les choix ultérieurs dans le tableau.
 		/// </summary>
 		/// <param name="tabArticle">Tableau d'objet Article.</param>
-		/// <param name="newArticle">Le nouvel aticle selectionné par le client.</param>
+		/// <param name="newArticle">Le nouvel article selectionné par le client.</param>
+		/// <param name="nombreArticle">Le nombre d'acticle choisi par le cient.</param>
 		/// <returns>Renvoie le tableau d'article complété.</returns>
-		// Fonctions.
-		public Article[] ChoixArticle(Article[]tabArticle, Article newArticle)
+		public Article[] ChoixArticle(Article[] tabArticle, Article newArticle, short nombreArticle = 1)
 		{
+			Article[] newTabArticle = new Article[tabArticle.Length + nombreArticle];
 			if (tabArticle.Length == 0)
-				tabArticle[0] = newArticle;
+			{
+				for (int i = 0; i < nombreArticle; i++)
+				{
+					newTabArticle[i] = newArticle;
+				}
+			}
 			else
 			{
-				tabArticle[tabArticle.Length] = newArticle;
+				for (int i = 0; i < tabArticle.Length; i++)
+				{
+					newTabArticle[i] = tabArticle[i];
+				}
+				for (int i = tabArticle.Length; i < nombreArticle; i++)
+				{
+					newTabArticle[i] = newArticle;
+				}
 			}
-			return tabArticle;
+			return newTabArticle;
 		}
 
 		/// <summary>

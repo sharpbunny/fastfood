@@ -14,13 +14,13 @@ namespace fastfood
 		protected float _prix;
 
 		// Getters & Setters
-		protected int IDArticle
+		public int IDArticle
 		{
 			get { return _IDArticle; }
 			set { _IDArticle = value; }
 		}
-	
-		protected string Nom
+
+		public string Nom
 		{
 			get { return _nom; }
 			set{ _nom = value; }
