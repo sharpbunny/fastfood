@@ -9,10 +9,10 @@ using System.IO;
 namespace fastfood
 {
 
-    
-   
-	class Program
-	{
+
+
+    class Program
+    {
         static int lireEntier()
         {
             return Convert.ToInt32(Console.ReadLine());
@@ -23,7 +23,7 @@ namespace fastfood
             Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
             Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites parti du personnel :");
             Console.Write("1.Client\n2.Personnel\n");
-           
+
             int nombre = lireEntier();
             switch (nombre)
             {
@@ -48,8 +48,8 @@ namespace fastfood
 
         }
 
-		static void Main(string[] args)
-		{
+        static void Main(string[] args)
+        {
             // init database
             if (!File.Exists("BaseDuFastFood.sqlite"))
             {
@@ -62,17 +62,18 @@ namespace fastfood
                 sql = "INSERT INTO Article ('Nom', 'Quantite', 'Prix') VALUES ('Burger', 10, 10.5)";
                 SQLiteCommand commande2 = new SQLiteCommand(sql, maConnexion);
                 commande2.ExecuteNonQuery();
-				maConnexion.Close();
+                maConnexion.Close();
             }
-        
-                
-            Article article = new Article ("Data Source=BaseDuFastFood.sqlite;Version=3;");
-			//article.getArticleByID(1);
-			//Console.WriteLine(article.IDArticle);
-			//Console.WriteLine(article.Nom);
+
+
+            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+            //article.getArticleByID(1);
+            //Console.WriteLine(article.IDArticle);
+            //Console.WriteLine(article.Nom);
             //Console.WriteLine(article.Prix);
-			article.GetArticles();
-       
-        affichageMenuProg();
-	}
+            article.GetArticles();
+
+            affichageMenuProg();
+        }
+    }
 }
