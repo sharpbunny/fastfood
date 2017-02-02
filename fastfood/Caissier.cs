@@ -44,12 +44,10 @@ namespace fastfood
                 {
                     sommeARendreEnPiece = sommeARendreEnBilletdeCinq - 5;
                     compteur5E++; 
-                }
-                    
+                } 
             }
-            
-            
         }
+
         /// <summary>
         /// Paiement en carte bancaire par le client
         /// </summary>
@@ -58,6 +56,7 @@ namespace fastfood
             
 
         }
+
         /// <summary>
         /// Paiement cheque par la client
         /// </summary>
