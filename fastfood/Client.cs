@@ -15,6 +15,10 @@ namespace fastfood
 		private long _IDClient;
 
 		// Constructeurs.
+		public Client()
+		{
+			_IDClient++;
+		}
 
 		// Getters & Setters.
 		/// <summary>
@@ -37,22 +41,14 @@ namespace fastfood
 		{
 			Article[] newTabArticle = new Article[tabArticle.Length + nombreArticle];
 			if (tabArticle.Length == 0)
-			{
 				for (int i = 0; i < nombreArticle; i++)
-				{
 					newTabArticle[i] = newArticle;
-				}
-			}
 			else
 			{
 				for (int i = 0; i < tabArticle.Length; i++)
-				{
 					newTabArticle[i] = tabArticle[i];
-				}
 				for (int i = tabArticle.Length; i < nombreArticle; i++)
-				{
 					newTabArticle[i] = newArticle;
-				}
 			}
 			return newTabArticle;
 		}
@@ -60,10 +56,19 @@ namespace fastfood
 		/// <summary>
 		/// Permet au client de payer sa commande.
 		/// </summary>
+		/// <param name="prixMenu">Récupère le prix du menu que le client a choisi.</param>
+		/// <param name="prixPaye">Récupère la somme que le clien a payé.</param>
+		/// <param name="rendu">Si positif la somme à rendre au client, si négatif le client n'a pas donné assez d'argent.</param>
 		/// <returns>Renvoie true si le paiement est valide. On peut donc passer à la préparation de la commande.</returns>
-		public bool Payer()
+		public bool Payer(double prixMenu, double prixPaye, out double rendu)
 		{
 			bool paiementValide = false;
+			rendu = 0;
+			double diff = prixPaye - prixMenu;
+			if (diff == 0) { paiementValide = true; }
+			else if (diff < 0) { paiementValide = false; rendu = diff; }
+			else if (diff > 0) { paiementValide = true; rendu = diff; }
+			else { paiementValide = false; }
 			return paiementValide;
 		}
 	}
