@@ -22,7 +22,9 @@ namespace fastfood
         {
             Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
             Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites parti du personnel :");
-            Console.Write("1.Client\n2.Personnel\n");
+			Console.WriteLine(" 1.Client");
+			Console.WriteLine(" 2.Personnel");
+			Console.WriteLine(" 3.Debug");
 
             int nombre = lireEntier();
             switch (nombre)
@@ -41,6 +43,9 @@ namespace fastfood
                         }
                     }
                     break;
+				case 3:
+					debug();
+					break;
                 default:
                     Console.WriteLine("Erreur 404");
                     break;
@@ -66,14 +71,20 @@ namespace fastfood
             }
 
 
-            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
-            //article.getArticleByID(1);
-            //Console.WriteLine(article.IDArticle);
-            //Console.WriteLine(article.Nom);
-            //Console.WriteLine(article.Prix);
-            article.GetArticles();
-
-            affichageMenuProg();
+            
+			affichageMenuProg();
         }
-    }
+
+		static void debug()
+		{
+			Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+			// exemple pour afficher la liste d'articles
+			Console.WriteLine("Affichage de la liste des articles");
+			foreach (Article articlelist in article.GetArticles())
+			{
+				Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
+			}
+
+		}
+	}
 }
