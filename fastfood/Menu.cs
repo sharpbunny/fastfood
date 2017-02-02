@@ -30,28 +30,14 @@ namespace fastfood
         // Accesseurs
         public string Taille
         {
-            get
-            {
-                return _taille;
-            }
-
-            set
-            {
-                _taille = value;
-            }
+            get { return _taille; }
+            set { _taille = value; }
         }
 
         public Article[] Composant
         {
-            get
-            {
-                return _composant;
-            }
-
-            set
-            {
-                _composant = value;
-            }
+            get { return _composant; }
+            set { _composant = value; }
         }
 
         

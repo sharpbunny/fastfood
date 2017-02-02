@@ -12,7 +12,7 @@ namespace fastfood
 		/// <summary>
 		/// Identifiant du client.
 		/// </summary>
-		private int _IDClient;
+		private long _IDClient;
 
 		// Constructeurs.
 
@@ -20,7 +20,7 @@ namespace fastfood
 		/// <summary>
 		/// Retourne l'id du client.
 		/// </summary>
-		public int IDClient
+		public long IDClient
 		{
 			get { return _IDClient; }
 		}
