@@ -68,9 +68,9 @@ namespace fastfood
         static void Main(string[] args)
         {
             // init database
-            if (!File.Exists("BaseDuFastFood.sqlite"))
+            if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
             {
-                SQLiteConnection.CreateFile("BaseDuFastFood.sqlite");
+                SQLiteConnection.CreateFile("U:\\Partage\\BaseDuFastFood.sqlite");
                 SQLiteConnection maConnexion = new SQLiteConnection("Data Source=BaseDuFastFood.sqlite;Version=3;");
                 maConnexion.Open();
                 string sql = "CREATE TABLE Article ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Nom' VARCHAR(30), 'Quantite' INT, 'Prix' DOUBLE)";
@@ -84,7 +84,7 @@ namespace fastfood
 
 			double ResultatMenu;
 			
-            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+            Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
             //article.getArticleByID(1);
             //Console.WriteLine(article.IDArticle);
             //Console.WriteLine(article.Nom);
