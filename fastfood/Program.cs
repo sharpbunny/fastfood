@@ -55,7 +55,7 @@ namespace fastfood
 
         static void debug()
         {
-            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+            Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
             // exemple pour afficher la liste d'articles
             Console.WriteLine("Affichage de la liste des articles");
             foreach (Article articlelist in article.GetArticles())
