@@ -67,7 +67,7 @@ namespace fastfood
         {
             double somme = 0;
             for(int i = 0; i < tableauArticle.Length; i++)
-            {
+            {				
                 somme = somme + tableauArticle[i].Prix;
             }
 

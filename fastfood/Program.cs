@@ -65,15 +65,32 @@ namespace fastfood
                 maConnexion.Close();
             }
 
-
+			double ResultatMenu;
+			
             Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
             //article.getArticleByID(1);
             //Console.WriteLine(article.IDArticle);
             //Console.WriteLine(article.Nom);
             //Console.WriteLine(article.Prix);
             article.GetArticles();
+			int i = 0;
+			Article[] tab = new Article[1]; 
+			foreach(Article articleList  in article.GetArticles())
+			{
+				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
+				tab[i] = articleList;
+				i++;
+			}
 
-            affichageMenuProg();
-        }
+			//Console.WriteLine(tab[1]);
+			affichageMenuProg();
+
+
+
+			Menu small = new Menu();
+			ResultatMenu = small.CalculerPrixMenu(tab);
+			Console.WriteLine(ResultatMenu);
+			
+		}
     }
 }
