@@ -73,13 +73,10 @@ namespace fastfood
             //Console.WriteLine(article.Nom);
             //Console.WriteLine(article.Prix);
             article.GetArticles();
-			int i = 0;
-			Article[] tab = new Article[1]; 
+			
 			foreach(Article articleList  in article.GetArticles())
 			{
 				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
-				tab[i] = articleList;
-				i++;
 			}
 
 			//Console.WriteLine(tab[1]);
@@ -88,7 +85,7 @@ namespace fastfood
 
 
 			Menu small = new Menu();
-			ResultatMenu = small.CalculerPrixMenu(tab);
+			ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
 			Console.WriteLine(ResultatMenu);
 			
 		}

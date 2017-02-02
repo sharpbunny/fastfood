@@ -63,12 +63,13 @@ namespace fastfood
         /// </summary>
         /// <param name="tableauArticle">Tableau d'Article(s).</param>
         /// <returns></returns>
-        public double CalculerPrixMenu(Article[] tableauArticle)
+        public double CalculerPrixMenu(IEnumerable<Article> articleListe)
         {
             double somme = 0;
-            for(int i = 0; i < tableauArticle.Length; i++)
+            //for(int i = 0; i < tableauArticle.Length; i++)
+            foreach(Article article in articleListe)
             {				
-                somme = somme + tableauArticle[i].Prix;
+                somme = somme + article.Prix;
             }
 
             return somme;
