@@ -7,7 +7,7 @@ using System.Data.SQLite;
 
 namespace fastfood
 {
-	class Article : Database<Article>
+	class Article //: Database<Article>
 	{
 		// Attributs.
 		protected long _IDArticle;
