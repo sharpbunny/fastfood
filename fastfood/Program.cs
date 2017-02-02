@@ -53,6 +53,18 @@ namespace fastfood
 
         }
 
+        static void debug()
+        {
+            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+            // exemple pour afficher la liste d'articles
+            Console.WriteLine("Affichage de la liste des articles");
+            foreach (Article articlelist in article.GetArticles())
+            {
+                Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
+            }
+
+        }
+
         static void Main(string[] args)
         {
             // init database
@@ -70,21 +82,32 @@ namespace fastfood
                 maConnexion.Close();
             }
 
-
-            
-			affichageMenuProg();
-        }
-
-		static void debug()
-		{
-			Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
-			// exemple pour afficher la liste d'articles
-			Console.WriteLine("Affichage de la liste des articles");
-			foreach (Article articlelist in article.GetArticles())
+			double ResultatMenu;
+			
+            Article article = new Article("Data Source=BaseDuFastFood.sqlite;Version=3;");
+            //article.getArticleByID(1);
+            //Console.WriteLine(article.IDArticle);
+            //Console.WriteLine(article.Nom);
+            //Console.WriteLine(article.Prix);
+            article.GetArticles();
+			
+			foreach(Article articleList  in article.GetArticles())
 			{
-				Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
+				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
 			}
 
+			//Console.WriteLine(tab[1]);
+			affichageMenuProg();
+
+            Menu small = new Menu();
+			ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
+			Console.WriteLine(ResultatMenu);
+			
 		}
+    
+            
+	
+
+		
 	}
 }
