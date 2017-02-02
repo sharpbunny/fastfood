@@ -53,10 +53,7 @@ namespace fastfood
                 _composant = value;
             }
         }
-
         
-
-
         // Methodes
         /// <summary>
         /// Somme du prix du menu en fonction d'un ou plusieurs articles.
