@@ -13,10 +13,10 @@ namespace fastfood
 
     class Program
     {
-        static int lireEntier()
-        {
-            return Convert.ToInt32(Console.ReadLine());
-        }
+        //static int lireEntier()
+        //{
+        //    return Convert.ToInt32(Console.ReadLine());
+        //}
 
 
         //static void debug()
