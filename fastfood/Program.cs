@@ -93,7 +93,7 @@ namespace fastfood
 			
 			foreach(Article articleList  in article.GetArticles())
 			{
-				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
+				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ " euros");
 			}
 
 			//Console.WriteLine(tab[1]);
@@ -101,13 +101,20 @@ namespace fastfood
 
             Menu small = new Menu();
 			ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
-			Console.WriteLine(ResultatMenu);
+			Console.WriteLine("Le prix du menu est de : "+ResultatMenu+" euros");
+
+            double renduMonnay;
+            Client gerard = new Client();
+            gerard.Payer(ResultatMenu, 542, out renduMonnay);
+
+            Console.WriteLine("Gérard Depardieu a payé "+542 +" euros. Il a payé "+ResultatMenu+" et on lui rends : "+renduMonnay+" euros");
+        
 			
 		}
     
             
 	
-
+       
 		
 	}
 }
