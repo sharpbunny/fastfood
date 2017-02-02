@@ -9,7 +9,7 @@ namespace fastfood
 	/// <summary>
 	/// Classe contenant toutes les fonctions utiles au fonctionnement de VégétaFood
 	/// </summary>
-	class Fonction
+	abstract class Fonction
 	{
 
 	}
