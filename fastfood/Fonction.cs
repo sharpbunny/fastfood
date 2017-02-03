@@ -12,7 +12,7 @@ namespace fastfood
 	abstract class Fonction
 	{
 
-		public Menu ChoixTypeMenu()
+		public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
             menu.TypeMenu = Console.Read();
@@ -138,7 +138,7 @@ namespace fastfood
 			switch (choixDuMenu)
 			{
 				case '1':
-					ChoixTypeMenu();
+					Fonction.ChoixTypeMenu();
 					break;
 				case '2':
 					ChoixArticle();

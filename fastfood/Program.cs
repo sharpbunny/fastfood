@@ -72,13 +72,7 @@ namespace fastfood
 
 			Fonction.affichageMenuProg();
 
-			double renduMonnay;
-			Client gerard = new Client();
-			gerard.Payer(ResultatMenu, 542, out renduMonnay);
-
-			Console.WriteLine("Gérard Depardieu a payé " + 542 + " euros. Il a payé " + ResultatMenu + " et on lui rends : " + renduMonnay + " euros");
-
-
+			
 
 		}
 	
