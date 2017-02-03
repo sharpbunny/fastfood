@@ -75,7 +75,7 @@ namespace fastfood
 		}
 
         // Constructeurrs
-        public Article(string connectionString) : base(connectionString)
+        public Article(string connectionString) //: base(connectionString)
         {
 
         }
@@ -158,7 +158,7 @@ namespace fastfood
 		//		Prix = (double)reader["Prix"],
 		//	};
   //      }
-  //  }
+    }
 	
 
 }
