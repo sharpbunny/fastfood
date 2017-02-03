@@ -63,7 +63,59 @@ namespace fastfood
             return burger;
         }
 
-		public static Menu ChoixTypeMenu()
+        static public Article ChoixBoisson()
+        {
+            int entreeUtilisateur;
+            bool validerBoisson = false;
+            Article boisson = new Article("", 0, 0);
+
+            do
+            {
+                Console.WriteLine("Quel Burger voulez vous choisir ?");
+                for (int i = DonneePublique.debutBoisson; i < DonneePublique.debutSalade; i++)
+                {
+                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+                }
+                entreeUtilisateur = Console.Read();
+
+                do
+                {
+                    if (entreeUtilisateur < DonneePublique.debutBoisson + 1 || entreeUtilisateur >= DonneePublique.debutSalade)
+                    {
+                        Console.WriteLine("Quel Boisson voulez vous choisir ?");
+                        entreeUtilisateur = Console.Read();
+                    }
+                    entreeUtilisateur = Console.Read();
+                } while (entreeUtilisateur < DonneePublique.debutBoisson + 1 || entreeUtilisateur >= DonneePublique.debutSalade);
+
+
+                int indiceBoisson = DonneePublique.debutSalade;
+                bool boissonTrouve = false;
+                while (entreeUtilisateur - 1 != indiceBoisson || indiceBoisson != DonneePublique.debutBoisson || !boissonTrouve)
+                {
+                    if (entreeUtilisateur == indiceBoisson)
+                    {
+                        boisson = DonneePublique.ListeArticle[indiceBoisson];
+                        boissonTrouve = true;
+                        Console.WriteLine("Vous avez choisi le boisson " + DonneePublique.ListeArticle[indiceBoisson].Nom + ".");
+                    }
+                    indiceBoisson++;
+                }
+                Console.WriteLine("Etes vous sur de votre choix : " + DonneePublique.ListeArticle[indiceBoisson - 1].Nom + " ?");
+                Console.WriteLine("1.Oui\n2.Non");
+
+
+                entreeUtilisateur = Console.Read();
+                if (entreeUtilisateur == 1)
+                {
+                    validerBoisson = true;
+                }
+
+            } while (!validerBoisson);
+            return boisson;
+        }
+
+        public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
             menu.TypeMenu = Console.Read();
