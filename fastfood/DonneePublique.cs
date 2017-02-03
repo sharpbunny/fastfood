@@ -14,7 +14,7 @@ namespace fastfood
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
 		public static Article Fanta = new Article("Fanta", 2, 2);
-		public static Article Seitan = new Article("Seitan",7,1);
+		public static Article Seitan = new Article("Seitan", 7, 1);
 		public static Article Sprite = new Article("Sprite", 2, 2);
 		public static Article Chocolat = new Article("Chocolat", 3.50, 4);
 		public static Article Vanille = new Article("Vanille", 3.50, 4);
@@ -27,10 +27,9 @@ namespace fastfood
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar };
 
 		// Fonctions.
-
-		/// tri par catégorie.
+		/// Tri par catégorie.
 		public static Article[] TriCategorie(Article[] tableauATrier)
-		 {
+		{
 			Article[] nouveauTableau = new Article[tableauATrier.Length];
 
 			int indiceNouveauTableau = 0;
@@ -67,20 +66,45 @@ namespace fastfood
 		/// Tri alphabétique
 		public static Article[] TriAlphabetique(Article[] tableauATrier)
 		{
-			Article[] nouveauTableau = new Article[tableauATrier.Length];
-
-			int indiceNouveauTableau = 0;
-			for (int j = 0; j <= 1; j++)
+			Article temporaryArticle = tableauATrier[0];
+			bool switched = true;
+			while (switched)
 			{
-				for (int i = 0; i < tableauATrier.Length; i++)
+				switched = false;
+
+				for (int i = 0; i < tableauATrier.Length - 1; i++)
 				{
-					
+					if (tableauATrier[i].Nom[0] > tableauATrier[i + 1].Nom[0])
+					{
+						temporaryArticle = tableauATrier[i + 1];
+						tableauATrier[i + 1] = tableauATrier[i];
+						tableauATrier[i] = temporaryArticle;
+						switched = true;
+					}
+					else if (tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0])
+					{
+						if (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1])
+						{
+							temporaryArticle = tableauATrier[i + 1];
+							tableauATrier[i + 1] = tableauATrier[i];
+							tableauATrier[i] = temporaryArticle;
+							switched = true;
+						}
+					}
+					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]))
+					{
+						if (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2])
+						{
+							temporaryArticle = tableauATrier[i + 1];
+							tableauATrier[i + 1] = tableauATrier[i];
+							tableauATrier[i] = temporaryArticle;
+							switched = true;
+						}
+					}
 				}
 			}
-			return nouveauTableau;
+			return tableauATrier;
 		}
-
-		/// tri par prix
 
 	}
 }

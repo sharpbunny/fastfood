@@ -48,7 +48,7 @@ namespace fastfood
                     break;
 				//case 3:
 				//	debug();
-					break;
+				//	break;
                 default:
                     Console.WriteLine("Erreur 404");
                     break;
@@ -70,7 +70,13 @@ namespace fastfood
 
         static void Main(string[] args)
         {
-			Article[] Tri = DonneePublique.TriCategorie(DonneePublique.ListeArticle);
+			Article[] Tri = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);
+			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
+			{
+				Console.WriteLine(Tri[i].Nom + " " + Tri[i].Prix);
+			}
+			Console.WriteLine("-----------");
+			Tri = DonneePublique.TriCategorie(Tri);
 			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
 			{
 				Console.WriteLine(Tri[i].Nom + " " + Tri[i].Prix);
