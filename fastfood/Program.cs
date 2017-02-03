@@ -70,10 +70,9 @@ namespace fastfood
 			//ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
 			//Console.WriteLine(ResultatMenu);
 
-			Fonction.affichageMenuProg();
+			Fonction.AffichageMenuProg();
 
 			
-
 		}
 	
        
