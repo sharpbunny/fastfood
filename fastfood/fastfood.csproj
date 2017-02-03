@@ -47,7 +47,6 @@
     <Compile Include="Caissier.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Commande.cs" />
-    <Compile Include="Database.cs" />
     <Compile Include="DonneePublique.cs" />
     <Compile Include="Fonction.cs" />
     <Compile Include="Manager.cs" />
