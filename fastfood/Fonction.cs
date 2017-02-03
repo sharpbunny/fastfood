@@ -241,7 +241,7 @@ namespace fastfood
 			switch (choixDuMenu)
 			{
 				case '1':
-					Fonction.ChoixTypeMenu();
+					ChoixTypeMenu();
 					break;
 				case '2':
 					ChoixArticle();
