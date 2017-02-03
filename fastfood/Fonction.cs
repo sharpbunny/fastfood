@@ -49,7 +49,7 @@ namespace fastfood
 		/// <summary>
 		/// Choix de l'utilisateur : fonction utile au développeur pour se mettre dans la position du client ou du personnel de Végétafood
 		/// </summary>
-		public static void affichageMenuProg()
+		public static void AffichageMenuProg()
 		{
 			bool choixValide;
 			int choixDuPersonnageInt;
@@ -217,5 +217,5 @@ namespace fastfood
 
 
 
-    }
+}
 
