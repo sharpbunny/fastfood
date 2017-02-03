@@ -12,6 +12,57 @@ namespace fastfood
 	abstract class Fonction
 	{
 
+        static public Article ChoixBurger()
+        {
+            int entreeUtilisateur;
+            bool validerBurger = false;
+            Article burger = new Article("",0,0);
+
+            do {
+                Console.WriteLine("Quel Burger voulez vous choisir ?");
+                for (int i = DonneePublique.debutBurger; i < DonneePublique.debutBoisson; i++)
+                {
+                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+                }
+                entreeUtilisateur = Console.Read();
+
+                do
+                {
+                    if (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson)
+                    {
+                        Console.WriteLine("Quel Burger voulez vous choisir ?");
+                        entreeUtilisateur = Console.Read();
+                    }
+                    entreeUtilisateur = Console.Read();
+                } while (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson)
+
+
+            int indiceBurger = DonneePublique.debutBurger;
+                bool burgerTrouve = false;
+                while (entreeUtilisateur - 1 != indiceBurger || indiceBurger != DonneePublique.debutBoisson || !burgerTrouve)
+                {
+                    if (entreeUtilisateur == indiceBurger)
+                    {
+                        burger = DonneePublique.ListeArticle[indiceBurger];
+                        burgerTrouve = true;
+                        Console.WriteLine("Vous avez choisi le burger " + DonneePublique.ListeArticle[indiceBurger].Nom + ".");
+                    }
+                    indiceBurger++;
+                }
+                Console.WriteLine("Etes vous sur de votre choix : " + DonneePublique.ListeArticle[indiceBurger - 1].Nom + " ?");
+                Console.WriteLine("1.Oui\n2.Non");
+
+
+                entreeUtilisateur = Console.Read();
+                if (entreeUtilisateur == 1)
+                {
+                    validerBurger = true;
+                }
+
+            } while (!validerBurger);
+            return burger;
+        }
+
 		public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
@@ -25,22 +76,22 @@ namespace fastfood
             {
                 case 1:
 					menu.TabArticle = new Article[2];
-					menu.TabArticle[0] = choixBurger();
-					menu.TabArticle[1] = choixBoisson();
+					menu.TabArticle[0] = ChoixBurger();
+					menu.TabArticle[1] = ChoixBoisson();
 					break;
 				case 2:
 					menu.TabArticle = new Article[3];
-					menu.TabArticle[0] = choixBurger();
-					menu.TabArticle[1] = choixBoisson();
-					menu.TabArticle[2] = choixSalade();
+					menu.TabArticle[0] = ChoixBurger();
+					menu.TabArticle[1] = ChoixBoisson();
+					menu.TabArticle[2] = ChoixSalade();
 
 					break;
 				case 3:
 					menu.TabArticle = new Article[4];
-					menu.TabArticle[0] = choixBurger();
-					menu.TabArticle[1] = choixBoisson();
-					menu.TabArticle[2] = choixSalade();
-					menu.TabArticle[3] = choixGlace();
+					menu.TabArticle[0] = ChoixBurger();
+					menu.TabArticle[1] = ChoixBoisson();
+					menu.TabArticle[2] = ChoixSalade();
+					menu.TabArticle[3] = ChoixGlace();
 					break;
 			}
 			return menu;
