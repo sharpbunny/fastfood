@@ -22,44 +22,55 @@ namespace fastfood
 		public static Article SaladeVerte = new Article("SaladeVerte", 4.20, 3);
 		public static Article Oceane = new Article("Oceane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
+		public static int debutBurger;
+		public static int debutBoisson;
+		public static int debutSalade;
+		public static int debutGlace;
 
 		/// Tableau d'article
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar };
 
 		// Fonctions.
 		/// Tri par catégorie.
-		public static Article[] TriCategorie(Article[] tableauATrier)
+		public static Article[] TriCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
 		{
 			Article[] nouveauTableau = new Article[tableauATrier.Length];
 
 			int indiceNouveauTableau = 0;
+			debutBurger = -1; debutBoisson = -1; debutSalade = -1; debutGlace = -1;
 			for (int j = 1; j <= 4; j++)
-			{
 				for (int i = 0; i < tableauATrier.Length; i++)
 				{
 
 					if (j == 1 && tableauATrier[i].Categorie == 1)
 					{
 						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutBurger == -1)
+							debutBurger = indiceNouveauTableau;
 						indiceNouveauTableau++;
 					}
 					else if (j == 2 && tableauATrier[i].Categorie == 2)
 					{
 						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutBoisson == -1)
+							debutBoisson = indiceNouveauTableau;
 						indiceNouveauTableau++;
 					}
 					else if (j == 3 && tableauATrier[i].Categorie == 3)
 					{
 						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutSalade == -1)
+							debutSalade = indiceNouveauTableau;
 						indiceNouveauTableau++;
 					}
 					else if (j == 4 && tableauATrier[i].Categorie == 4)
 					{
 						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutGlace == -1)
+							debutGlace = indiceNouveauTableau;
 						indiceNouveauTableau++;
 					}
 				}
-			}
 			return nouveauTableau;
 		}
 
@@ -105,6 +116,5 @@ namespace fastfood
 			}
 			return tableauATrier;
 		}
-
 	}
 }

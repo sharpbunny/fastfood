@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
 using System.IO;
 
 namespace fastfood
@@ -33,6 +32,8 @@ namespace fastfood
 
 		static void Main(string[] args)
 		{
+			DonneePublique.ListeArticle = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);
+			DonneePublique.ListeArticle = DonneePublique.TriCategorie(DonneePublique.ListeArticle, out DonneePublique.debutBurger, out DonneePublique.debutBoisson, out DonneePublique.debutSalade, out DonneePublique.debutGlace);
 			//         // init database
 			//         if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
 			//         {

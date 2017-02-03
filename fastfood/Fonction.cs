@@ -100,7 +100,7 @@ namespace fastfood
 		/// <summary>
 		/// Choix de l'utilisateur : fonction utile au développeur pour se mettre dans la position du client ou du personnel de Végétafood
 		/// </summary>
-		public static void affichageMenuProg()
+		public static void AffichageMenuProg()
 		{
 			bool choixValide;
 			int choixDuPersonnageInt;
@@ -109,7 +109,7 @@ namespace fastfood
 			do
 			{
 				Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
-				Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites parti du personnel :");
+				Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites partie du personnel :");
 				Console.WriteLine(" 1.Client");
 				Console.WriteLine(" 2.Personnel");
 				Console.WriteLine(" 3.Debug");
@@ -131,13 +131,13 @@ namespace fastfood
 				
 				//Dans le cas du personnel
 				case '2':
-					Console.WriteLine("Vous faites parti du personnel.\nVeuillez saisir le login : ");
+					Console.WriteLine("Vous faites partie du personnel.\nVeuillez saisir le login : ");
 					if (Console.ReadLine() == "admin")
 					{
 						Console.WriteLine("Veuillez saisir le mot de passe : ");
 						if (Console.ReadLine() == "admin")
 						{
-							Console.WriteLine("Vous faites parti du personnel.");
+							Console.WriteLine("Vous faites partie du personnel.");
 						}
 					}
 					break;
