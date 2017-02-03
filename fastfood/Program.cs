@@ -72,6 +72,8 @@ namespace fastfood
 
 			Fonction.affichageMenuProg();
 
+            
+
 			double renduMonnay;
 			Client gerard = new Client();
 			gerard.Payer(ResultatMenu, 542, out renduMonnay);
