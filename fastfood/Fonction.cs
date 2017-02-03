@@ -34,7 +34,7 @@ namespace fastfood
                         entreeUtilisateur = Console.Read();
                     }
                     entreeUtilisateur = Console.Read();
-                } while (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson)
+                } while (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson);
 
 
             int indiceBurger = DonneePublique.debutBurger;
