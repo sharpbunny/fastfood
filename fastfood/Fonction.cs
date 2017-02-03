@@ -71,7 +71,7 @@ namespace fastfood
 
             do
             {
-                Console.WriteLine("Quel Burger voulez vous choisir ?");
+                Console.WriteLine("Quelle Boisson voulez vous choisir ?");
                 for (int i = DonneePublique.debutBoisson; i < DonneePublique.debutSalade; i++)
                 {
                     Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
@@ -89,7 +89,7 @@ namespace fastfood
                 } while (entreeUtilisateur < DonneePublique.debutBoisson + 1 || entreeUtilisateur >= DonneePublique.debutSalade);
 
 
-                int indiceBoisson = DonneePublique.debutSalade;
+                int indiceBoisson = DonneePublique.debutBoisson;
                 bool boissonTrouve = false;
                 while (entreeUtilisateur - 1 != indiceBoisson || indiceBoisson != DonneePublique.debutBoisson || !boissonTrouve)
                 {
@@ -97,7 +97,7 @@ namespace fastfood
                     {
                         boisson = DonneePublique.ListeArticle[indiceBoisson];
                         boissonTrouve = true;
-                        Console.WriteLine("Vous avez choisi le boisson " + DonneePublique.ListeArticle[indiceBoisson].Nom + ".");
+                        Console.WriteLine("Vous avez choisi la boisson " + DonneePublique.ListeArticle[indiceBoisson].Nom + ".");
                     }
                     indiceBoisson++;
                 }
@@ -113,6 +113,110 @@ namespace fastfood
 
             } while (!validerBoisson);
             return boisson;
+        }
+
+        static public Article ChoixSalade()
+        {
+            int entreeUtilisateur;
+            bool validerSalade = false;
+            Article salade = new Article("", 0, 0);
+
+            do
+            {
+                Console.WriteLine("Quelle Salade voulez vous choisir ?");
+                for (int i = DonneePublique.debutSalade; i < DonneePublique.debutGlace; i++)
+                {
+                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+                }
+                entreeUtilisateur = Console.Read();
+
+                do
+                {
+                    if (entreeUtilisateur < DonneePublique.debutSalade + 1 || entreeUtilisateur >= DonneePublique.debutGlace)
+                    {
+                        Console.WriteLine("Quelle Salade voulez vous choisir ?");
+                        entreeUtilisateur = Console.Read();
+                    }
+                    entreeUtilisateur = Console.Read();
+                } while (entreeUtilisateur < DonneePublique.debutSalade + 1 || entreeUtilisateur >= DonneePublique.debutGlace);
+
+
+                int indiceSalade = DonneePublique.debutSalade;
+                bool saladeTrouve = false;
+                while (entreeUtilisateur - 1 != indiceSalade || indiceSalade != DonneePublique.debutSalade|| !saladeTrouve)
+                {
+                    if (entreeUtilisateur == indiceSalade)
+                    {
+                        salade = DonneePublique.ListeArticle[indiceSalade];
+                        saladeTrouve = true;
+                        Console.WriteLine("Vous avez choisi la salade " + DonneePublique.ListeArticle[indiceSalade].Nom + ".");
+                    }
+                    indiceSalade++;
+                }
+                Console.WriteLine("Etes vous sûr de votre choix : " + DonneePublique.ListeArticle[indiceSalade - 1].Nom + " ?");
+                Console.WriteLine("1.Oui\n2.Non");
+
+
+                entreeUtilisateur = Console.Read();
+                if (entreeUtilisateur == 1)
+                {
+                    validerSalade = true;
+                }
+
+            } while (!validerSalade);
+            return salade;
+        }
+
+        static public Article ChoixGlace()
+        {
+            int entreeUtilisateur;
+            bool validerGlace = false;
+            Article glace = new Article("", 0, 0);
+
+            do
+            {
+                Console.WriteLine("Quelle Glace voulez vous choisir ?");
+                for (int i = DonneePublique.debutGlace; i < DonneePublique.ListeArticle.Length; i++)
+                {
+                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+                }
+                entreeUtilisateur = Console.Read();
+
+                do
+                {
+                    if (entreeUtilisateur < DonneePublique.debutGlace + 1 || entreeUtilisateur >= DonneePublique.ListeArticle.Length)
+                    {
+                        Console.WriteLine("Quelle Glace voulez vous choisir ?");
+                        entreeUtilisateur = Console.Read();
+                    }
+                    entreeUtilisateur = Console.Read();
+                } while (entreeUtilisateur < DonneePublique.debutGlace + 1 || entreeUtilisateur >= DonneePublique.ListeArticle.Length);
+
+
+                int indiceGlace = DonneePublique.debutGlace;
+                bool glaceTrouve = false;
+                while (entreeUtilisateur - 1 != indiceGlace || indiceGlace != DonneePublique.ListeArticle.Length || !glaceTrouve)
+                {
+                    if (entreeUtilisateur == indiceGlace)
+                    {
+                        glace = DonneePublique.ListeArticle[indiceGlace];
+                        glaceTrouve = true;
+                        Console.WriteLine("Vous avez choisi la glace " + DonneePublique.ListeArticle[indiceGlace].Nom + ".");
+                    }
+                    indiceGlace++;
+                }
+                Console.WriteLine("Etes vous sûr de votre choix : " + DonneePublique.ListeArticle[indiceGlace - 1].Nom + " ?");
+                Console.WriteLine("1.Oui\n2.Non");
+
+
+                entreeUtilisateur = Console.Read();
+                if (entreeUtilisateur == 1)
+                {
+                    validerGlace = true;
+                }
+
+            } while (!validerGlace);
+            return glace;
         }
 
         public static Menu ChoixTypeMenu()
