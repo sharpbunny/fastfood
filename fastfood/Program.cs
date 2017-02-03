@@ -70,6 +70,7 @@ namespace fastfood
 			//ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
 			//Console.WriteLine(ResultatMenu);
 
+<<<<<<< HEAD
 			Fonction.affichageMenuProg();
 
             
@@ -81,7 +82,11 @@ namespace fastfood
 			Console.WriteLine("Gérard Depardieu a payé " + 542 + " euros. Il a payé " + ResultatMenu + " et on lui rends : " + renduMonnay + " euros");
 
 
+=======
+			Fonction.AffichageMenuProg();
+>>>>>>> afeaa171df2f3065e199772627f4203b39530f5d
 
+			
 		}
 	
        

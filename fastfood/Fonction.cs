@@ -12,7 +12,7 @@ namespace fastfood
 	abstract class Fonction
 	{
 
-		public Menu ChoixTypeMenu()
+		public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
             menu.TypeMenu = Console.Read();
@@ -49,7 +49,7 @@ namespace fastfood
 		/// <summary>
 		/// Choix de l'utilisateur : fonction utile au développeur pour se mettre dans la position du client ou du personnel de Végétafood
 		/// </summary>
-		public static void affichageMenuProg()
+		public static void AffichageMenuProg()
 		{
 			bool choixValide;
 			int choixDuPersonnageInt;
@@ -138,7 +138,7 @@ namespace fastfood
 			switch (choixDuMenu)
 			{
 				case '1':
-					ChoixTypeMenu();
+					Fonction.ChoixTypeMenu();
 					break;
 				case '2':
 					ChoixArticle();
@@ -217,6 +217,5 @@ namespace fastfood
 
 
 
-    }
-
 }
+
