@@ -89,6 +89,11 @@ namespace fastfood
 
 
 
+        //// Constructeurrs
+        //public Article(string connectionString) //: base(connectionString)
+        //{
+
+
 		//protected enum MyEnum
 		//{
 		//	Boisson,
@@ -181,6 +186,7 @@ namespace fastfood
 		//	};
 		//      }
 	}
+
 
 
 }

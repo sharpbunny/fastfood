@@ -11,8 +11,8 @@ namespace fastfood
 
 
 
-	class Program
-	{
+    class Program
+    {
 		//static int lireEntier()
 		//{
 		//    return Convert.ToInt32(Console.ReadLine());
@@ -71,6 +71,11 @@ namespace fastfood
 			//Console.WriteLine(ResultatMenu);
 
 			Fonction.AffichageMenuProg();
+
+			
 		}
+	
+       
+		
 	}
 }

@@ -18,8 +18,8 @@ namespace fastfood
     class Menu
     {
         // Attributs
-        private Article[] _composant;
-        private string _taille;
+        private Article[] _tabArticle;
+        private int typeMenu;
 
         // Constructeurs
         public Menu()
@@ -28,34 +28,39 @@ namespace fastfood
         }
 
         // Accesseurs
-        public string Taille
+        
+        public Article[] TabArticle
         {
-            get { return _taille; }
-            set { _taille = value; }
+            get
+            {
+                return _tabArticle;
+            }
+
+            set
+            {
+                _tabArticle = value;
+            }
         }
 
-        public Article[] Composant
+        public int TypeMenu
         {
-            get { return _composant; }
-            set { _composant = value; }
+            get
+            {
+                return typeMenu;
+            }
+
+            set
+            {
+                typeMenu = value;
+            }
         }
-        
+
         // Methodes
         /// <summary>
         /// Somme du prix du menu en fonction d'un ou plusieurs articles.
         /// </summary>
         /// <param name="tableauArticle">Tableau d'Article(s).</param>
         /// <returns></returns>
-        public double CalculerPrixMenu(IEnumerable<Article> articleListe)
-        {
-            double somme = 0;
-            //for(int i = 0; i < tableauArticle.Length; i++)
-            foreach(Article article in articleListe)
-            {				
-                somme = somme + article.Prix;
-            }
-
-            return somme;
-        }
+        
     }
 }
