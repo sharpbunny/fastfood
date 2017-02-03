@@ -46,8 +46,8 @@ namespace fastfood
                         }
                     }
                     break;
-				case 3:
-					debug();
+				//case 3:
+				//	debug();
 					break;
                 default:
                     Console.WriteLine("Erreur 404");
@@ -56,20 +56,25 @@ namespace fastfood
 
         }
 
-        static void debug()
-        {
-            Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
-            // exemple pour afficher la liste d'articles
-            Console.WriteLine("Affichage de la liste des articles");
-            foreach (Article articlelist in article.GetArticles())
-            {
-                Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
-            }
+        //static void debug()
+        //{
+        //    Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
+        //    // exemple pour afficher la liste d'articles
+        //    Console.WriteLine("Affichage de la liste des articles");
+        //    foreach (Article articlelist in article.GetArticles())
+        //    {
+        //        Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
+        //    }
 
-        }
+        //}
 
         static void Main(string[] args)
         {
+			Article[] Tri = DonneePublique.TriCategorie(DonneePublique.ListeArticle);
+			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
+			{
+				Console.WriteLine(Tri[i].Nom + " " + Tri[i].Prix);
+			}
    //         // init database
    //         if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
    //         {
@@ -95,30 +100,30 @@ namespace fastfood
    //         article.GetArticles();
 			
 
-			foreach(Article articleList  in article.GetArticles())
-			{
-				Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ " euros");
-			}
-
 			//foreach(Article articleList  in article.GetArticles())
 			//{
-			//	Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
+			//	Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ " euros");
 			//}
 
+			////foreach(Article articleList  in article.GetArticles())
+			////{
+			////	Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
+			////}
 
-			////Console.WriteLine(tab[1]);
-			affichageMenuProg();
+
+			//////Console.WriteLine(tab[1]);
+			//affichageMenuProg();
 
 
-            Menu small = new Menu();
-			ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
-			Console.WriteLine("Le prix du menu est de : "+ResultatMenu+" euros");
+   //         Menu small = new Menu();
+			//ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
+			//Console.WriteLine("Le prix du menu est de : "+ResultatMenu+" euros");
 
-            double renduMonnay;
-            Client gerard = new Client();
-            gerard.Payer(ResultatMenu, 542, out renduMonnay);
+   //         double renduMonnay;
+   //         Client gerard = new Client();
+   //         gerard.Payer(ResultatMenu, 542, out renduMonnay);
 
-            Console.WriteLine("Gérard Depardieu a payé "+542 +" euros. Il a payé "+ResultatMenu+" et on lui rends : "+renduMonnay+" euros");
+   //         Console.WriteLine("Gérard Depardieu a payé "+542 +" euros. Il a payé "+ResultatMenu+" et on lui rends : "+renduMonnay+" euros");
         
 
 			//Menu small = new Menu();

@@ -70,6 +70,7 @@
     <Compile Include="Caissier.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="DonneePublique.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Preparateur.cs" />
     <Compile Include="Commande.cs" />

@@ -74,7 +74,7 @@ namespace fastfood
 			}
 		}
 
-		protected short Categorie
+		public short Categorie
 		{
 			get
 			{
