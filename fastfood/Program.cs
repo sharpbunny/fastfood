@@ -13,26 +13,26 @@ namespace fastfood
 
     class Program
     {
-        //static int lireEntier()
-        //{
-        //    return Convert.ToInt32(Console.ReadLine());
-        //}
+		//static int lireEntier()
+		//{
+		//    return Convert.ToInt32(Console.ReadLine());
+		//}
 
 
-        //static void debug()
-        //{
-        //    Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
-        //    // exemple pour afficher la liste d'articles
-        //    Console.WriteLine("Affichage de la liste des articles");
-        //    foreach (Article articlelist in article.GetArticles())
-        //    {
-        //        Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
-        //    }
+		//static void debug()
+		//{
+		//    Article article = new Article("Data Source=U:\\Partage\\BaseDuFastFood.sqlite;Version=3;");
+		//    // exemple pour afficher la liste d'articles
+		//    Console.WriteLine("Affichage de la liste des articles");
+		//    foreach (Article articlelist in article.GetArticles())
+		//    {
+		//        Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
+		//    }
 
-        //}
+		//}
 
-        static void Main(string[] args)
-        {
+		static void Main(string[] args)
+		{
 			//         // init database
 			//         if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
 			//         {
@@ -57,23 +57,32 @@ namespace fastfood
 			//         //Console.WriteLine(article.Prix);
 			//         article.GetArticles();
 
+
 			//foreach(Article articleList  in article.GetArticles())
 			//{
 			//	Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
 			//}
 
+
 			////Console.WriteLine(tab[1]);
+
 			//Menu small = new Menu();
 			//ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
 			//Console.WriteLine(ResultatMenu);
 
 			Fonction.affichageMenuProg();
 
-		}
-    
-            
-	
+			double renduMonnay;
+			Client gerard = new Client();
+			gerard.Payer(ResultatMenu, 542, out renduMonnay);
 
+			Console.WriteLine("Gérard Depardieu a payé " + 542 + " euros. Il a payé " + ResultatMenu + " et on lui rends : " + renduMonnay + " euros");
+
+
+
+		}
+	
+       
 		
 	}
 }
