@@ -32,6 +32,8 @@ namespace fastfood
 
 		static void Main(string[] args)
 		{
+			DonneePublique.ListeArticle = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);
+			DonneePublique.ListeArticle = DonneePublique.TriCategorie(DonneePublique.ListeArticle, out DonneePublique.debutBurger, out DonneePublique.debutBoisson, out DonneePublique.debutSalade, out DonneePublique.debutGlace);
 			//         // init database
 			//         if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
 			//         {
