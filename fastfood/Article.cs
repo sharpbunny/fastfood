@@ -1,21 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
 	class Article //: Database<Article>
 	{
 		// Attributs.
+		/// <summary>
+		/// ID de l'article.
+		/// </summary>
 		protected long _IDArticle;
+		
+		/// <summary>
+		/// Nom de l'article.
+		/// </summary>
 		protected string _nom;
+		
+		/// <summary>
+		/// Le nombre d'article.
+		/// </summary>
 		protected int _quantite;
+		
+		/// <summary>
+		/// Le prix d'un article.
+		/// </summary>
 		protected double _prix;
+		
+		/// <summary>
+		/// Le n° de la catégorie de l'article. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// </summary>
 		private short _categorie;
 
 		// Constructeurs.
+		/// <summary>
+		/// Constructeur de l'article sous la norme NPC.
+		/// </summary>
+		/// <param name="nom">Nom de l'article.</param>
+		/// <param name="prix">Prix unitaire de l'article.</param>
+		/// <param name="categorie">Catégorie de l'article (1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace).</param>
 		public Article(string nom, double prix, short categorie)
 		{
 			Nom = nom;
@@ -86,12 +105,9 @@ namespace fastfood
 			}
 		}
 
-
-
-        //// Constructeurrs
-        //public Article(string connectionString) //: base(connectionString)
-        //{
-
+    //// Constructeurrs
+    //public Article(string connectionString) //: base(connectionString)
+    //{
 
 		//protected enum MyEnum
 		//{
@@ -101,9 +117,6 @@ namespace fastfood
 		//	Salade,
 		//	Sauce
 		//}
-
-
-
 
 		/// SQL
 		///// <summary>
@@ -185,7 +198,4 @@ namespace fastfood
 		//	};
 		//      }
 	}
-
-
-
 }

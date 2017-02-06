@@ -1,43 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
 	class Commande
 	{
-											// **********************************
-											//			ATTRIBUTS
-											// **********************************
+											// ****************** //
+											//			ATTRIBUTS			//
+											// ****************** //
 		/// <summary>
-		/// Numéro de la commande
+		/// Numéro de la commande.
 		/// </summary>
 		private int _numero;
 
 		/// <summary>
-		/// Le type représente le choix du client de manger sur place ou à emporter
+		/// Le type représente le choix du client de manger sur place ou à emporter.
 		/// </summary>
 		private string _type;
 
-											// **********************************
-											//			CONSTRUCTEURS
-											// **********************************
+											// ********************** //
+											//			CONSTRUCTEURS			//
+											// ********************** //
 		/// <summary>
-		/// Constructeur de la classe Commande
+		/// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
 		/// </summary>
 		public Commande()
 		{
-			Numero++; //Le numéro de commande est incrémenté à chaque création de Commande
+			Numero++;
 		}
 
 
-											// **********************************
-											//			GETTERS - SETTERS
-											// **********************************
+											// ************************** //
+											//			GETTERS - SETTERS			//
+											// ************************** //
 		/// <summary>
-		/// Permet de lire ou de définir le type de la commande
+		/// Permet de lire ou de définir le type de la commande.
 		/// </summary>
 		public int Numero
 		{
@@ -46,18 +40,17 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter
+		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter.
 		/// </summary>
-		/// 
 		public string Type
 		{
 			get { return _type;	}
 			set	{ _type = value; }
 		}
 
-		// **********************************
-		//				METHODES
-		// **********************************
+											// ********************** //
+											//				METHODES				//
+											// ********************** //
 
 	}
 }

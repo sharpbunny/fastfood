@@ -7,16 +7,12 @@ using System.IO;
 
 namespace fastfood
 {
-
-
-
     class Program
     {
 		//static int lireEntier()
 		//{
 		//    return Convert.ToInt32(Console.ReadLine());
 		//}
-
 
 		//static void debug()
 		//{
@@ -27,13 +23,15 @@ namespace fastfood
 		//    {
 		//        Console.WriteLine(articlelist.IDArticle + ": " + articlelist.Nom + " " + articlelist.Prix + " " + articlelist.Quantite);
 		//    }
-
 		//}
 
 		static void Main(string[] args)
 		{
 			DonneePublique.ListeArticle = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);
 			DonneePublique.ListeArticle = DonneePublique.TriCategorie(DonneePublique.ListeArticle, out DonneePublique.debutBurger, out DonneePublique.debutBoisson, out DonneePublique.debutSalade, out DonneePublique.debutGlace);
+
+			Fonction.AffichageMenuProg();
+
 			//         // init database
 			//         if (!File.Exists("U:\\Partage\\BaseDuFastFood.sqlite"))
 			//         {
@@ -64,19 +62,12 @@ namespace fastfood
 			//	Console.WriteLine(""+articleList.IDArticle+  "     "+articleList.Nom+ "     "+articleList.Prix+ "");
 			//}
 
-
 			////Console.WriteLine(tab[1]);
 
 			//Menu small = new Menu();
 			//ResultatMenu = small.CalculerPrixMenu(article.GetArticles());
 			//Console.WriteLine(ResultatMenu);
-
-			Fonction.AffichageMenuProg();
-
 			
 		}
-	
-       
-		
 	}
 }

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
 	static class DonneePublique
 	{
 		// Attributs.
-		// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// new Article(NOM, PRIX, CATEGORIE) => NPC.
 		public static Article Coca = new Article("Coca", 2, 2);
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
@@ -22,16 +17,42 @@ namespace fastfood
 		public static Article SaladeVerte = new Article("SaladeVerte", 4.20, 3);
 		public static Article Oceane = new Article("Oceane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
+
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Burger qui se termine en DonneePublique.DebutBoisson.
+		/// </summary>
 		public static int debutBurger;
+	
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Boisson qui se termine en DonneePublique.DebutSalade.
+		/// </summary>
 		public static int debutBoisson;
+	
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Salade qui se termine en DonneePublique.DebutGlace.
+		/// </summary>
 		public static int debutSalade;
+	
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Glace qui se termine en DonneePublique.ListeArticle.Length.
+		/// </summary>
 		public static int debutGlace;
 
-		/// Tableau d'article
+		/// <summary>
+		/// Tableau repertoriant tous les articles disponibles.
+		/// </summary>
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar };
 
 		// Fonctions.
+		/// <summary>
 		/// Tri par catégorie.
+		/// </summary>
+		/// <param name="tableauATrier">Le tableau à trier.</param>
+		/// <param name="debutBurger">Stockera l'indice du début du tableau de la catégorie Burger.</param>
+		/// <param name="debutBoisson">Stockera l'indice du début du tableau de la catégorie Boisson.</param>
+		/// <param name="debutSalade">Stockera l'indice du début du tableau de la catégorie Salade.</param>
+		/// <param name="debutGlace">Stockera l'indice du début du tableau de la catégorie Glace.</param>
+		/// <returns>Renvoie le tableau trié.</returns>
 		public static Article[] TriCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
 		{
 			Article[] nouveauTableau = new Article[tableauATrier.Length];
@@ -74,7 +95,11 @@ namespace fastfood
 			return nouveauTableau;
 		}
 
-		/// Tri alphabétique
+		/// <summary>
+		/// Tri Alphabétique.
+		/// </summary>
+		/// <param name="tableauATrier">Le tableau à trier.</param>
+		/// <returns>Renvoie le tableau trié.</returns>
 		public static Article[] TriAlphabetique(Article[] tableauATrier)
 		{
 			Article temporaryArticle = tableauATrier[0];

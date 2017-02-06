@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
     class Caissier:Personnel
     {
         // Attributs.
-        // Attributs pour EncaisserEspece
-
+        /// Attributs pour EncaisserEspece.
         int saisirEspeceClient = 0;
         int sommeTotalCommande = 0;
         int sommeARendreEnBilletdeDix = 0;
@@ -19,28 +12,22 @@ namespace fastfood
         int compteur10E = 0;
         int compteur5E = 0;
 
-        //Attributs pour EncaisserCB
+        /// Attributs pour EncaisserCB.
         int codeCarteCB;
         bool paiementValider = false;
 
 
         // Constructeurs.
 
-        // Accesseurs.   
-
+        // Accesseurs.
         public int CodeCarteCB
         {
-            get
-            {
-
-                return codeCarteCB;
-            }
-                        
+            get { return codeCarteCB; }
         }
 
         // Methodes.
         /// <summary>
-        /// Paiement en especes par le client
+        /// Paiement en especes par le client.
         /// </summary>
         public void EncaisserEspece()
         {
@@ -64,19 +51,16 @@ namespace fastfood
         }
 
         /// <summary>
-        /// Paiement en carte bancaire par le client
+        /// Paiement en carte bancaire par le client.
         /// </summary>
         public void EncaisserCB(int codeCarteCB)
         {
             if (codeCarteCB == 1234)
-            {
                 paiementValider = true;
-            }
-           
         }
 
         /// <summary>
-        /// Paiement cheque par la client
+        /// Paiement cheque par la client.
         /// </summary>
         public void EncaisserCheque()
         {

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace fastfood
 {
     abstract class Personnel
@@ -18,6 +13,7 @@ namespace fastfood
             get { return _nom; }
             set { _nom = value; }
         }
+
         public string Prenom
         {
             get {  return _prenom; }
@@ -25,7 +21,6 @@ namespace fastfood
         }
 
         // Methodes.
-
         public void ConsultePlanning()
         {
             Console.WriteLine(" consulte le planning ");

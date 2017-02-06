@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
 	class Preparateur:Personnel
 	{
 		// Attribut.
 
-		// Constructeur
+		// Constructeur.
 		public Preparateur()
 		{
 
@@ -18,7 +12,7 @@ namespace fastfood
 
 		// Accesseur et Mutateur.
 
-		// Methode
+		// Methode.
 		public void PreparationCommande()
 		{
 

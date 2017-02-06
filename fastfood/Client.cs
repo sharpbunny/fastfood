@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace fastfood
+﻿namespace fastfood
 {
 	class Client
 	{
@@ -15,6 +9,9 @@ namespace fastfood
 		private long _IDClient;
 
 		// Constructeurs.
+		/// <summary>
+		/// Constructeur du client qui genère automatiquement son ID.
+		/// </summary>
 		public Client()
 		{
 			_IDClient++;
