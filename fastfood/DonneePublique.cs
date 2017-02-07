@@ -11,6 +11,7 @@
 		public static Article Fanta = new Article("Fanta", 2, 2);
 		public static Article Seitan = new Article("Seitan", 7, 1);
 		public static Article Sprite = new Article("Sprite", 2, 2);
+		public static Article SevenUp = new Article("SevenUp", 2.10, 2);
 		public static Article Chocolat = new Article("Chocolat", 3.50, 4);
 		public static Article Vanille = new Article("Vanille", 3.50, 4);
 		public static Article Fraise = new Article("Fraise", 3.50, 4);
@@ -41,7 +42,7 @@
 		/// <summary>
 		/// Tableau repertoriant tous les articles disponibles.
 		/// </summary>
-		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar };
+		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar };
 
 		// Fonctions.
 		/// <summary>

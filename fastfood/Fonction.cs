@@ -292,16 +292,19 @@ namespace fastfood
 				{
 					//Dans le cas d'un client
 					case "1":
+						choixDuPersonnage = "";
 						MenuPrincipal();
 						break;
 
 					//Dans le cas du personnel
 					case "2":
+						choixDuPersonnage = "";
 						MenuPersonnel();
 						break;
 					
 					// pour sortir du programme
 					case "3":
+						choixDuPersonnage = "";
 						quitter = true;
 						Console.WriteLine("The end...");
 						break;
