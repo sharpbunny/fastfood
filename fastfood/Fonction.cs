@@ -33,13 +33,13 @@ namespace fastfood
                 do
                 {
                     entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur < DonneePublique.debutBurger && entreeUtilisateur >= DonneePublique.debutBoisson)
+                    if (entreeUtilisateur-1 < DonneePublique.debutBurger || entreeUtilisateur-1 >= DonneePublique.debutBoisson)
                     {
                         Console.WriteLine("Quel Burger voulez vous choisir ?");
-                        entreeUtilisateur = lireEntier();
+                        
                     }
 
-                } while (entreeUtilisateur < DonneePublique.debutBurger && entreeUtilisateur >= DonneePublique.debutBoisson);
+                } while (entreeUtilisateur-1 < DonneePublique.debutBurger || entreeUtilisateur-1 >= DonneePublique.debutBoisson);
 
                 //int indiceBurger = DonneePublique.debutBurger;
 
@@ -94,13 +94,13 @@ namespace fastfood
                 do
                 {
                     entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur < DonneePublique.debutBoisson + 1 && entreeUtilisateur >= DonneePublique.debutSalade)
+                    if (entreeUtilisateur-1 < DonneePublique.debutBoisson  || entreeUtilisateur-1 >= DonneePublique.debutSalade)
                     {
                         Console.WriteLine("Quelle Boisson voulez vous choisir ?");
-                        entreeUtilisateur = lireEntier();
+                        
                     }
 
-                } while (entreeUtilisateur < DonneePublique.debutBoisson + 1 && entreeUtilisateur >= DonneePublique.debutSalade);
+                } while (entreeUtilisateur-1 < DonneePublique.debutBoisson  || entreeUtilisateur-1 >= DonneePublique.debutSalade);
 
                 boisson = DonneePublique.ListeArticle[entreeUtilisateur - 1];
                 boisson.Quantite++;
@@ -146,13 +146,13 @@ namespace fastfood
                 do
                 {
                     entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur < DonneePublique.debutSalade + 1 && entreeUtilisateur >= DonneePublique.debutGlace)
+                    if (entreeUtilisateur-1 < DonneePublique.debutSalade || entreeUtilisateur-1 >= DonneePublique.debutGlace)
                     {
                         Console.WriteLine("Quelle Salade voulez vous choisir ?");
-                        entreeUtilisateur = lireEntier();
+                        
                     }
 
-                } while (entreeUtilisateur < DonneePublique.debutSalade + 1 && entreeUtilisateur >= DonneePublique.debutGlace);
+                } while (entreeUtilisateur-1 < DonneePublique.debutSalade  || entreeUtilisateur-1 >= DonneePublique.debutGlace);
 
                 salade = DonneePublique.ListeArticle[entreeUtilisateur - 1];
                 //saladeTrouve = true;
@@ -198,13 +198,13 @@ namespace fastfood
                 do
                 {
                     entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur < DonneePublique.debutGlace + 1 && entreeUtilisateur >= DonneePublique.ListeArticle.Length)
+                    if (entreeUtilisateur-1 < DonneePublique.debutGlace || entreeUtilisateur-1 >= DonneePublique.ListeArticle.Length)
                     {
                         Console.WriteLine("Quelle Glace voulez vous choisir ?");
-                        entreeUtilisateur = lireEntier();
+                        
                     }
 
-                } while (entreeUtilisateur < DonneePublique.debutGlace + 1 && entreeUtilisateur >= DonneePublique.ListeArticle.Length);
+                } while (entreeUtilisateur-1 < DonneePublique.debutGlace  || entreeUtilisateur-1 >= DonneePublique.ListeArticle.Length);
 
                 glace = DonneePublique.ListeArticle[entreeUtilisateur - 1];
 
