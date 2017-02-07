@@ -399,8 +399,7 @@ namespace fastfood
                 // liste des commandes
                 foreach (Commande commande in listeCommandes)
                 {
-                    Console.WriteLine("Commande numéro {0}", commande.Numero);
-                    // TODO afficher contenu commande
+                    AfficherCommande(commande);
                 }
             }
             else
@@ -418,6 +417,7 @@ namespace fastfood
 			bool quitter = false;
 			string choixDuMenu = "";
             Commande commande = new Commande();
+            commande.Numero = Commande.counter;
             listeCommandes.Add(commande);
 
 			do
@@ -479,6 +479,9 @@ namespace fastfood
         private static void AfficherCommande(Commande commande)
         {
             Console.WriteLine("Commande {0}", commande.Numero);
+            // TODO afficher le contenu
+            Console.WriteLine("Commande payée: {0}", commande.Paye?"OUI":"NON");
+            Console.WriteLine();
         }
 
         /// <summary>

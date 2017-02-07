@@ -2,9 +2,11 @@
 {
 	static class DonneePublique
 	{
-		// Attributs.
-		/// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
-		/// new Article(NOM, PRIX, CATEGORIE) => NPC.
+        // Attributs.
+        /// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+        enum Categories { Burger = 1, Boisson, Salade, Glace }
+		
+        /// new Article(NOM, PRIX, CATEGORIE) => NPC.
 		public static Article Coca = new Article("Coca", 2, 2);
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
