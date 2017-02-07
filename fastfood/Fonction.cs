@@ -250,7 +250,8 @@ namespace fastfood
 			{
 				Console.WriteLine("Quel Menu voulez vous choisir : ");
 				Console.WriteLine("1.Petit\n2.Moyen\n3.Grand");
-                menu.TypeMenu = lireEntier();
+				Console.WriteLine("\nSaisissez votre choix.");
+				menu.TypeMenu = lireEntier();
                 
             } while (menu.TypeMenu < 1 || menu.TypeMenu > 3);
 			switch (menu.TypeMenu)
@@ -379,7 +380,6 @@ namespace fastfood
 						Console.WriteLine("5. Payer");
 						Console.WriteLine("Q. Quitter");
 						Console.WriteLine("\nSaisissez votre choix.");
-						//TO DO : Afficher le menu.
 						choixDuMenu = Console.ReadLine();
 						break;
 				}
@@ -400,58 +400,54 @@ namespace fastfood
 		/// </summary>
 		private static void ChoixArticle()
 		{
-			bool choixValide;
-			int choixTypeArticleInt;
-			char choixTypeArticle;
+			bool quitter = false;
+			string choixTypeArticle = "";
 
 			//Boucle forçant le client à choisir un menu valide
 			do
 			{
-				Console.Clear();
+				switch (choixTypeArticle)
+				{
+					case "1":
+						choixTypeArticle = "";
+						ChoixBurger();
+						break;
 
-				Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
-				Console.WriteLine("1. Burger");
-				Console.WriteLine("2. Boisson");
-				Console.WriteLine("3. Salade");
-				Console.WriteLine("4. Glace");
-				Console.WriteLine("5. Retour");
-				Console.WriteLine("\nSaisissez votre choix.");
+					case "2":
+						choixTypeArticle = "";
+						ChoixBoisson();
+						break;
 
-				//On regarde si le client a saisi un nombre valide
-				choixTypeArticle = Console.ReadKey(true).KeyChar;
-				choixValide = int.TryParse(Convert.ToString(choixTypeArticle), out choixTypeArticleInt);
+					case "3":
+						choixTypeArticle = "";
+						ChoixSalade();
+						break;
 
-				if (choixValide) choixValide = (choixTypeArticleInt < 1 || choixTypeArticleInt > 5) ? false : true;
+					case "4":
+						choixTypeArticle = "";
+						ChoixGlace();
+						break;
 
-			} while (!choixValide); //Fin de la boucle forçant le client à choisir un nombre valide
+					case "5":
+						choixTypeArticle = "";
+						MenuPrincipal();
+						break;
 
+					default:
+						Console.Clear();
+						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+						Console.WriteLine("1. Burger");
+						Console.WriteLine("2. Boisson");
+						Console.WriteLine("3. Salade");
+						Console.WriteLine("4. Glace");
+						Console.WriteLine("5. Retour");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixTypeArticle = Console.ReadLine();
+						break;
 
-			switch (choixTypeArticle)
-			{
-				case '1':
-					ChoixBurger();
-					break;
-
-				case '2':
-					ChoixBoisson();
-					break;
-
-				case '3':
-					ChoixSalade();
-					break;
-
-				case '4':
-					ChoixGlace();
-					break;
-
-				case '5':
-					MenuPrincipal();
-					break;
-
-				default:
-					break;
-
-			}
+				}
+			} while (!quitter);
 		}
 	}
 }
