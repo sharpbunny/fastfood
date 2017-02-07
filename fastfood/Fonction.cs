@@ -238,11 +238,12 @@ namespace fastfood
             Menu menu = new Menu();
 
             do
-            {
-                Console.WriteLine("Quel Menu voulez vous choisir : ");
-                Console.WriteLine("1.Petit\n2.Moyen\n3.Grand");
-                menu.TypeMenu = lireEntier();
-
+			{
+				Console.WriteLine("Quel Menu voulez vous choisir : ");
+				Console.WriteLine("1.Petit\n2.Moyen\n3.Grand");
+				Console.WriteLine("\nSaisissez votre choix.");
+				menu.TypeMenu = lireEntier();
+                
             } while (menu.TypeMenu < 1 || menu.TypeMenu > 3);
 
 			switch (menu.TypeMenu)
@@ -295,18 +296,21 @@ namespace fastfood
 						break;
 					
 					// pour sortir du programme
-					case "3":
+					case "Q":
+					case "q":
 						choixDuPersonnage = "";
 						quitter = true;
 						Console.WriteLine("The end...");
 						break;
 
 					default:
+						Console.Clear();
 						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
 						Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites partie du personnel :");
 						Console.WriteLine(" 1.Client");
 						Console.WriteLine(" 2.Personnel");
-						Console.WriteLine(" 3.Quitter");
+						Console.WriteLine(" Q.Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
 						choixDuPersonnage = Console.ReadLine();
 						break;
 
@@ -327,48 +331,50 @@ namespace fastfood
 		/// </summary>
 		private static void MenuPrincipal()
 		{
-			bool choixValide;
-			int choixDuMenuInt;
-			char choixDuMenu;
+			bool quitter = false;
+			string choixDuMenu = "";
 
 			do
 			{
-				Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
-				Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
-				Console.WriteLine("1. Menu");
-				Console.WriteLine("2. Article");
-				Console.WriteLine("3. Annuler un article");
-				Console.WriteLine("4. Annuler le menu");
-				Console.WriteLine("5. Payer");
-				Console.WriteLine("------------------------------------");
-				Console.WriteLine("Indiquez votre numéro.");
-				Console.WriteLine("------------------------------------");
-				//TO DO : Afficher le menu.
-
-				//On regarde si le client a saisi un nombre valide
-				choixDuMenu = Console.ReadKey(true).KeyChar;
-				choixValide = int.TryParse(Convert.ToString(choixDuMenu), out choixDuMenuInt);
-
-				if (choixValide) choixValide = (choixDuMenuInt < 1 || choixDuMenuInt > 5) ? false : true;
-
-			} while (!choixValide);
-			
-			switch (choixDuMenu)
-			{
-				case '1':
-					ChoixTypeMenu();
-					break;
-				case '2':
-					ChoixArticle();
-					break;
-				case '3':
-					break;
-				case '4':
-					break;
-				case '5':
-					Paiement();
-					break;
-			}
+				switch (choixDuMenu)
+				{
+					case "1":
+						choixDuMenu = "";
+						ChoixTypeMenu();
+						break;
+					case "2":
+						choixDuMenu = "";
+						ChoixArticle();
+						break;
+					case "3":
+						choixDuMenu = "";
+						break;
+					case "4":
+						choixDuMenu = "";
+						break;
+					case "5":
+						choixDuMenu = "";
+						Paiement();
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.Clear();
+						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
+						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
+						Console.WriteLine("1. Menu");
+						Console.WriteLine("2. Article");
+						Console.WriteLine("3. Annuler un article");
+						Console.WriteLine("4. Annuler le menu");
+						Console.WriteLine("5. Payer");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixDuMenu = Console.ReadLine();
+						break;
+				}
+			} while (!quitter);
 		}
 
 		/// <summary>
@@ -385,56 +391,54 @@ namespace fastfood
 		/// </summary>
 		private static void ChoixArticle()
 		{
-			bool choixValide;
-			int choixTypeArticleInt;
-			char choixTypeArticle;
+			bool quitter = false;
+			string choixTypeArticle = "";
 
 			//Boucle forçant le client à choisir un menu valide
 			do
 			{
-				Console.Clear();
+				switch (choixTypeArticle)
+				{
+					case "1":
+						choixTypeArticle = "";
+						ChoixBurger();
+						break;
 
-				Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
-				Console.WriteLine("1. Burger");
-				Console.WriteLine("2. Boisson");
-				Console.WriteLine("3. Salade");
-				Console.WriteLine("4. Glace");
-				Console.WriteLine("5. Retour");
+					case "2":
+						choixTypeArticle = "";
+						ChoixBoisson();
+						break;
 
-				//On regarde si le client a saisi un nombre valide
-				choixTypeArticle = Console.ReadKey(true).KeyChar;
-				choixValide = int.TryParse(Convert.ToString(choixTypeArticle), out choixTypeArticleInt);
+					case "3":
+						choixTypeArticle = "";
+						ChoixSalade();
+						break;
 
-				if (choixValide) choixValide = (choixTypeArticleInt < 1 || choixTypeArticleInt > 5) ? false : true;
+					case "4":
+						choixTypeArticle = "";
+						ChoixGlace();
+						break;
 
-			} while (!choixValide); //Fin de la boucle forçant le client à choisir un nombre valide
+					case "5":
+						choixTypeArticle = "";
+						MenuPrincipal();
+						break;
 
-			switch (choixTypeArticle)
-			{
-				case '1':
-					ChoixBurger();
-					break;
+					default:
+						Console.Clear();
+						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+						Console.WriteLine("1. Burger");
+						Console.WriteLine("2. Boisson");
+						Console.WriteLine("3. Salade");
+						Console.WriteLine("4. Glace");
+						Console.WriteLine("5. Retour");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixTypeArticle = Console.ReadLine();
+						break;
 
-				case '2':
-					ChoixBoisson();
-					break;
-
-				case '3':
-					ChoixSalade();
-					break;
-
-				case '4':
-					ChoixGlace();
-					break;
-
-				case '5':
-					MenuPrincipal();
-					break;
-
-				default:
-					break;
-
-			}
+				}
+			} while (!quitter);
 		}
     }
 }
