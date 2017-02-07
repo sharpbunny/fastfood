@@ -423,7 +423,10 @@ namespace fastfood
 						choixTypeArticle = "";
 						MenuPrincipal();
 						break;
-
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
 					default:
 						Console.Clear();
 						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
