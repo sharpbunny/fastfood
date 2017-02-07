@@ -2,10 +2,9 @@
 {
 	class Commande
 	{
-											// ****************** //
-											//			ATTRIBUTS			//
-											// ****************** //
-		/// <summary>
+		// Attributs
+
+        /// <summary>
 		/// Numéro de la commande.
 		/// </summary>
 		private int _numero;
@@ -15,9 +14,8 @@
 		/// </summary>
 		private string _type;
 
-											// ********************** //
-											//			CONSTRUCTEURS			//
-											// ********************** //
+		// Constructeurs
+
 		/// <summary>
 		/// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
 		/// </summary>
@@ -27,10 +25,9 @@
 		}
 
 
-											// ************************** //
-											//			GETTERS - SETTERS			//
-											// ************************** //
-		/// <summary>
+		// Getters - Stters
+
+        /// <summary>
 		/// Permet de lire ou de définir le type de la commande.
 		/// </summary>
 		public int Numero
@@ -48,9 +45,7 @@
 			set	{ _type = value; }
 		}
 
-											// ********************** //
-											//				METHODES				//
-											// ********************** //
+		// Méthodes
 
 	}
 }
