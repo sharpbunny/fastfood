@@ -7,6 +7,16 @@ namespace fastfood
 	/// </summary>
 	abstract class Fonction
 	{
+
+        static public int lireEntier()
+        {
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        /// <summary>
+        /// Fonction qui renvoie un burger choisi.
+        /// </summary>
+        /// <returns>Renvoie le Burger choisi par le client.</returns>
 		static public Article ChoixBurger()
 		{
 			int entreeUtilisateur;
@@ -20,16 +30,16 @@ namespace fastfood
 				{
 					Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
 				}
-				entreeUtilisateur = Console.Read();
-
+	                
 				do
 				{
-					if (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson)
+                    entreeUtilisateur = lireEntier();
+                    if (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson)
 					{
 						Console.WriteLine("Quel Burger voulez vous choisir ?");
-						entreeUtilisateur = Console.Read();
+						entreeUtilisateur = lireEntier();
 					}
-					entreeUtilisateur = Console.Read();
+					
 				} while (entreeUtilisateur < DonneePublique.debutBurger + 1 || entreeUtilisateur >= DonneePublique.debutBoisson);
 
 
@@ -49,7 +59,7 @@ namespace fastfood
 				Console.WriteLine("1.Oui\n2.Non");
 
 
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 				if (entreeUtilisateur == 1)
 				{
 					validerBurger = true;
@@ -59,6 +69,10 @@ namespace fastfood
 			return burger;
 		}
 
+        /// <summary>
+        /// Fonction qui renvoie une boisson choisie.
+        /// </summary>
+        /// <returns>Renvoie la Boisson choisi par le client.</returns>
 		static public Article ChoixBoisson()
 		{
 			int entreeUtilisateur;
@@ -72,16 +86,17 @@ namespace fastfood
 				{
 					Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
 				}
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
+                entreeUtilisateur++;
 
 				do
 				{
 					if (entreeUtilisateur < DonneePublique.debutBoisson + 1 || entreeUtilisateur >= DonneePublique.debutSalade)
 					{
 						Console.WriteLine("Quel Boisson voulez vous choisir ?");
-						entreeUtilisateur = Console.Read();
+						entreeUtilisateur = lireEntier();
 					}
-					entreeUtilisateur = Console.Read();
+					entreeUtilisateur = lireEntier();
 				} while (entreeUtilisateur < DonneePublique.debutBoisson + 1 || entreeUtilisateur >= DonneePublique.debutSalade);
 
 
@@ -101,7 +116,7 @@ namespace fastfood
 				Console.WriteLine("1.Oui\n2.Non");
 
 
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 				if (entreeUtilisateur == 1)
 				{
 					validerBoisson = true;
@@ -111,6 +126,10 @@ namespace fastfood
 			return boisson;
 		}
 
+        /// <summary>
+        /// Fonction qui renvoie une salade choisie.
+        /// </summary>
+        /// <returns>Renvoie la salade choisie par le client.</returns>
 		static public Article ChoixSalade()
 		{
 			int entreeUtilisateur;
@@ -124,16 +143,16 @@ namespace fastfood
 				{
 					Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
 				}
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 
 				do
 				{
 					if (entreeUtilisateur < DonneePublique.debutSalade + 1 || entreeUtilisateur >= DonneePublique.debutGlace)
 					{
 						Console.WriteLine("Quelle Salade voulez vous choisir ?");
-						entreeUtilisateur = Console.Read();
+						entreeUtilisateur = lireEntier();
 					}
-					entreeUtilisateur = Console.Read();
+					entreeUtilisateur = lireEntier();
 				} while (entreeUtilisateur < DonneePublique.debutSalade + 1 || entreeUtilisateur >= DonneePublique.debutGlace);
 
 
@@ -153,7 +172,7 @@ namespace fastfood
 				Console.WriteLine("1.Oui\n2.Non");
 
 
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 				if (entreeUtilisateur == 1)
 				{
 					validerSalade = true;
@@ -163,6 +182,10 @@ namespace fastfood
 			return salade;
 		}
 
+        /// <summary>
+        /// Fonction qui renvoie une glace choisie.
+        /// </summary>
+        /// <returns>Renvoie la Glace choisie par le client.</returns>
 		static public Article ChoixGlace()
 		{
 			int entreeUtilisateur;
@@ -176,16 +199,16 @@ namespace fastfood
 				{
 					Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
 				}
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 
 				do
 				{
 					if (entreeUtilisateur < DonneePublique.debutGlace + 1 || entreeUtilisateur >= DonneePublique.ListeArticle.Length)
 					{
 						Console.WriteLine("Quelle Glace voulez vous choisir ?");
-						entreeUtilisateur = Console.Read();
+						entreeUtilisateur = lireEntier();
 					}
-					entreeUtilisateur = Console.Read();
+					entreeUtilisateur = lireEntier();
 				} while (entreeUtilisateur < DonneePublique.debutGlace + 1 || entreeUtilisateur >= DonneePublique.ListeArticle.Length);
 
 
@@ -205,7 +228,7 @@ namespace fastfood
 				Console.WriteLine("1.Oui\n2.Non");
 
 
-				entreeUtilisateur = Console.Read();
+				entreeUtilisateur = lireEntier();
 				if (entreeUtilisateur == 1)
 				{
 					validerGlace = true;
@@ -215,17 +238,21 @@ namespace fastfood
 			return glace;
 		}
 
+        /// <summary>
+        /// Permet de choisir le type du menu.
+        /// </summary>
+        /// <returns>Renvoie un menu.</returns>
 		public static Menu ChoixTypeMenu()
 		{
 			Menu menu = new Menu();
-			menu.TypeMenu = Console.Read();
-
-			do
+            
+            do
 			{
 				Console.WriteLine("Quel Menu voulez vous choisir : ");
 				Console.WriteLine("1.Petit\n2.Moyen\n3.Grand");
-				menu.TypeMenu = Console.Read();
-			} while (menu.TypeMenu < 1 || menu.TypeMenu > 3);
+                menu.TypeMenu = lireEntier();
+                
+            } while (menu.TypeMenu < 1 || menu.TypeMenu > 3);
 			switch (menu.TypeMenu)
 			{
 				case 1:
