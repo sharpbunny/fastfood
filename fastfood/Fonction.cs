@@ -333,6 +333,7 @@ namespace fastfood
 				}
 			} while (!quitter);
 
+			// ICI
 			//do
 			//{
 			//	Console.WriteLine("Quel Menu voulez vous choisir : ");
