@@ -236,38 +236,49 @@ namespace fastfood
 		public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
-
-            do
+			bool quitter = false;
+			string choix = "";
+			do
 			{
-				Console.WriteLine("Quel Menu voulez vous choisir : ");
-				Console.WriteLine("1.Petit\n2.Moyen\n3.Grand");
-				Console.WriteLine("\nSaisissez votre choix.");
-				menu.TypeMenu = lireEntier();
-                
-            } while (menu.TypeMenu < 1 || menu.TypeMenu > 3);
+				switch (choix)
+				{
+					case "1":
+						menu.TypeMenu = 1;
+						menu.TabArticle = new Article[2];
+						menu.TabArticle[0] = ChoixBurger();
+						menu.TabArticle[1] = ChoixBoisson();
+						break;
+					case "2":
+						menu.TypeMenu = 2;
+						menu.TabArticle = new Article[3];
+						menu.TabArticle[0] = ChoixBurger();
+						menu.TabArticle[1] = ChoixBoisson();
+						menu.TabArticle[2] = ChoixSalade();
 
-			switch (menu.TypeMenu)
-			{
-				case 1:
-					menu.TabArticle = new Article[2];
-					menu.TabArticle[0] = ChoixBurger();
-					menu.TabArticle[1] = ChoixBoisson();
-					break;
-				case 2:
-					menu.TabArticle = new Article[3];
-					menu.TabArticle[0] = ChoixBurger();
-					menu.TabArticle[1] = ChoixBoisson();
-					menu.TabArticle[2] = ChoixSalade();
-
-					break;
-				case 3:
-					menu.TabArticle = new Article[4];
-					menu.TabArticle[0] = ChoixBurger();
-					menu.TabArticle[1] = ChoixBoisson();
-					menu.TabArticle[2] = ChoixSalade();
-					menu.TabArticle[3] = ChoixGlace();
-					break;
-			}
+						break;
+					case "3":
+						menu.TypeMenu = 3;
+						menu.TabArticle = new Article[4];
+						menu.TabArticle[0] = ChoixBurger();
+						menu.TabArticle[1] = ChoixBoisson();
+						menu.TabArticle[2] = ChoixSalade();
+						menu.TabArticle[3] = ChoixGlace();
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.WriteLine("Quel Menu voulez vous choisir : ");
+						Console.WriteLine("1. Petit");
+						Console.WriteLine("2. Moyen");
+						Console.WriteLine("3. Grand");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choix = Console.ReadLine();
+						break;
+				}
+			} while (!quitter);
 			return menu;
 		}
 
