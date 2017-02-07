@@ -285,15 +285,15 @@ namespace fastfood
 
 				//Dans le cas du personnel
 				case '2':
-					Console.WriteLine("Vous faites partie du personnel.\nVeuillez saisir le login : ");
-					if (Console.ReadLine() == "admin")
-					{
-						Console.WriteLine("Veuillez saisir le mot de passe : ");
-						if (Console.ReadLine() == "admin")
-						{
+					//Console.WriteLine("Vous faites partie du personnel.\nVeuillez saisir le login : ");
+					//if (Console.ReadLine() == "admin")
+					//{
+					//	Console.WriteLine("Veuillez saisir le mot de passe : ");
+					//	if (Console.ReadLine() == "admin")
+					//	{
 							Console.WriteLine("Vous faites partie du personnel.");
-						}
-					}
+					//	}
+					//}
 					break;
 
 				case '3':
@@ -351,8 +351,18 @@ namespace fastfood
 				case '4':
 					break;
 				case '5':
+					Paiement();
 					break;
 			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private static void Paiement()
+		{
+			Console.WriteLine("Paiement");
+			Console.ReadLine();
 		}
 
 		/// <summary>
