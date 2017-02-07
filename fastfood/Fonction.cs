@@ -2,237 +2,290 @@
 
 namespace fastfood
 {
-    /// <summary>
-    /// Classe contenant toutes les fonctions utiles au fonctionnement de VégétaFood.
-    /// </summary>
-    abstract class Fonction
-    {
-        static public int lireEntier()
-        {
-            return Convert.ToInt32(Console.ReadLine());
-        }
+	/// <summary>
+	/// Classe contenant toutes les fonctions utiles au fonctionnement de VégétaFood.
+	/// </summary>
+	abstract class Fonction
+	{
+		/// <summary>
+		/// Attend de l'utilisateur un nombre.
+		/// </summary>
+		/// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
+		/// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
+		static public bool lireEntier(out int entier)
+		{
+			entier = -1;
+			bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
+			return ConversionReussi;
+		}
 
-        /// <summary>
-        /// Fonction qui renvoie un burger choisi.
-        /// </summary>
-        /// <returns>Renvoie le Burger choisi par le client.</returns>
+		/// <summary>
+		/// Fonction qui renvoie un burger choisi.
+		/// </summary>
+		/// <returns>Renvoie le Burger choisi par le client.</returns>
 		static public Article ChoixBurger()
-        {
-            int entreeUtilisateur;
-            bool validerBurger = false;
-            Article burger = new Article("", 0, 0);
+		{
+			int entreeUtilisateur;
+			bool validerBurger = false, ConversionReussie = false, ChoixValide = false;
+			Article burger = new Article("", 0, 0);
 
-            do
-            {
-                Console.WriteLine("Quel Burger voulez vous choisir ?");
-                for (int i = DonneePublique.debutBurger; i < DonneePublique.debutBoisson; i++)
-                {
-                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
-                }
+			do
+			{
+				do
+				{
 
-                do
-                {
-                    entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur-1 < DonneePublique.debutBurger || entreeUtilisateur-1 >= DonneePublique.debutBoisson)
-                    {
-                        Console.WriteLine("Quel Burger voulez vous choisir ?");
-                        
-                    }
+					do
+					{
+						Console.WriteLine("Quel Burger voulez vous choisir ?");
+						for (int i = DonneePublique.debutBurger; i < DonneePublique.debutBoisson; i++)
+						{
+							Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+						}
 
-                } while (entreeUtilisateur-1 < DonneePublique.debutBurger || entreeUtilisateur-1 >= DonneePublique.debutBoisson);
+						ConversionReussie = lireEntier(out entreeUtilisateur);
 
-                //int indiceBurger = DonneePublique.debutBurger;
+					} while (!ConversionReussie);
 
-                //bool burgerTrouve = false;
-                //while (!burgerTrouve &&( entreeUtilisateur - 1 != indiceBurger || indiceBurger != DonneePublique.debutBoisson))
-                //{
-                //	if (entreeUtilisateur -1 == indiceBurger)
-                //	{
-                burger = DonneePublique.ListeArticle[entreeUtilisateur - 1];
-                burger.Quantite++;
-                //burgerTrouve = true;
-                Console.WriteLine("Vous avez choisi le burger " + burger.Nom + ".");
-                //	}
-                //	indiceBurger++;
-                //}
-                Console.WriteLine("Etes vous sur de votre choix : " + burger.Nom + " ?");
-                Console.WriteLine("1.Oui\n2.Non");
-                entreeUtilisateur = lireEntier();
+					entreeUtilisateur = entreeUtilisateur - 1;
 
-                if (entreeUtilisateur == 1)
-                {
-                    validerBurger = true;
-                }
-                else
-                {
-                    validerBurger = false;
-                    burger = new Article("", 0, 0);
-                }
+					if (entreeUtilisateur >= DonneePublique.debutBurger && entreeUtilisateur < DonneePublique.debutBoisson)
+					{
+						burger = DonneePublique.ListeArticle[entreeUtilisateur];
+						burger.Quantite++;
+						ChoixValide = true;
+					}
+					else
+					{
+						ChoixValide = false;
+					}
 
-            } while (!validerBurger);
-            return burger;
-        }
+				} while (!ChoixValide);
 
-        /// <summary>
-        /// Fonction qui renvoie une boisson choisie.
-        /// </summary>
-        /// <returns>Renvoie la Boisson choisi par le client.</returns>
+				Console.WriteLine("Vous avez choisi le burger " + burger.Nom + ".");
+				Console.WriteLine("Etes vous sur de votre choix : " + burger.Nom + " ?");
+
+				do
+				{
+					Console.WriteLine("1.Oui\n2.Non");
+					ConversionReussie = lireEntier(out entreeUtilisateur);
+				} while (!ConversionReussie);
+
+				if (entreeUtilisateur == 1)
+				{
+					validerBurger = true;
+				}
+				else
+				{
+					validerBurger = false;
+					burger = new Article("", 0, 0);
+				}
+
+			} while (!validerBurger);
+			return burger;
+		}
+
+		/// <summary>
+		/// Fonction qui renvoie une boisson choisie.
+		/// </summary>
+		/// <returns>Renvoie la Boisson choisi par le client.</returns>
 		static public Article ChoixBoisson()
-        {
-            int entreeUtilisateur;
-            bool validerBoisson = false;
-            Article boisson = new Article("", 0, 0);
+		{
+			int entreeUtilisateur;
+			bool validerBoisson = false, ConversionReussie = false, ChoixValide = false;
 
-            do
-            {
-                Console.WriteLine("Quelle Boisson voulez vous choisir ?");
-                for (int i = DonneePublique.debutBoisson; i < DonneePublique.debutSalade; i++)
-                {
-                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
-                }
+			Article boisson = new Article("", 0, 0);
 
-                do
-                {
-                    entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur-1 < DonneePublique.debutBoisson  || entreeUtilisateur-1 >= DonneePublique.debutSalade)
-                    {
-                        Console.WriteLine("Quelle Boisson voulez vous choisir ?");
-                        
-                    }
+			do
+			{
+				do
+				{
+					do
+					{
 
-                } while (entreeUtilisateur-1 < DonneePublique.debutBoisson  || entreeUtilisateur-1 >= DonneePublique.debutSalade);
+						Console.WriteLine("Quelle Boisson voulez vous choisir ?");
+						for (int i = DonneePublique.debutBoisson; i < DonneePublique.debutSalade; i++)
+						{
+							Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+						}
 
-                boisson = DonneePublique.ListeArticle[entreeUtilisateur - 1];
-                boisson.Quantite++;
+						ConversionReussie = lireEntier(out entreeUtilisateur);
 
-                Console.WriteLine("Vous avez choisi la boisson " + boisson.Nom + ".");
+					} while (!ConversionReussie);
 
-                Console.WriteLine("Etes vous sur de votre choix : " + boisson.Nom + " ?");
-                Console.WriteLine("1.Oui\n2.Non");
-                entreeUtilisateur = lireEntier();
+					entreeUtilisateur = entreeUtilisateur - 1;
 
-                if (entreeUtilisateur == 1)
-                {
-                    validerBoisson = true;
-                }
-                else
-                {
-                    validerBoisson = false;
-                    boisson = new Article("", 0, 0);
-                }
+					if (entreeUtilisateur >= DonneePublique.debutBoisson && entreeUtilisateur < DonneePublique.debutSalade)
+					{
+						boisson = DonneePublique.ListeArticle[entreeUtilisateur];
+						boisson.Quantite++;
+						ChoixValide = true;
+					}
+					else
+					{
+						ChoixValide = false;
+					}
 
-            } while (!validerBoisson);
-            return boisson;
-        }
+				} while (!ChoixValide);
 
-        /// <summary>
-        /// Fonction qui renvoie une salade choisie.
-        /// </summary>
-        /// <returns>Renvoie la salade choisie par le client.</returns>
+				Console.WriteLine("Vous avez choisi la boisson " + boisson.Nom + ".");
+				Console.WriteLine("Etes vous sur de votre choix : " + boisson.Nom + " ?");
+
+				do
+				{
+					Console.WriteLine("1.Oui\n2.Non");
+					ConversionReussie = lireEntier(out entreeUtilisateur);
+				} while (!ConversionReussie);
+
+				if (entreeUtilisateur == 1)
+				{
+					validerBoisson = true;
+				}
+				else
+				{
+					validerBoisson = false;
+					boisson = new Article("", 0, 0);
+				}
+
+			} while (!validerBoisson);
+			return boisson;
+		}
+
+		/// <summary>
+		/// Fonction qui renvoie une salade choisie.
+		/// </summary>
+		/// <returns>Renvoie la salade choisie par le client.</returns>
 		static public Article ChoixSalade()
-        {
-            int entreeUtilisateur;
-            bool validerSalade = false;
-            Article salade = new Article("", 0, 0);
+		{
+			int entreeUtilisateur;
+			bool validerSalade = false, ConversionReussie = false, ChoixValide = false;
 
-            do
-            {
-                Console.WriteLine("Quelle Salade voulez vous choisir ?");
-                for (int i = DonneePublique.debutSalade; i < DonneePublique.debutGlace; i++)
-                {
-                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
-                }
+			Article salade = new Article("", 0, 0);
 
-                do
-                {
-                    entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur-1 < DonneePublique.debutSalade || entreeUtilisateur-1 >= DonneePublique.debutGlace)
-                    {
-                        Console.WriteLine("Quelle Salade voulez vous choisir ?");
-                        
-                    }
+			do
+			{
+				do
+				{
+					do
+					{
+						Console.WriteLine("Quelle Salade voulez vous choisir ?");
+						for (int i = DonneePublique.debutSalade; i < DonneePublique.debutGlace; i++)
+						{
+							Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+						}
 
-                } while (entreeUtilisateur-1 < DonneePublique.debutSalade  || entreeUtilisateur-1 >= DonneePublique.debutGlace);
+						ConversionReussie = lireEntier(out entreeUtilisateur);
 
-                salade = DonneePublique.ListeArticle[entreeUtilisateur - 1];
-                //saladeTrouve = true;
-                Console.WriteLine("Vous avez choisi la salade " + salade.Nom + ".");
+					} while (!ConversionReussie);
 
-                Console.WriteLine("Etes vous sûr de votre choix : " + salade.Nom + " ?");
-                Console.WriteLine("1.Oui\n2.Non");
-                entreeUtilisateur = lireEntier();
+					entreeUtilisateur = entreeUtilisateur - 1;
 
-                if (entreeUtilisateur == 1)
-                {
-                    validerSalade = true;
-                }
-                else
-                {
-                    validerSalade = false;
-                    salade = new Article("", 0, 0);
-                }
+					if (entreeUtilisateur >= DonneePublique.debutSalade && entreeUtilisateur < DonneePublique.debutGlace)
+					{
+						salade = DonneePublique.ListeArticle[entreeUtilisateur];
+						salade.Quantite++;
+						ChoixValide = true;
+					}
+					else
+					{
+						ChoixValide = false;
+					}
 
-            } while (!validerSalade);
-            return salade;
-        }
+				} while (ChoixValide);
 
-        /// <summary>
-        /// Fonction qui renvoie une glace choisie.
-        /// </summary>
-        /// <returns>Renvoie la Glace choisie par le client.</returns>
+
+				Console.WriteLine("Vous avez choisi la salade " + salade.Nom + ".");
+				Console.WriteLine("Etes vous sûr de votre choix : " + salade.Nom + " ?");
+
+				do
+				{
+					Console.WriteLine("1.Oui\n2.Non");
+					ConversionReussie = lireEntier(out entreeUtilisateur);
+				} while (!ConversionReussie);
+
+				if (entreeUtilisateur == 1)
+				{
+					validerSalade = true;
+				}
+				else
+				{
+					validerSalade = false;
+					salade = new Article("", 0, 0);
+				}
+
+			} while (!validerSalade);
+			return salade;
+		}
+
+		/// <summary>
+		/// Fonction qui renvoie une glace choisie.
+		/// </summary>
+		/// <returns>Renvoie la Glace choisie par le client.</returns>
 		static public Article ChoixGlace()
-        {
-            int entreeUtilisateur;
-            bool validerGlace = false;
-            Article glace = new Article("", 0, 0);
+		{
+			int entreeUtilisateur;
+			bool validerGlace = false, ConversionReussie = false, ChoixValide = false;
 
-            do
-            {
-                Console.WriteLine("Quelle Glace voulez vous choisir ?");
-                for (int i = DonneePublique.debutGlace; i < DonneePublique.ListeArticle.Length; i++)
-                {
-                    Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
-                }
+			Article glace = new Article("", 0, 0);
 
+			do
+			{
+				do
+				{
 
-                do
-                {
-                    entreeUtilisateur = lireEntier();
-                    if (entreeUtilisateur-1 < DonneePublique.debutGlace || entreeUtilisateur-1 >= DonneePublique.ListeArticle.Length)
-                    {
-                        Console.WriteLine("Quelle Glace voulez vous choisir ?");
-                        
-                    }
+					do
+					{
+						Console.WriteLine("Quelle Glace voulez vous choisir ?");
+						for (int i = DonneePublique.debutGlace; i < DonneePublique.ListeArticle.Length; i++)
+						{
+							Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
+						}
 
-                } while (entreeUtilisateur-1 < DonneePublique.debutGlace  || entreeUtilisateur-1 >= DonneePublique.ListeArticle.Length);
+						ConversionReussie = lireEntier(out entreeUtilisateur);
 
-                glace = DonneePublique.ListeArticle[entreeUtilisateur - 1];
+					} while (!ConversionReussie);
 
-                Console.WriteLine("Vous avez choisi la glace " + glace.Nom + ".");
+					entreeUtilisateur = entreeUtilisateur - 1;
 
-                Console.WriteLine("Etes vous sûr de votre choix : " + glace.Nom + " ?");
-                Console.WriteLine("1.Oui\n2.Non");
+					if (entreeUtilisateur >= DonneePublique.debutGlace && entreeUtilisateur < DonneePublique.ListeArticle.Length)
+					{
+						glace = DonneePublique.ListeArticle[entreeUtilisateur];
+						glace.Quantite++;
+						ChoixValide = true;
+					}
+					else
+					{
+						ChoixValide = false;
+					}
 
+				} while (!ChoixValide);
 
-                entreeUtilisateur = lireEntier();
-                if (entreeUtilisateur == 1)
-                {
-                    validerGlace = true;
-                }
-                else
-                {
-                    validerGlace = false;
-                    glace = new Article("", 0, 0);
-                }
+				Console.WriteLine("Vous avez choisi la glace " + glace.Nom + ".");
+				Console.WriteLine("Etes vous sûr de votre choix : " + glace.Nom + " ?");
 
-            } while (!validerGlace);
-            return glace;
-        }
+				do
+				{
+					Console.WriteLine("1.Oui\n2.Non");
+					ConversionReussie = lireEntier(out entreeUtilisateur);
+				} while (!ConversionReussie);
 
-        /// <summary>
-        /// Permet de choisir le type du menu.
-        /// </summary>
-        /// <returns>Renvoie un menu.</returns>
+				if (entreeUtilisateur == 1)
+				{
+					validerGlace = true;
+				}
+				else
+				{
+					validerGlace = false;
+					glace = new Article("", 0, 0);
+				}
+
+			} while (!validerGlace);
+			return glace;
+		}
+
+		/// <summary>
+		/// Permet de choisir le type du menu.
+		/// </summary>
+		/// <returns>Renvoie un menu.</returns>
 		public static Menu ChoixTypeMenu()
         {
             Menu menu = new Menu();
