@@ -7,7 +7,6 @@ namespace fastfood
     /// </summary>
     abstract class Fonction
     {
-
         static public int lireEntier()
         {
             return Convert.ToInt32(Console.ReadLine());
@@ -42,7 +41,6 @@ namespace fastfood
 
                 } while (entreeUtilisateur < DonneePublique.debutBurger && entreeUtilisateur >= DonneePublique.debutBoisson);
 
-
                 //int indiceBurger = DonneePublique.debutBurger;
 
                 //bool burgerTrouve = false;
@@ -59,9 +57,8 @@ namespace fastfood
                 //}
                 Console.WriteLine("Etes vous sur de votre choix : " + burger.Nom + " ?");
                 Console.WriteLine("1.Oui\n2.Non");
-
-
                 entreeUtilisateur = lireEntier();
+
                 if (entreeUtilisateur == 1)
                 {
                     validerBurger = true;
@@ -105,8 +102,6 @@ namespace fastfood
 
                 } while (entreeUtilisateur < DonneePublique.debutBoisson + 1 && entreeUtilisateur >= DonneePublique.debutSalade);
 
-
-
                 boisson = DonneePublique.ListeArticle[entreeUtilisateur - 1];
                 boisson.Quantite++;
 
@@ -114,9 +109,8 @@ namespace fastfood
 
                 Console.WriteLine("Etes vous sur de votre choix : " + boisson.Nom + " ?");
                 Console.WriteLine("1.Oui\n2.Non");
-
-
                 entreeUtilisateur = lireEntier();
+
                 if (entreeUtilisateur == 1)
                 {
                     validerBoisson = true;
@@ -149,7 +143,6 @@ namespace fastfood
                     Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
                 }
 
-
                 do
                 {
                     entreeUtilisateur = lireEntier();
@@ -167,9 +160,8 @@ namespace fastfood
 
                 Console.WriteLine("Etes vous sûr de votre choix : " + salade.Nom + " ?");
                 Console.WriteLine("1.Oui\n2.Non");
-
-
                 entreeUtilisateur = lireEntier();
+
                 if (entreeUtilisateur == 1)
                 {
                     validerSalade = true;
@@ -213,7 +205,6 @@ namespace fastfood
                     }
 
                 } while (entreeUtilisateur < DonneePublique.debutGlace + 1 && entreeUtilisateur >= DonneePublique.ListeArticle.Length);
-
 
                 glace = DonneePublique.ListeArticle[entreeUtilisateur - 1];
 
@@ -321,7 +312,6 @@ namespace fastfood
 
 				}
 			} while (!quitter);
-
 		}
 
 		/// <summary>
@@ -419,7 +409,6 @@ namespace fastfood
 
 			} while (!choixValide); //Fin de la boucle forçant le client à choisir un nombre valide
 
-
 			switch (choixTypeArticle)
 			{
 				case '1':
@@ -447,8 +436,5 @@ namespace fastfood
 
 			}
 		}
-
     }
-
 }
-
