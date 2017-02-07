@@ -332,6 +332,27 @@ namespace fastfood
 						break;
 				}
 			} while (!quitter);
+
+			//do
+			//{
+			//	Console.WriteLine("Quel Menu voulez vous choisir : ");
+			//	Console.WriteLine("1. Petit");
+			//	Console.WriteLine("2. Moyen");
+			//	Console.WriteLine("3. Grand");
+			//	Console.WriteLine("Q. Quitter");
+			//	Console.WriteLine("\nSaisissez votre choix.");
+			//	choix = Console.ReadLine();
+				 
+			//	if (choix == "1") { menu.TypeMenu = 1; menu.TabArticle = new Article[2]; }
+			//	else if (choix == "2") { menu.TypeMenu = 2; menu.TabArticle = new Article[3]; }
+			//	else if (choix == "3") { menu.TypeMenu = 3; menu.TabArticle = new Article[4]; }
+			//	else if (choix == "q" || choix == "Q") { quitter = true; }
+
+			//	if (choix == "1" || choix == "2" || choix == "3") { menu.TabArticle[0] = ChoixBurger(); menu.TabArticle[1] = ChoixBoisson(); }
+			//	if (choix == "2" || choix == "3") { menu.TabArticle[2] = ChoixSalade(); }
+			//	if (choix == "3") { menu.TabArticle[3] = ChoixGlace(); }
+
+			//} while (!quitter);
 			return menu;
 		}
 
