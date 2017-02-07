@@ -300,6 +300,7 @@ namespace fastfood
 						menu.TabArticle = new Article[2];
 						menu.TabArticle[0] = ChoixBurger();
 						menu.TabArticle[1] = ChoixBoisson();
+						quitter = true;
 						break;
 					case "2":
 						menu.TypeMenu = 2;
@@ -307,7 +308,7 @@ namespace fastfood
 						menu.TabArticle[0] = ChoixBurger();
 						menu.TabArticle[1] = ChoixBoisson();
 						menu.TabArticle[2] = ChoixSalade();
-
+						quitter = true;
 						break;
 					case "3":
 						menu.TypeMenu = 3;
@@ -316,6 +317,7 @@ namespace fastfood
 						menu.TabArticle[1] = ChoixBoisson();
 						menu.TabArticle[2] = ChoixSalade();
 						menu.TabArticle[3] = ChoixGlace();
+						quitter = true;
 						break;
 					case "Q":
 					case "q":
