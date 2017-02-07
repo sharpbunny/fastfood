@@ -283,54 +283,48 @@ namespace fastfood
 		/// </summary>
 		public static void AffichageMenuProg()
 		{
-			bool choixValide;
-			int choixDuPersonnageInt;
-			char choixDuPersonnage;
+			bool quitter = false;
+			string choixDuPersonnage = "";
 
 			do
 			{
-				Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
-				Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites partie du personnel :");
-				Console.WriteLine(" 1.Client");
-				Console.WriteLine(" 2.Personnel");
-				Console.WriteLine(" 3.Debug");
-				choixDuPersonnage = Console.ReadKey(true).KeyChar;
-				choixValide = int.TryParse(Convert.ToString(choixDuPersonnage), out choixDuPersonnageInt);
+				switch (choixDuPersonnage)
+				{
+					//Dans le cas d'un client
+					case "1":
+						MenuPrincipal();
+						break;
 
-				if (choixValide) choixValide = (choixDuPersonnageInt < 1 || choixDuPersonnageInt > 3) ? false : true;
-			} while (!choixValide);
+					//Dans le cas du personnel
+					case "2":
+						MenuPersonnel();
+						break;
+					
+					// pour sortir du programme
+					case "3":
+						quitter = true;
+						Console.WriteLine("The end...");
+						break;
 
+					default:
+						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
+						Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites partie du personnel :");
+						Console.WriteLine(" 1.Client");
+						Console.WriteLine(" 2.Personnel");
+						Console.WriteLine(" 3.Quitter");
+						choixDuPersonnage = Console.ReadLine();
+						break;
 
+				}
+			} while (!quitter);
 
+		}
 
-			switch (choixDuPersonnage)
-			{
-				//Dans le cas d'un client
-				case '1':
-					Fonction.MenuPrincipal();
-					break;
-
-				//Dans le cas du personnel
-				case '2':
-					//Console.WriteLine("Vous faites partie du personnel.\nVeuillez saisir le login : ");
-					//if (Console.ReadLine() == "admin")
-					//{
-					//	Console.WriteLine("Veuillez saisir le mot de passe : ");
-					//	if (Console.ReadLine() == "admin")
-					//	{
-							Console.WriteLine("Vous faites partie du personnel.");
-					//	}
-					//}
-					break;
-
-				case '3':
-
-					break;
-
-				default:
-					Console.WriteLine("Erreur 404");
-					break;
-			}
+		/// <summary>
+		/// Choix du Menu Personnel. Preparateur caissier etc
+		/// </summary>
+		private static void MenuPersonnel()
+		{
 
 		}
 
