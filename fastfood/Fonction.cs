@@ -401,7 +401,6 @@ namespace fastfood
                 }
             } while (!quitter);
         }
-    }
 
 		/// <summary>
 		/// 
