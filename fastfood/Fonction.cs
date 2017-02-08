@@ -23,38 +23,61 @@ namespace fastfood
         }
 
         /// <summary>
+
         /// Fonction qui renvoie un burger choisi.
         /// </summary>
         /// <returns>Renvoie le Burger choisi par le client.</returns>
         static public Article Choix(short categorie)
+
+        /// Fonction qui renvoie l'article choisi.
+        /// </summary>
+        /// <returns>Renvoie l'article choisi par le client.</returns>
+        static public Article Choix(short categorie, Commande commande)
+
         {
             int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
             bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
             string phraseChoix = "", confirmationChoix = "";
             Article article = new Article("", 0, 0);
 
+
             if (categorie == 1)
+
+            if (categorie == (short)DonneePublique.Categories.Burger)
+
             {
                 phraseChoix = "Quel Burger voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi le burger";
                 debutBoucle = DonneePublique.debutBurger;
                 finBoucle = DonneePublique.debutBoisson;
             }
+
             else if (categorie == 2)
+
+            else if (categorie == (short)DonneePublique.Categories.Boisson)
+
             {
                 phraseChoix = "Quelle Boisson voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la boisson";
                 debutBoucle = DonneePublique.debutBoisson;
                 finBoucle = DonneePublique.debutSalade;
             }
+
             else if (categorie == 3)
+
+            else if (categorie == (short)DonneePublique.Categories.Salade)
+
             {
                 phraseChoix = "Quelle Salade voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la salade";
                 debutBoucle = DonneePublique.debutSalade;
                 finBoucle = DonneePublique.debutGlace;
             }
+
             else if (categorie == 4)
+
+            else if (categorie == (short)DonneePublique.Categories.Glace)
+
             {
                 phraseChoix = "Quelle Glace voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la glace";
@@ -114,7 +137,11 @@ namespace fastfood
                 }
 
             } while (!validerArticle);
+
             Client.ChoixArticle(Commande.ListeArticle, article);
+
+            commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
+
             return article;
         }
 
@@ -122,7 +149,11 @@ namespace fastfood
         /// Permet de choisir le type du menu.
         /// </summary>
         /// <returns>Renvoie un menu.</returns>
+
         public static Menu ChoixTypeMenu()
+
+        public static Menu ChoixTypeMenu(Commande commande)
+
         {
             Menu menu = new Menu();
             bool quitter = false;
@@ -134,25 +165,25 @@ namespace fastfood
                     case "1":
                         menu.TypeMenu = 1;
                         menu.TabArticle = new Article[2];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
                         quitter = true;
                         break;
                     case "2":
                         menu.TypeMenu = 2;
                         menu.TabArticle = new Article[3];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
                         quitter = true;
                         break;
                     case "3":
                         menu.TypeMenu = 3;
                         menu.TabArticle = new Article[4];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
-                        menu.TabArticle[3] = Choix(4);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
+                        menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace, commande);
                         quitter = true;
                         break;
                     case "Q":
@@ -229,14 +260,17 @@ namespace fastfood
         {
 
 
-
             Console.WriteLine("Liste des Commandes");
             if (listeCommandes.Count > 0)
             {
                 // liste des commandes
                 foreach (Commande commande in listeCommandes)
                 {
+
                     //AfficherCommande(commande);
+
+                    AfficherCommande(commande);
+
                 }
             }
             else
@@ -250,7 +284,11 @@ namespace fastfood
         /// <summary>
         /// Choix du Menu Principal. Le client peut choisir son menu ou bien un article, etc. 
         /// </summary>
+
         public static void MenuPrincipal()
+
+        private static void MenuPrincipal()
+
         {
             bool quitter = false;
             string choixDuMenu = "";
@@ -264,6 +302,7 @@ namespace fastfood
                 {
                     case "1":
                         choixDuMenu = "";
+
                         ChoixTypeMenu();
                         break;
                     case "2":
@@ -272,21 +311,46 @@ namespace fastfood
                         break;
                     case "3":
                         choixDuMenu = "";
+
+                        ChoixTypeMenu(commande);
+                        break;
+                    case "2":
+                        choixDuMenu = "";
+                        ChoixArticle(commande);
+                        break;
+                    case "3":
+                        choixDuMenu = "";
+                        if (commande.ListeArticle.Length > 1)
+                        {
+                            commande.ListeArticle = commande.annulerArticle(commande);
+                        }
+                        else if (commande.ListeArticle.Length == 1)
+                        {
+                            Article[] videTabArt = { };
+                            commande.ListeArticle = videTabArt;
+                        }
+
                         break;
                     case "4":
                         choixDuMenu = "";
                         break;
+
                     case "5":
                         choixDuMenu = "";
                         Paiement();
                         break;
+
                     case "Q":
                     case "q":
                         quitter = true;
                         break;
                     default:
                         Console.Clear();
+
                         //AfficherCommande(commande);
+
+                        AfficherCommande(commande);
+
                         Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
                         Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
                         Console.WriteLine("1. Menu");
@@ -343,6 +407,7 @@ namespace fastfood
                 }
             } while (!quitter);
         }
+
 
         //	/// <summary>
         //	/// 
@@ -413,5 +478,81 @@ namespace fastfood
         //		} while (!quitter);
         //	}
         //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AfficherCommande(Commande commande)
+        {
+            double Total = 0;
+            Console.WriteLine("Commande {0}", commande.Numero);
+            for (short i = 0; i < commande.ListeArticle.Length; i++)
+            {
+                Console.WriteLine("{0}. {1,6}*{2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+                Total = Total + commande.ListeArticle[i].Prix;
+            }
+            Console.WriteLine("Total : {0} euros.", Total);
+            Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void ChoixArticle(Commande commande)
+        {
+            bool quitter = false;
+            string choixTypeArticle = "";
+
+            //Boucle forçant le client à choisir un menu valide
+            do
+            {
+                switch (choixTypeArticle)
+                {
+                    case "1":
+                        choixTypeArticle = "";
+                        Choix((short)DonneePublique.Categories.Burger, commande);
+                        break;
+
+                    case "2":
+                        choixTypeArticle = "";
+                        Choix((short)DonneePublique.Categories.Boisson, commande);
+                        break;
+
+                    case "3":
+                        choixTypeArticle = "";
+                        Choix((short)DonneePublique.Categories.Salade, commande);
+                        break;
+
+                    case "4":
+                        choixTypeArticle = "";
+                        Choix((short)DonneePublique.Categories.Glace, commande);
+                        break;
+
+                    case "5":
+                        choixTypeArticle = "";
+                        MenuPrincipal();
+                        break;
+                    case "Q":
+                    case "q":
+                        quitter = true;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+                        Console.WriteLine("1. Burger");
+                        Console.WriteLine("2. Boisson");
+                        Console.WriteLine("3. Salade");
+                        Console.WriteLine("4. Glace");
+                        Console.WriteLine("5. Retour");
+                        Console.WriteLine("Q. Quitter");
+                        Console.WriteLine("\nSaisissez votre choix.");
+                        choixTypeArticle = Console.ReadLine();
+                        break;
+
+                }
+            } while (!quitter);
+        }
+
     }
 }

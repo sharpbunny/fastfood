@@ -4,7 +4,7 @@
 	{
         // Attributs.
         /// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
-        enum Categories { Burger = 1, Boisson, Salade, Glace }
+        public enum Categories { Burger = 1, Boisson, Salade, Glace }
 		
         /// new Article(NOM, PRIX, CATEGORIE) => NPC.
 		public static Article Coca = new Article("Coca", 2, 2);
