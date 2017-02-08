@@ -228,15 +228,13 @@ namespace fastfood
 		private static void MenuPersonnel()
 		{
 
-                        
-
 			Console.WriteLine("Liste des Commandes");
 			if (listeCommandes.Count > 0)
 			{
 				// liste des commandes
 				foreach (Commande commande in listeCommandes)
 				{
-					//AfficherCommande(commande);
+					AfficherCommande(commande);
 				}
 			}
 			else
@@ -268,7 +266,7 @@ namespace fastfood
 						break;
 					case "2":
 						choixDuMenu = "";
-						//ChoixArticle();
+						ChoixArticle();
 						break;
 					case "3":
 						choixDuMenu = "";
@@ -286,7 +284,7 @@ namespace fastfood
 						break;
 					default:
 						Console.Clear();
-						//AfficherCommande(commande);
+						AfficherCommande(commande);
 						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
@@ -347,19 +345,19 @@ namespace fastfood
 		/// <summary>
 		/// 
 		/// </summary>
-	//	private static void AfficherCommande(Commande commande)
-	//	{
-	//		Console.WriteLine("Commande {0}", commande.Numero);
-	//		// TODO afficher le contenu
-	//		Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
-	//		Console.WriteLine();
-	//	}
+		private static void AfficherCommande(Commande commande)
+		{
+			Console.WriteLine("Commande {0}", commande.Numero);
+			// TODO afficher le contenu
+			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
+			Console.WriteLine();
+		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-	//	private static void ChoixArticle()
-	//	{
+		private static void ChoixArticle()
+		{
 	//		bool quitter = false;
 	//		string choixTypeArticle = "";
 
@@ -411,6 +409,6 @@ namespace fastfood
 
 	//			}
 	//		} while (!quitter);
-	//	}
+		}
 	}
 }
