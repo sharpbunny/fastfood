@@ -1,4 +1,6 @@
-﻿namespace fastfood
+﻿using System;
+
+namespace fastfood
 {
 	public class Commande
 	{
@@ -22,6 +24,8 @@
         /// Commande payée.
         /// </summary>
         private bool _paye = false;
+
+        private Menu _menu;
 
 		public static Article[] ListeArticle = {};
 
@@ -76,7 +80,55 @@
             }
         }
 
+        public Menu Menu
+        {
+            get
+            {
+                return _menu;
+            }
+
+            set
+            {
+                _menu = value;
+            }
+        }
+
         // Méthodes
+
+        public Article[] attributionListMenu(Menu menu)
+        {
+            ListeArticle = menu.TabArticle;
+            return ListeArticle;
+        }
+
+        public Article[] annulerArticle(Commande commande)
+        {
+            int entreeUtilisateur;
+            bool verifEntreeUtilisateur = false;
+            do
+            {
+                Console.WriteLine("Quel article souhaitez vous retirer ?");
+                Fonction.AfficherCommande(commande);
+                verifEntreeUtilisateur = Fonction.lireEntier(out entreeUtilisateur);
+            } while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > ListeArticle.Length));
+
+            Article[] tabArticle = new Article[ListeArticle.Length-1];
+
+            bool trouve = false;
+            int i = 0;
+            while (!trouve)
+            {
+                if (entreeUtilisateur-1 != i)
+                {
+                    tabArticle[i] = ListeArticle[i];
+                    trouve = true;
+                }
+                i++;
+            }
+
+            return tabArticle;
+            
+        }
 
     }
 }
