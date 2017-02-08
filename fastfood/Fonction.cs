@@ -193,7 +193,7 @@ namespace fastfood
 						ChoixValide = false;
 					}
 
-				} while (ChoixValide);
+				} while (!ChoixValide);
 
 
 				Console.WriteLine("Vous avez choisi la salade " + salade.Nom + ".");
