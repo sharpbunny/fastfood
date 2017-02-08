@@ -347,11 +347,14 @@ namespace fastfood
 		/// </summary>
 		private static void AfficherCommande(Commande commande)
 		{
+			double Total = 0;
 			Console.WriteLine("Commande {0}", commande.Numero);
 			for (short i = 0; i < commande.ListeArticle.Length; i++)
 			{
-				Console.WriteLine("{0}. {1}*{2} Prix : {3}", i, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Console.WriteLine("{0}. {1}*{2} Prix : {3} euros.", i+1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Total = Total + commande.ListeArticle[i].Prix;
 			}
+			Console.WriteLine("Total : {0} euros", Total);
 			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
 			Console.WriteLine();
 		}

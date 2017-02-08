@@ -38,19 +38,25 @@
 		{
 			bool added = false, check = false;
 			Article[] newTabArticle;
-
+			int indice = 0;
 			for (int i = 0; i < tabArticle.Length; i++)
 			{
 				if (tabArticle[i].Nom == newArticle.Nom)
 				{
-					newTabArticle = new Article[tabArticle.Length];
 					check = true;
 				}
 			}
-			if (!check)
+
+			if (check)
 			{
-				newTabArticle = new Article[tabArticle.Length + newArticle.Quantite];
+				indice = tabArticle.Length;
 			}
+			else
+			{
+				indice = tabArticle.Length + newArticle.Quantite;
+			}
+
+			newTabArticle = new Article[indice];
 				
 			if (tabArticle.Length == 0)
 				newTabArticle[0] = newArticle;
@@ -61,7 +67,7 @@
 					newTabArticle[i] = tabArticle[i];
 					if (tabArticle[i].Nom == newArticle.Nom)
 					{
-						newTabArticle[i].Quantite++;
+						newTabArticle[i] = tabArticle[i];
 						added = true;
 					}
 				}
