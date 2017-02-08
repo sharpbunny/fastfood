@@ -34,7 +34,7 @@
 			counter++;
 		}
 
-        // Getters - Stters
+        // Getters - Setters
 		/// <summary>
 		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter.
 		/// </summary>
