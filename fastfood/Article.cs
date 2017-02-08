@@ -14,7 +14,7 @@
 		protected int _quantite;
 		
 		/// <summary>
-		/// Le prix du lot d'article(Quantité*PrixUnitaire).
+		/// Le prix d'un article.
 		/// </summary>
 		protected double _prix;
 
