@@ -1,6 +1,6 @@
 ﻿namespace fastfood
 {
-	class Article
+	public class Article
 	{
 		// Attributs.
 		/// <summary>

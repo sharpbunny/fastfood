@@ -34,18 +34,25 @@
 		/// <param name="newArticle">Le nouvel article selectionné par le client.</param>
 		/// <param name="nombreArticle">Le nombre d'acticle choisi par le cient.</param>
 		/// <returns>Renvoie le tableau d'article complété.</returns>
-		public Article[] ChoixArticle(Article[] tabArticle, Article newArticle, short nombreArticle = 1)
+		public static Article[] ChoixArticle(Article[] tabArticle, Article newArticle)
 		{
-			Article[] newTabArticle = new Article[tabArticle.Length + nombreArticle];
+			bool added = false;
+			Article[] newTabArticle = new Article[tabArticle.Length + 1];
 			if (tabArticle.Length == 0)
-				for (int i = 0; i < nombreArticle; i++)
-					newTabArticle[i] = newArticle;
+				newTabArticle[0] = newArticle;
 			else
 			{
 				for (int i = 0; i < tabArticle.Length; i++)
+				{
 					newTabArticle[i] = tabArticle[i];
-				for (int i = tabArticle.Length; i < nombreArticle; i++)
-					newTabArticle[i] = newArticle;
+					if (tabArticle[i].Nom == newArticle.Nom)
+					{
+						newTabArticle[i].Quantite++;
+						added = true;
+					}
+				}
+				if (!added)
+					newTabArticle[tabArticle.Length] = newArticle;
 			}
 			return newTabArticle;
 		}
