@@ -48,6 +48,7 @@
 			set
 			{
 				_quantite = value;
+				_prix = _prix * _quantite;
 			}
 		}
 
@@ -87,6 +88,5 @@
 				_categorie = value;
 			}
 		}
-
 	}
 }
