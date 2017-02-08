@@ -368,22 +368,22 @@ namespace fastfood
 				{
 					case "1":
 						choixTypeArticle = "";
-						Choix(1);
+						Choix((short)DonneePublique.Categories.Burger);
 						break;
 
 					case "2":
 						choixTypeArticle = "";
-						Choix(2);
+						Choix((short)DonneePublique.Categories.Boisson);
 						break;
 
 					case "3":
 						choixTypeArticle = "";
-						Choix(3);
+						Choix((short)DonneePublique.Categories.Salade);
 						break;
 
 					case "4":
 						choixTypeArticle = "";
-						Choix(4);
+						Choix((short)DonneePublique.Categories.Glace);
 						break;
 
 					case "5":
