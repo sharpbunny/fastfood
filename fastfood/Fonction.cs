@@ -270,10 +270,11 @@ namespace fastfood
                         break;
                     case "3":
                         choixDuMenu = "";
-                        if (commande.ListeArticle.Length > 1) { 
-                        commande.ListeArticle = commande.annulerArticle(commande);
-                            }
-                        else if(commande.ListeArticle.Length == 1)
+                        if (commande.ListeArticle.Length > 1)
+                        {
+                            commande.ListeArticle = commande.annulerArticle(commande);
+                        }
+                        else if (commande.ListeArticle.Length == 1)
                         {
                             Article[] videTabArt = { };
                             commande.ListeArticle = videTabArt;
