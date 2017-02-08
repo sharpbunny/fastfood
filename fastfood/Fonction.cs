@@ -358,57 +358,57 @@ namespace fastfood
 		/// </summary>
 		private static void ChoixArticle()
 		{
-	//		bool quitter = false;
-	//		string choixTypeArticle = "";
+			bool quitter = false;
+			string choixTypeArticle = "";
 
-	//		//Boucle forçant le client à choisir un menu valide
-	//		do
-	//		{
-	//			switch (choixTypeArticle)
-	//			{
-	//				case "1":
-	//					choixTypeArticle = "";
-	//					Choix(1);
-	//					break;
+			//Boucle forçant le client à choisir un menu valide
+			do
+			{
+				switch (choixTypeArticle)
+				{
+					case "1":
+						choixTypeArticle = "";
+						Choix(1);
+						break;
 
-	//				case "2":
-	//					choixTypeArticle = "";
-	//					Choix(2);
-	//					break;
+					case "2":
+						choixTypeArticle = "";
+						Choix(2);
+						break;
 
-	//				case "3":
-	//					choixTypeArticle = "";
-	//					Choix(3);
-	//					break;
+					case "3":
+						choixTypeArticle = "";
+						Choix(3);
+						break;
 
-	//				case "4":
-	//					choixTypeArticle = "";
-	//					Choix(4);
-	//					break;
+					case "4":
+						choixTypeArticle = "";
+						Choix(4);
+						break;
 
-	//				case "5":
-	//					choixTypeArticle = "";
-	//					MenuPrincipal();
-	//					break;
-	//				case "Q":
-	//				case "q":
-	//					quitter = true;
-	//					break;
-	//				default:
-	//					Console.Clear();
-	//					Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
-	//					Console.WriteLine("1. Burger");
-	//					Console.WriteLine("2. Boisson");
-	//					Console.WriteLine("3. Salade");
-	//					Console.WriteLine("4. Glace");
-	//					Console.WriteLine("5. Retour");
-	//					Console.WriteLine("Q. Quitter");
-	//					Console.WriteLine("\nSaisissez votre choix.");
-	//					choixTypeArticle = Console.ReadLine();
-	//					break;
+					case "5":
+						choixTypeArticle = "";
+						MenuPrincipal();
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.Clear();
+						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+						Console.WriteLine("1. Burger");
+						Console.WriteLine("2. Boisson");
+						Console.WriteLine("3. Salade");
+						Console.WriteLine("4. Glace");
+						Console.WriteLine("5. Retour");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixTypeArticle = Console.ReadLine();
+						break;
 
-	//			}
-	//		} while (!quitter);
+				}
+			} while (!quitter);
 		}
 	}
 }
