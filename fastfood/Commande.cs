@@ -1,56 +1,88 @@
 ﻿namespace fastfood
 {
-	class Commande
+	public class Commande
 	{
-											// ****************** //
-											//			ATTRIBUTS			//
-											// ****************** //
-		/// <summary>
-		/// Numéro de la commande.
-		/// </summary>
-		private int _numero;
+        // Attributs
 
-		/// <summary>
-		/// Le type représente le choix du client de manger sur place ou à emporter.
-		/// </summary>
-		private string _type;
+        /// <summary>
+        /// Nombre de commandes.
+        /// </summary>
+        public static int counter=0;
 
-											// ********************** //
-											//			CONSTRUCTEURS			//
-											// ********************** //
-		/// <summary>
-		/// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
-		/// </summary>
-		public Commande()
-		{
-			Numero++;
-		}
+        /// <summary>
+        /// Le type représente le choix du client de manger sur place ou à emporter.
+        /// </summary>
+        private string _type;
+        
+        /// <summary>
+        /// Numéro de commande.
+        /// </summary>
+        private int _numero;
+        
+        /// <summary>
+        /// Commande payée.
+        /// </summary>
+        private bool _paye = false;
+
+        // Constructeurs
+
+        /// <summary>
+        /// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
+        /// </summary>
+        public Commande()
+        {
+            counter++;
+        }
 
 
-											// ************************** //
-											//			GETTERS - SETTERS			//
-											// ************************** //
-		/// <summary>
-		/// Permet de lire ou de définir le type de la commande.
-		/// </summary>
-		public int Numero
-		{
-			get { return _numero; }
-			set	{ _numero = value; }
-		}
+        // Getters - Stters
+
+        /// <summary>
+        /// Permet de lire ou de définir le type de la commande.
+        /// </summary>
 
 		/// <summary>
 		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter.
 		/// </summary>
 		public string Type
 		{
-			get { return _type;	}
-			set	{ _type = value; }
+			get
+            {
+                return _type;
+            }
+			set
+            {
+                _type = value;
+            }
 		}
 
-											// ********************** //
-											//				METHODES				//
-											// ********************** //
+        public int Numero
+        {
+            get
+            {
+                return _numero;
+            }
 
-	}
+            set
+            {
+                _numero = value;
+            }
+        }
+
+        public bool Paye
+        {
+            get
+            {
+                return _paye;
+            }
+
+            set
+            {
+                _paye = value;
+            }
+        }
+
+        // Méthodes
+
+    }
 }

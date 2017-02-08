@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace fastfood
 {
@@ -7,12 +8,14 @@ namespace fastfood
 	/// </summary>
 	abstract class Fonction
 	{
-		/// <summary>
-		/// Attend de l'utilisateur un nombre.
-		/// </summary>
-		/// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
-		/// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
-		static public bool lireEntier(out int entier)
+        static public List<Commande> listeCommandes = new List<Commande>();
+        
+        /// <summary>
+        /// Attend de l'utilisateur un nombre.
+        /// </summary>
+        /// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
+        /// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
+        static public bool lireEntier(out int entier)
 		{
 			entier = -1;
 			bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
@@ -335,27 +338,6 @@ namespace fastfood
 				}
 			} while (!quitter);
 
-			// ICI
-			//do
-			//{
-			//	Console.WriteLine("Quel Menu voulez vous choisir : ");
-			//	Console.WriteLine("1. Petit");
-			//	Console.WriteLine("2. Moyen");
-			//	Console.WriteLine("3. Grand");
-			//	Console.WriteLine("Q. Quitter");
-			//	Console.WriteLine("\nSaisissez votre choix.");
-			//	choix = Console.ReadLine();
-				 
-			//	if (choix == "1") { menu.TypeMenu = 1; menu.TabArticle = new Article[2]; }
-			//	else if (choix == "2") { menu.TypeMenu = 2; menu.TabArticle = new Article[3]; }
-			//	else if (choix == "3") { menu.TypeMenu = 3; menu.TabArticle = new Article[4]; }
-			//	else if (choix == "q" || choix == "Q") { quitter = true; }
-
-			//	if (choix == "1" || choix == "2" || choix == "3") { menu.TabArticle[0] = ChoixBurger(); menu.TabArticle[1] = ChoixBoisson(); }
-			//	if (choix == "2" || choix == "3") { menu.TabArticle[2] = ChoixSalade(); }
-			//	if (choix == "3") { menu.TabArticle[3] = ChoixGlace(); }
-
-			//} while (!quitter);
 			return menu;
 		}
 
@@ -411,7 +393,20 @@ namespace fastfood
 		/// </summary>
 		private static void MenuPersonnel()
 		{
-
+            Console.WriteLine("Liste des Commandes");
+            if (listeCommandes.Count > 0)
+            {
+                // liste des commandes
+                foreach (Commande commande in listeCommandes)
+                {
+                    AfficherCommande(commande);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Pas de commandes");
+            }
+            Console.ReadLine();
 		}
 
 		/// <summary>
@@ -421,6 +416,9 @@ namespace fastfood
 		{
 			bool quitter = false;
 			string choixDuMenu = "";
+            Commande commande = new Commande();
+            commande.Numero = Commande.counter;
+            listeCommandes.Add(commande);
 
 			do
 			{
@@ -450,6 +448,7 @@ namespace fastfood
 						break;
 					default:
 						Console.Clear();
+                        AfficherCommande(commande);
 						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
@@ -474,10 +473,21 @@ namespace fastfood
 			Console.ReadLine();
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		private static void ChoixArticle()
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AfficherCommande(Commande commande)
+        {
+            Console.WriteLine("Commande {0}", commande.Numero);
+            // TODO afficher le contenu
+            Console.WriteLine("Commande payée: {0}", commande.Paye?"OUI":"NON");
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void ChoixArticle()
 		{
 			bool quitter = false;
 			string choixTypeArticle = "";
