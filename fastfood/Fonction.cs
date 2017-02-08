@@ -344,10 +344,10 @@ namespace fastfood
             } while (!quitter);
         }
 
-	//	/// <summary>
-	//	/// 
-	//	/// </summary>
-	//	private static void //AfficherCommande(Commande commande)
+		/// <summary>
+		/// 
+		/// </summary>
+	//	private static void AfficherCommande(Commande commande)
 	//	{
 	//		Console.WriteLine("Commande {0}", commande.Numero);
 	//		// TODO afficher le contenu
@@ -355,9 +355,9 @@ namespace fastfood
 	//		Console.WriteLine();
 	//	}
 
-	//	/// <summary>
-	//	/// 
-	//	/// </summary>
+		/// <summary>
+		/// 
+		/// </summary>
 	//	private static void ChoixArticle()
 	//	{
 	//		bool quitter = false;
@@ -412,5 +412,5 @@ namespace fastfood
 	//			}
 	//		} while (!quitter);
 	//	}
-	//}
+	}
 }
