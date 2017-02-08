@@ -81,26 +81,34 @@ namespace fastfood
         public static void EncaisserCB()
         {
             int codeCarteCB = 0;
-            int lectureCode;
             bool paiementValider = false;
-            int compteurCB = 0;
+            short compteurCB = 0;
+
             do
             {
-                Console.WriteLine("Entrer le code CB : ");
-                lectureCode = int.Parse(Console.ReadLine());
+                Console.WriteLine("Entrer le code CB en 4 chiffres (essai" + (compteurCB + 1) + ")");
+                codeCarteCB = int.Parse(Console.ReadLine());
+                while (codeCarteCB >= 10000)
+                {
+                    Console.WriteLine("Code invalide (format incorrect) Saisir à nouveau le code en 4 chiffres.");
+                    Console.WriteLine("Entrer le code CB en 4 chiffres : ");
+                    codeCarteCB = int.Parse(Console.ReadLine());
+                }
                 if (codeCarteCB == 1234)
                 {
+
                     paiementValider = true;
-                    Console.WriteLine("Le code est correct.\nPaiement accepté."); 
-                                       
+                    Console.WriteLine("Le code est correct.\nPaiement accepté.");
+
                 }
-                compteurCB++;                                
+                compteurCB++;
             }
-            while (compteurCB > 3 || !paiementValider);
+            while (compteurCB < 3 && !paiementValider);
+
             if (compteurCB > 3 || paiementValider == false)
             {
                 Console.WriteLine("Le paiement par CB est refusé");
-            }           
+            }
         }
 
         /// <summary>
@@ -118,6 +126,7 @@ namespace fastfood
             nomClientCheque = Console.ReadLine();
             Console.WriteLine("Entrer le RIB du client : ");
             clientRIB = int.Parse(Console.ReadLine());
+            
 
 
         }
