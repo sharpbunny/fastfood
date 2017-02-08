@@ -3,13 +3,12 @@
 	public class Commande
 	{
         // Attributs
-
+				
         /// <summary>
-        /// Nombre de commandes.
-        /// </summary>
-        public static int counter=0;
-
-        /// <summary>
+		/// </summary>
+		public static int counter = 0;
+		
+		/// <summary>
         /// Le type représente le choix du client de manger sur place ou à emporter.
         /// </summary>
         private string _type;
@@ -24,23 +23,18 @@
         /// </summary>
         private bool _paye = false;
 
-        // Constructeurs
+		public static Article[] ListeArticle = {};
 
-        /// <summary>
-        /// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
-        /// </summary>
-        public Commande()
-        {
-            counter++;
-        }
+		// Constructeurs
+		/// <summary>
+		/// Constructeur de la classe Commande. Le numéro de commande est incrémenté à chaque création de Commande.
+		/// </summary>
+		public Commande()
+		{
+			counter++;
+		}
 
-
-        // Getters - Stters
-
-        /// <summary>
-        /// Permet de lire ou de définir le type de la commande.
-        /// </summary>
-
+        // Getters - Setters
 		/// <summary>
 		/// Permet de lire ou de définir le type de la commande : sur place ou à emporter.
 		/// </summary>

@@ -25,6 +25,7 @@ namespace fastfood
         {
             Console.WriteLine(" consulte le planning ");
         }
+
         public void FaitLaGreve()
         {
             Console.WriteLine("PAS CONTENT ! PAS CONTENT ! PAS CONTENT !");
@@ -33,5 +34,6 @@ namespace fastfood
         ///
         // test 
         ///
+        
     }
 }
