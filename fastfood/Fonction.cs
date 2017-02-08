@@ -275,6 +275,7 @@ namespace fastfood
 						break;
 					case "3":
 						choixDuMenu = "";
+						commande.annulerArticle(commande);
 						break;
 					case "4":
 						choixDuMenu = "";
@@ -356,7 +357,7 @@ namespace fastfood
 			Console.WriteLine("Commande {0}", commande.Numero);
 			for (short i = 0; i < commande.ListeArticle.Length; i++)
 			{
-				Console.WriteLine("{0}. {1}*{2} Prix : {3} euros.", i+1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Console.WriteLine("{0,2}. {1,8} * {2} Prix : {3} euros.", i+1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
 				Total = Total + commande.ListeArticle[i].Prix;
 			}
 			Console.WriteLine("Total : {0} euros.", Total);
