@@ -134,25 +134,25 @@ namespace fastfood
                     case "1":
                         menu.TypeMenu = 1;
                         menu.TabArticle = new Article[2];
-                        menu.TabArticle[0] = Choix(1, commande);
-                        menu.TabArticle[1] = Choix(2, commande);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
                         quitter = true;
                         break;
                     case "2":
                         menu.TypeMenu = 2;
                         menu.TabArticle = new Article[3];
-                        menu.TabArticle[0] = Choix(1, commande);
-                        menu.TabArticle[1] = Choix(2, commande);
-                        menu.TabArticle[2] = Choix(3, commande);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
                         quitter = true;
                         break;
                     case "3":
                         menu.TypeMenu = 3;
                         menu.TabArticle = new Article[4];
-                        menu.TabArticle[0] = Choix(1, commande);
-                        menu.TabArticle[1] = Choix(2, commande);
-                        menu.TabArticle[2] = Choix(3, commande);
-                        menu.TabArticle[3] = Choix(4, commande);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
+						menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace, commande);
                         quitter = true;
                         break;
                     case "Q":
@@ -374,22 +374,22 @@ namespace fastfood
 				{
 					case "1":
 						choixTypeArticle = "";
-						Choix(1, commande);
+						Choix((short)DonneePublique.Categories.Burger, commande);
 						break;
 
 					case "2":
 						choixTypeArticle = "";
-						Choix(2, commande);
+						Choix((short)DonneePublique.Categories.Boisson, commande);
 						break;
 
 					case "3":
 						choixTypeArticle = "";
-						Choix(3, commande);
+						Choix((short)DonneePublique.Categories.Salade, commande);
 						break;
 
 					case "4":
 						choixTypeArticle = "";
-						Choix(4, commande);
+						Choix((short)DonneePublique.Categories.Glace, commande);
 						break;
 
 					case "5":
