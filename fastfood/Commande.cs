@@ -24,10 +24,10 @@ namespace fastfood
         /// Commande payée.
         /// </summary>
         private bool _paye = false;
-
+		
         private Menu _menu;
 
-		public static Article[] ListeArticle = {};
+		public Article[] ListeArticle = {};
 
 		// Constructeurs
 		/// <summary>
