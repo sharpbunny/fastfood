@@ -127,95 +127,49 @@ namespace fastfood
 			Menu menu = new Menu();
 			bool quitter = false;
 			string choix = "";
-			//do
-			//{
-			//	switch (choix)
-			//	{
-			//		case "1":
-			//			menu.TypeMenu = 1;
-			//			menu.TabArticle = new Article[2];
-			//			menu.TabArticle[0] = Choix(1);
-			//			menu.TabArticle[1] = Choix(2);
-			//			break;
-			//		case "2":
-			//			menu.TypeMenu = 2;
-			//			menu.TabArticle = new Article[3];
-			//			menu.TabArticle[0] = Choix(1);
-			//			menu.TabArticle[1] = Choix(2);
-			//			menu.TabArticle[2] = Choix(3);
-
-			//			break;
-			//		case "3":
-			//			menu.TypeMenu = 3;
-			//			menu.TabArticle = new Article[4];
-			//			menu.TabArticle[0] = Choix(1);
-			//			menu.TabArticle[1] = Choix(2);
-			//			menu.TabArticle[2] = Choix(3);
-			//			menu.TabArticle[3] = Choix(4);
-			//			break;
-			//		case "Q":
-			//		case "q":
-			//			quitter = true;
-			//			break;
-			//		default:
-			//			Console.WriteLine("Quel Menu voulez vous choisir : ");
-			//			Console.WriteLine("1. Petit");
-			//			Console.WriteLine("2. Moyen");
-			//			Console.WriteLine("3. Grand");
-			//			Console.WriteLine("Q. Quitter");
-			//			Console.WriteLine("\nSaisissez votre choix.");
-			//			choix = Console.ReadLine();
-			//			break;
-			//	}
-			//} while (!quitter);
-
-			do
-			{
-				Console.WriteLine("Quel Menu voulez vous choisir : ");
-				Console.WriteLine("1. Petit");
-				Console.WriteLine("2. Moyen");
-				Console.WriteLine("3. Grand");
-				Console.WriteLine("Q. Quitter");
-				Console.WriteLine("\nSaisissez votre choix.");
-				choix = Console.ReadLine();
-
-				if (choix == "1")
-				{
-					menu.TypeMenu = 1;
-					menu.TabArticle = new Article[2];
-				}
-				else if (choix == "2")
-				{
-					menu.TypeMenu = 2;
-					menu.TabArticle = new Article[3];
-				}
-				else if (choix == "3")
-				{
-					menu.TypeMenu = 3;
-					menu.TabArticle = new Article[4];
-				}
-				else if (choix == "q" || choix == "Q")
-				{
-					quitter = true;
-				}
-
-				if (choix == "1" || choix == "2" || choix == "3")
-				{
-					menu.TabArticle[0] = Choix(1);
-					menu.TabArticle[1] = Choix(2);
-				}
-
-				if (choix == "2" || choix == "3")
-				{
-					menu.TabArticle[2] = Choix(3);
-				}
-
-				if (choix == "3")
-				{
-
-					menu.TabArticle[3] = Choix(4);
-				}
-			} while (!quitter);
+            do
+            {
+                switch (choix)
+                {
+                    case "1":
+                        menu.TypeMenu = 1;
+                        menu.TabArticle = new Article[2];
+                        menu.TabArticle[0] = Choix(1);
+                        menu.TabArticle[1] = Choix(2);
+                        quitter = true;
+                        break;
+                    case "2":
+                        menu.TypeMenu = 2;
+                        menu.TabArticle = new Article[3];
+                        menu.TabArticle[0] = Choix(1);
+                        menu.TabArticle[1] = Choix(2);
+                        menu.TabArticle[2] = Choix(3);
+                        quitter = true;
+                        break;
+                    case "3":
+                        menu.TypeMenu = 3;
+                        menu.TabArticle = new Article[4];
+                        menu.TabArticle[0] = Choix(1);
+                        menu.TabArticle[1] = Choix(2);
+                        menu.TabArticle[2] = Choix(3);
+                        menu.TabArticle[3] = Choix(4);
+                        quitter = true;
+                        break;
+                    case "Q":
+                    case "q":
+                        quitter = true;
+                        break;
+                    default:
+                        Console.WriteLine("Quel Menu voulez vous choisir : ");
+                        Console.WriteLine("1. Petit");
+                        Console.WriteLine("2. Moyen");
+                        Console.WriteLine("3. Grand");
+                        Console.WriteLine("Q. Quitter");
+                        Console.WriteLine("\nSaisissez votre choix.");
+                        choix = Console.ReadLine();
+                        break;
+                }
+            } while (!quitter);
 			return menu;
 		}
 
@@ -274,20 +228,7 @@ namespace fastfood
 		private static void MenuPersonnel()
 		{
 
-            Console.WriteLine("Liste des Commandes");
-            if (listeCommandes.Count > 0)
-            {
-                // liste des commandes
-                foreach (Commande commande in listeCommandes)
-                {
-                    //AfficherCommande(commande);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Pas de commandes");
-            }
-            Console.ReadLine();
+                        
 
 			Console.WriteLine("Liste des Commandes");
 			if (listeCommandes.Count > 0)
@@ -295,7 +236,7 @@ namespace fastfood
 				// liste des commandes
 				foreach (Commande commande in listeCommandes)
 				{
-					AfficherCommande(commande);
+					//AfficherCommande(commande);
 				}
 			}
 			else
@@ -314,6 +255,7 @@ namespace fastfood
 			bool quitter = false;
 			string choixDuMenu = "";
 			Commande commande = new Commande();
+			commande.Numero = Commande.counter;
 			listeCommandes.Add(commande);
 
 			do
@@ -326,7 +268,7 @@ namespace fastfood
 						break;
 					case "2":
 						choixDuMenu = "";
-						ChoixArticle();
+						//ChoixArticle();
 						break;
 					case "3":
 						choixDuMenu = "";
@@ -344,7 +286,7 @@ namespace fastfood
 						break;
 					default:
 						Console.Clear();
-						AfficherCommande(commande);
+						//AfficherCommande(commande);
 						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
@@ -402,73 +344,73 @@ namespace fastfood
             } while (!quitter);
         }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		private static void AfficherCommande(Commande commande)
-		{
-			Console.WriteLine("Commande {0}", commande.Numero);
-			// TODO afficher le contenu
-			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
-			Console.WriteLine();
-		}
+	//	/// <summary>
+	//	/// 
+	//	/// </summary>
+	//	private static void //AfficherCommande(Commande commande)
+	//	{
+	//		Console.WriteLine("Commande {0}", commande.Numero);
+	//		// TODO afficher le contenu
+	//		Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
+	//		Console.WriteLine();
+	//	}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		private static void ChoixArticle()
-		{
-			bool quitter = false;
-			string choixTypeArticle = "";
+	//	/// <summary>
+	//	/// 
+	//	/// </summary>
+	//	private static void ChoixArticle()
+	//	{
+	//		bool quitter = false;
+	//		string choixTypeArticle = "";
 
-			//Boucle forçant le client à choisir un menu valide
-			do
-			{
-				switch (choixTypeArticle)
-				{
-					case "1":
-						choixTypeArticle = "";
-						Choix(1);
-						break;
+	//		//Boucle forçant le client à choisir un menu valide
+	//		do
+	//		{
+	//			switch (choixTypeArticle)
+	//			{
+	//				case "1":
+	//					choixTypeArticle = "";
+	//					Choix(1);
+	//					break;
 
-					case "2":
-						choixTypeArticle = "";
-						Choix(2);
-						break;
+	//				case "2":
+	//					choixTypeArticle = "";
+	//					Choix(2);
+	//					break;
 
-					case "3":
-						choixTypeArticle = "";
-						Choix(3);
-						break;
+	//				case "3":
+	//					choixTypeArticle = "";
+	//					Choix(3);
+	//					break;
 
-					case "4":
-						choixTypeArticle = "";
-						Choix(4);
-						break;
+	//				case "4":
+	//					choixTypeArticle = "";
+	//					Choix(4);
+	//					break;
 
-					case "5":
-						choixTypeArticle = "";
-						MenuPrincipal();
-						break;
-					case "Q":
-					case "q":
-						quitter = true;
-						break;
-					default:
-						Console.Clear();
-						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
-						Console.WriteLine("1. Burger");
-						Console.WriteLine("2. Boisson");
-						Console.WriteLine("3. Salade");
-						Console.WriteLine("4. Glace");
-						Console.WriteLine("5. Retour");
-						Console.WriteLine("Q. Quitter");
-						Console.WriteLine("\nSaisissez votre choix.");
-						choixTypeArticle = Console.ReadLine();
-						break;
+	//				case "5":
+	//					choixTypeArticle = "";
+	//					MenuPrincipal();
+	//					break;
+	//				case "Q":
+	//				case "q":
+	//					quitter = true;
+	//					break;
+	//				default:
+	//					Console.Clear();
+	//					Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+	//					Console.WriteLine("1. Burger");
+	//					Console.WriteLine("2. Boisson");
+	//					Console.WriteLine("3. Salade");
+	//					Console.WriteLine("4. Glace");
+	//					Console.WriteLine("5. Retour");
+	//					Console.WriteLine("Q. Quitter");
+	//					Console.WriteLine("\nSaisissez votre choix.");
+	//					choixTypeArticle = Console.ReadLine();
+	//					break;
 
-				}
-			} while (!quitter);
-		}
-	}
+	//			}
+	//		} while (!quitter);
+	//	}
+	//}
 }
