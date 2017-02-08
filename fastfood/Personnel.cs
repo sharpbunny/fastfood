@@ -6,7 +6,7 @@ namespace fastfood
         // Attributs.
         private string _nom;
         private string _prenom;
-		
+
         // Accesseurs et muttateurs.
         public string Nom
         {
@@ -16,7 +16,7 @@ namespace fastfood
 
         public string Prenom
         {
-            get {  return _prenom; }
+            get { return _prenom; }
             set { _prenom = value; }
         }
 
@@ -24,6 +24,10 @@ namespace fastfood
         public void ConsultePlanning()
         {
             Console.WriteLine(" consulte le planning ");
+        }
+        public void FaitLaGreve()
+        {
+            Console.WriteLine("PAS CONTENT ! PAS CONTENT ! PAS CONTENT !");
         }
     }
 }
