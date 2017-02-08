@@ -21,12 +21,12 @@
 		/// <summary>
 		/// Le prix d'un article.
 		/// </summary>
-		private double prixUnitaire;
+		protected double prixUnitaire;
 
 		/// <summary>
 		/// Le n° de la catégorie de l'article. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
 		/// </summary>
-		private short _categorie;
+		protected short _categorie;
 
 		// Constructeurs.
 		/// <summary>
