@@ -15,6 +15,8 @@
 		/// </summary>
 		private string _type;
 
+		public static Article[] ListeArticle = {};
+
 											// ********************** //
 											//			CONSTRUCTEURS			//
 											// ********************** //
