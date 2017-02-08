@@ -234,13 +234,15 @@ namespace fastfood
 					//Dans le cas d'un client
 					case "1":
 						choixDuPersonnage = "";
+                        Console.Clear();
 						MenuPrincipal();
 						break;
 
 					//Dans le cas du personnel
 					case "2":
 						choixDuPersonnage = "";
-						MenuPersonnel();
+                        Console.Clear();
+                        MenuPersonnel();
 						break;
 
 					// pour sortir du programme
