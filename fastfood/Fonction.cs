@@ -274,21 +274,6 @@ namespace fastfood
 		private static void MenuPersonnel()
 		{
 
-            Console.WriteLine("Liste des Commandes");
-            if (listeCommandes.Count > 0)
-            {
-                // liste des commandes
-                foreach (Commande commande in listeCommandes)
-                {
-                    //AfficherCommande(commande);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Pas de commandes");
-            }
-            Console.ReadLine();
-
 			Console.WriteLine("Liste des Commandes");
 			if (listeCommandes.Count > 0)
 			{
@@ -314,6 +299,7 @@ namespace fastfood
 			bool quitter = false;
 			string choixDuMenu = "";
 			Commande commande = new Commande();
+			commande.Numero = Commande.counter;
 			listeCommandes.Add(commande);
 
 			do

@@ -5,6 +5,10 @@
         // Attributs
 				
         /// <summary>
+		/// </summary>
+		public static int counter = 0;
+		
+		/// <summary>
         /// Le type représente le choix du client de manger sur place ou à emporter.
         /// </summary>
         private string _type;
@@ -27,7 +31,7 @@
 		/// </summary>
 		public Commande()
 		{
-			_numero++;
+			counter++;
 		}
 
         // Getters - Stters
