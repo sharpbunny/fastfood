@@ -345,7 +345,7 @@ namespace fastfood
 		/// <summary>
 		/// 
 		/// </summary>
-		private static void AfficherCommande(Commande commande)
+		public static void AfficherCommande(Commande commande)
 		{
 			Console.WriteLine("Commande {0}", commande.Numero);
 			// TODO afficher le contenu

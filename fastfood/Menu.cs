@@ -8,7 +8,7 @@ namespace fastfood
     /// <summary>
     /// Classe qui permet de gérer les menus, les prix et les quantités d'articles commandés.
     /// </summary>
-    class Menu
+    public class Menu
     {
         // Attributs.
         private Article[] _tabArticle;
