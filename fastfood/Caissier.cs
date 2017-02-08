@@ -1,37 +1,45 @@
-﻿namespace fastfood
+﻿using System;
+
+namespace fastfood
 {
     class Caissier:Personnel
     {
         // Attributs.
-        /// Attributs pour EncaisserEspece.
-        int saisirEspeceClient = 0;
-        int sommeTotalCommande = 0;
-        int sommeARendreEnBilletdeDix = 0;
-        int sommeARendreEnBilletdeCinq = 0;
-        int sommeARendreEnPiece = 0;
-        int compteur10E = 0;
-        int compteur5E = 0;
+        // Attributs pour EncaisserEspece.
+        
 
-        /// Attributs pour EncaisserCB.
-        int codeCarteCB;
-        bool paiementValider = false;
+        // Attributs pour EncaisserCB.
+        
+
+        // Attributs pour EncaisserCheque.
+        
+
+
 
 
         // Constructeurs.
 
         // Accesseurs.
-        public int CodeCarteCB
-        {
-            get { return codeCarteCB; }
-        }
+        
 
         // Methodes.
         /// <summary>
         /// Paiement en especes par le client.
         /// </summary>
-        public void EncaisserEspece()
+        public static void EncaisserEspece()
         {
+            int saisirEspeceClient = 0;
+            int sommeTotalCommande = 0;
+            int sommeARendreEnBilletdeDix = 0;
+            int sommeARendreEnBilletdeCinq = 0;
+            int sommeARendreEnPiece = 0;
+            int compteur10E = 0;
+            int compteur5E = 0;
+
             //Calcul pour avoir la somme à rendre au client
+            Console.WriteLine("Entrer le montant du client : ");
+            saisirEspeceClient = int.Parse(Console.ReadLine());
+
             sommeARendreEnBilletdeDix = saisirEspeceClient - sommeTotalCommande; 
 
             if(sommeARendreEnBilletdeDix > 0)
@@ -48,23 +56,70 @@
                     compteur5E++; 
                 } 
             }
+
+            Console.WriteLine("La somme a rendre est de : " + sommeARendreEnBilletdeDix + "€.");
+
+            if (compteur10E >= 1)
+            {
+                Console.WriteLine("Nombre de billet(s) de 10€ à rendre : " + compteur10E + ".");
+                
+            }
+            if(compteur5E >=1)
+            {
+                Console.WriteLine("Nombre de billet(s) de 5€ à rendre : "+ compteur5E + ".");
+            }
+            else
+            {
+                Console.WriteLine("Monnaie à rendre : " + sommeARendreEnPiece + "€.");
+            }
+
         }
 
         /// <summary>
         /// Paiement en carte bancaire par le client.
         /// </summary>
-        public void EncaisserCB(int codeCarteCB)
+        public static void EncaisserCB()
         {
-            if (codeCarteCB == 1234)
-                paiementValider = true;
+            int codeCarteCB = 0;
+            int lectureCode;
+            bool paiementValider = false;
+            int compteurCB = 0;
+            do
+            {
+                Console.WriteLine("Entrer le code CB : ");
+                lectureCode = int.Parse(Console.ReadLine());
+                if (codeCarteCB == 1234)
+                {
+                    paiementValider = true;
+                    Console.WriteLine("Le code est correct.\nPaiement accepté."); 
+                                       
+                }
+                compteurCB++;                                
+            }
+            while (compteurCB > 3 || !paiementValider);
+            if (compteurCB > 3 || paiementValider == false)
+            {
+                Console.WriteLine("Le paiement par CB est refusé");
+            }           
         }
 
         /// <summary>
         /// Paiement cheque par la client.
         /// </summary>
-        public void EncaisserCheque()
+        public static void EncaisserCheque()
         {
-            
+            int montantCheque;
+            string nomClientCheque;
+            int clientRIB;
+
+            Console.WriteLine("Entrer le montant du chèque : ");
+            montantCheque = int.Parse(Console.ReadLine());
+            Console.WriteLine("Entrer le nom du client à qui appartient le chèque : ");
+            nomClientCheque = Console.ReadLine();
+            Console.WriteLine("Entrer le RIB du client : ");
+            clientRIB = int.Parse(Console.ReadLine());
+
+
         }
     }
 }

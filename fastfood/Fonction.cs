@@ -399,7 +399,7 @@ namespace fastfood
                 // liste des commandes
                 foreach (Commande commande in listeCommandes)
                 {
-                    AfficherCommande(commande);
+                    //AfficherCommande(commande);
                 }
             }
             else
@@ -469,9 +469,43 @@ namespace fastfood
 		/// </summary>
 		private static void Paiement()
 		{
-			Console.WriteLine("Paiement");
-			Console.ReadLine();
-		}
+            string choixDuPaiement = "";
+            bool quitter = false;
+           
+            do
+            {
+                switch (choixDuPaiement)
+                {
+                    case "1":
+                        choixDuPaiement = "";
+                        Caissier.EncaisserCB();
+                        break;
+                    case "2":
+                        choixDuPaiement = "";
+                        Caissier.EncaisserEspece();
+                        break;
+                    case "3":
+                        choixDuPaiement = "";
+                        Caissier.EncaisserCheque();
+                        break;
+                    case "Q":
+                    case "q":
+                        quitter = true;
+                        break;
+                    default:
+                        Console.Clear();  
+                        Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
+                        Console.WriteLine("1. Paiement en CB");
+                        Console.WriteLine("2. Paiement en espèces");
+                        Console.WriteLine("3. Paiement en chèque");                        
+                        Console.WriteLine("Q. Quitter");
+                        Console.WriteLine("\nSaisissez votre choix.");
+                        choixDuPaiement = Console.ReadLine();
+                        break;
+                }
+            } while (!quitter);
+        }
+    }
 
         /// <summary>
         /// 
