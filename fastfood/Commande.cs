@@ -25,8 +25,14 @@ namespace fastfood
         /// </summary>
         private bool _paye = false;
 		
+		/// <summary>
+		/// 
+		/// </summary>
         private Menu _menu;
 
+		/// <summary>
+		/// Liste des articles dans la commande.
+		/// </summary>
 		public Article[] ListeArticle = {};
 
 		// Constructeurs

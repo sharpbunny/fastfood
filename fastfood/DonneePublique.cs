@@ -6,7 +6,7 @@
         /// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
         public enum Categories { Burger = 1, Boisson, Salade, Glace }
 		
-        /// new Article(NOM, PRIX, CATEGORIE) => NPC.
+        /// new Article(NOM, PRIXUNITAIRE, CATEGORIE) => NPC.
 		public static Article Coca = new Article("Coca", 2, 2);
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
@@ -22,7 +22,6 @@
 		public static Article Oceane = new Article("Oceane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
 		public static Article Pistache = new Article("Pistache", 4, 4);
-
 
 		/// <summary>
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Burger qui se termine en DonneePublique.DebutBoisson.
@@ -64,7 +63,10 @@
 			Article[] nouveauTableau = new Article[tableauATrier.Length];
 
 			int indiceNouveauTableau = 0;
-			debutBurger = -1; debutBoisson = -1; debutSalade = -1; debutGlace = -1;
+			debutBurger = -1;
+			debutBoisson = -1;
+			debutSalade = -1;
+			debutGlace = -1;
 			for (int j = 1; j <= 4; j++)
 				for (int i = 0; i < tableauATrier.Length; i++)
 				{

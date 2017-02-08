@@ -28,9 +28,14 @@ namespace fastfood
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
 		{
-			int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
-			bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
-			string phraseChoix = "", confirmationChoix = "";
+			int entreeUtilisateur;
+			int debutBoucle = -1;
+			int finBoucle = -1;
+			bool validerArticle = false;
+			bool ConversionReussie = false;
+			bool ChoixValide = false;
+			string phraseChoix = "";
+			string confirmationChoix = "";
 			Article article = new Article("", 0, 0);
 
 			if (categorie == (short)DonneePublique.Categories.Burger)
