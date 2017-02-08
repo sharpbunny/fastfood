@@ -8,14 +8,14 @@ namespace fastfood
 	/// </summary>
 	abstract class Fonction
 	{
-        static public List<Commande> listeCommandes = new List<Commande>();
-        
-        /// <summary>
-        /// Attend de l'utilisateur un nombre.
-        /// </summary>
-        /// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
-        /// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
-        static public bool lireEntier(out int entier)
+		static public List<Commande> listeCommandes = new List<Commande>();
+
+		/// <summary>
+		/// Attend de l'utilisateur un nombre.
+		/// </summary>
+		/// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
+		/// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
+		static public bool lireEntier(out int entier)
 		{
 			entier = -1;
 			bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
@@ -69,7 +69,7 @@ namespace fastfood
 
 					do
 					{
-						Console.WriteLine(phraseChoix); 
+						Console.WriteLine(phraseChoix);
 						for (int i = debutBoucle; i < finBoucle; i++)
 						{
 							Console.WriteLine((i - debutBoucle + 1) + "." + DonneePublique.ListeArticle[i].Nom);
@@ -123,8 +123,8 @@ namespace fastfood
 		/// </summary>
 		/// <returns>Renvoie un menu.</returns>
 		public static Menu ChoixTypeMenu()
-        {
-            Menu menu = new Menu();
+		{
+			Menu menu = new Menu();
 			bool quitter = false;
 			string choix = "";
 			//do
@@ -189,62 +189,7 @@ namespace fastfood
 					menu.TypeMenu = 2;
 					menu.TabArticle = new Article[3];
 				}
-<<<<<<< HEAD
-
-			} while (!validerBoisson);
-			return boisson;
-		}
-
-		/// <summary>
-		/// Fonction qui renvoie une salade choisie.
-		/// </summary>
-		/// <returns>Renvoie la salade choisie par le client.</returns>
-		static public Article ChoixSalade()
-		{
-			int entreeUtilisateur;
-			bool validerSalade = false, ConversionReussie = false, ChoixValide = false;
-
-			Article salade = new Article("", 0, 0);
-
-			do
-			{
-				do
-				{
-					do
-					{
-						Console.WriteLine("Quelle Salade voulez vous choisir ?");
-						for (int i = DonneePublique.debutSalade; i < DonneePublique.debutGlace; i++)
-						{
-							Console.WriteLine((i + 1) + "." + DonneePublique.ListeArticle[i].Nom);
-						}
-
-						ConversionReussie = lireEntier(out entreeUtilisateur);
-
-					} while (!ConversionReussie);
-
-					entreeUtilisateur = entreeUtilisateur - 1;
-
-					if (entreeUtilisateur >= DonneePublique.debutSalade && entreeUtilisateur < DonneePublique.debutGlace)
-					{
-						salade = DonneePublique.ListeArticle[entreeUtilisateur];
-						salade.Quantite++;
-						ChoixValide = true;
-					}
-					else
-					{
-						ChoixValide = false;
-					}
-
-				} while (!ChoixValide);
-
-
-				Console.WriteLine("Vous avez choisi la salade " + salade.Nom + ".");
-				Console.WriteLine("Etes vous sûr de votre choix : " + salade.Nom + " ?");
-
-				do
-=======
 				else if (choix == "3")
->>>>>>> damien
 				{
 					menu.TypeMenu = 3;
 					menu.TabArticle = new Article[4];
@@ -267,53 +212,10 @@ namespace fastfood
 
 				if (choix == "3")
 				{
-<<<<<<< HEAD
-					case "1":
-						menu.TypeMenu = 1;
-						menu.TabArticle = new Article[2];
-						menu.TabArticle[0] = ChoixBurger();
-						menu.TabArticle[1] = ChoixBoisson();
-						quitter = true;
-						break;
-					case "2":
-						menu.TypeMenu = 2;
-						menu.TabArticle = new Article[3];
-						menu.TabArticle[0] = ChoixBurger();
-						menu.TabArticle[1] = ChoixBoisson();
-						menu.TabArticle[2] = ChoixSalade();
-						quitter = true;
-						break;
-					case "3":
-						menu.TypeMenu = 3;
-						menu.TabArticle = new Article[4];
-						menu.TabArticle[0] = ChoixBurger();
-						menu.TabArticle[1] = ChoixBoisson();
-						menu.TabArticle[2] = ChoixSalade();
-						menu.TabArticle[3] = ChoixGlace();
-						quitter = true;
-						break;
-					case "Q":
-					case "q":
-						quitter = true;
-						break;
-					default:
-						Console.WriteLine("Quel Menu voulez vous choisir : ");
-						Console.WriteLine("1. Petit");
-						Console.WriteLine("2. Moyen");
-						Console.WriteLine("3. Grand");
-						Console.WriteLine("Q. Quitter");
-						Console.WriteLine("\nSaisissez votre choix.");
-						choix = Console.ReadLine();
-						break;
-=======
-					menu.TabArticle[3] = Choix(4);
->>>>>>> damien
-				}
 
-<<<<<<< HEAD
-=======
+					menu.TabArticle[3] = Choix(4);
+				}
 			} while (!quitter);
->>>>>>> damien
 			return menu;
 		}
 
@@ -340,7 +242,7 @@ namespace fastfood
 						choixDuPersonnage = "";
 						MenuPersonnel();
 						break;
-					
+
 					// pour sortir du programme
 					case "Q":
 					case "q":
@@ -369,20 +271,20 @@ namespace fastfood
 		/// </summary>
 		private static void MenuPersonnel()
 		{
-            Console.WriteLine("Liste des Commandes");
-            if (listeCommandes.Count > 0)
-            {
-                // liste des commandes
-                foreach (Commande commande in listeCommandes)
-                {
-                    AfficherCommande(commande);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Pas de commandes");
-            }
-            Console.ReadLine();
+			Console.WriteLine("Liste des Commandes");
+			if (listeCommandes.Count > 0)
+			{
+				// liste des commandes
+				foreach (Commande commande in listeCommandes)
+				{
+					AfficherCommande(commande);
+				}
+			}
+			else
+			{
+				Console.WriteLine("Pas de commandes");
+			}
+			Console.ReadLine();
 		}
 
 		/// <summary>
@@ -392,9 +294,8 @@ namespace fastfood
 		{
 			bool quitter = false;
 			string choixDuMenu = "";
-            Commande commande = new Commande();
-            commande.Numero = Commande.counter;
-            listeCommandes.Add(commande);
+			Commande commande = new Commande();
+			listeCommandes.Add(commande);
 
 			do
 			{
@@ -424,7 +325,7 @@ namespace fastfood
 						break;
 					default:
 						Console.Clear();
-                        AfficherCommande(commande);
+						AfficherCommande(commande);
 						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
@@ -449,21 +350,21 @@ namespace fastfood
 			Console.ReadLine();
 		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AfficherCommande(Commande commande)
-        {
-            Console.WriteLine("Commande {0}", commande.Numero);
-            // TODO afficher le contenu
-            Console.WriteLine("Commande payée: {0}", commande.Paye?"OUI":"NON");
-            Console.WriteLine();
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		private static void AfficherCommande(Commande commande)
+		{
+			Console.WriteLine("Commande {0}", commande.Numero);
+			// TODO afficher le contenu
+			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
+			Console.WriteLine();
+		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void ChoixArticle()
+		/// <summary>
+		/// 
+		/// </summary>
+		private static void ChoixArticle()
 		{
 			bool quitter = false;
 			string choixTypeArticle = "";
@@ -517,5 +418,5 @@ namespace fastfood
 				}
 			} while (!quitter);
 		}
-    }
+	}
 }

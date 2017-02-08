@@ -27,7 +27,7 @@
 		/// </summary>
 		public Commande()
 		{
-			Numero++;
+			_numero++;
 		}
 
         // Getters - Stters
