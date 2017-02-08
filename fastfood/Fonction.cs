@@ -134,25 +134,25 @@ namespace fastfood
                     case "1":
                         menu.TypeMenu = 1;
                         menu.TabArticle = new Article[2];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson);
                         quitter = true;
                         break;
                     case "2":
                         menu.TypeMenu = 2;
                         menu.TabArticle = new Article[3];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade);
                         quitter = true;
                         break;
                     case "3":
                         menu.TypeMenu = 3;
                         menu.TabArticle = new Article[4];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
-                        menu.TabArticle[3] = Choix(4);
+                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger);
+                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson);
+                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade);
+                        menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace);
                         quitter = true;
                         break;
                     case "Q":
