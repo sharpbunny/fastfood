@@ -33,28 +33,28 @@ namespace fastfood
 			string phraseChoix = "", confirmationChoix = "";
 			Article article = new Article("", 0, 0);
 
-			if (categorie == 1)
+			if (categorie == (short)DonneePublique.Categories.Burger)
 			{
 				phraseChoix = "Quel Burger voulez-vous choisir ?";
 				confirmationChoix = "Vous avez choisi le burger";
 				debutBoucle = DonneePublique.debutBurger;
 				finBoucle = DonneePublique.debutBoisson;
 			}
-			else if (categorie == 2)
+			else if (categorie == (short)DonneePublique.Categories.Boisson)
 			{
 				phraseChoix = "Quelle Boisson voulez-vous choisir ?";
 				confirmationChoix = "Vous avez choisi la boisson";
 				debutBoucle = DonneePublique.debutBoisson;
 				finBoucle = DonneePublique.debutSalade;
 			}
-			else if (categorie == 3)
+			else if (categorie == (short)DonneePublique.Categories.Salade)
 			{
 				phraseChoix = "Quelle Salade voulez-vous choisir ?";
 				confirmationChoix = "Vous avez choisi la salade";
 				debutBoucle = DonneePublique.debutSalade;
 				finBoucle = DonneePublique.debutGlace;
 			}
-			else if (categorie == 4)
+			else if (categorie == (short)DonneePublique.Categories.Glace)
 			{
 				phraseChoix = "Quelle Glace voulez-vous choisir ?";
 				confirmationChoix = "Vous avez choisi la glace";
