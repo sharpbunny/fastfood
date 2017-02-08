@@ -23,10 +23,10 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Fonction qui renvoie un burger choisi.
+		/// Fonction qui renvoie l'article choisi.
 		/// </summary>
-		/// <returns>Renvoie le Burger choisi par le client.</returns>
-		static public Article Choix(short categorie)
+		/// <returns>Renvoie l'article choisi par le client.</returns>
+		static public Article Choix(short categorie, Commande commande)
 		{
 			int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
 			bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
@@ -114,7 +114,7 @@ namespace fastfood
 				}
 
 			} while (!validerArticle);
-			Client.ChoixArticle(Commande.ListeArticle, article);
+			commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
 			return article;
 		}
 
@@ -122,7 +122,7 @@ namespace fastfood
 		/// Permet de choisir le type du menu.
 		/// </summary>
 		/// <returns>Renvoie un menu.</returns>
-		public static Menu ChoixTypeMenu()
+		public static Menu ChoixTypeMenu(Commande commande)
 		{
 			Menu menu = new Menu();
 			bool quitter = false;
@@ -134,25 +134,25 @@ namespace fastfood
                     case "1":
                         menu.TypeMenu = 1;
                         menu.TabArticle = new Article[2];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
+                        menu.TabArticle[0] = Choix(1, commande);
+                        menu.TabArticle[1] = Choix(2, commande);
                         quitter = true;
                         break;
                     case "2":
                         menu.TypeMenu = 2;
                         menu.TabArticle = new Article[3];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
+                        menu.TabArticle[0] = Choix(1, commande);
+                        menu.TabArticle[1] = Choix(2, commande);
+                        menu.TabArticle[2] = Choix(3, commande);
                         quitter = true;
                         break;
                     case "3":
                         menu.TypeMenu = 3;
                         menu.TabArticle = new Article[4];
-                        menu.TabArticle[0] = Choix(1);
-                        menu.TabArticle[1] = Choix(2);
-                        menu.TabArticle[2] = Choix(3);
-                        menu.TabArticle[3] = Choix(4);
+                        menu.TabArticle[0] = Choix(1, commande);
+                        menu.TabArticle[1] = Choix(2, commande);
+                        menu.TabArticle[2] = Choix(3, commande);
+                        menu.TabArticle[3] = Choix(4, commande);
                         quitter = true;
                         break;
                     case "Q":
@@ -262,11 +262,11 @@ namespace fastfood
 				{
 					case "1":
 						choixDuMenu = "";
-						ChoixTypeMenu();
+						ChoixTypeMenu(commande);
 						break;
 					case "2":
 						choixDuMenu = "";
-						ChoixArticle();
+						ChoixArticle(commande);
 						break;
 					case "3":
 						choixDuMenu = "";
@@ -348,7 +348,10 @@ namespace fastfood
 		private static void AfficherCommande(Commande commande)
 		{
 			Console.WriteLine("Commande {0}", commande.Numero);
-			// TODO afficher le contenu
+			for (short i = 0; i < commande.ListeArticle.Length; i++)
+			{
+				Console.WriteLine("{0}. {1}*{2} Prix : {3}", i, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+			}
 			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
 			Console.WriteLine();
 		}
@@ -356,7 +359,7 @@ namespace fastfood
 		/// <summary>
 		/// 
 		/// </summary>
-		private static void ChoixArticle()
+		private static void ChoixArticle(Commande commande)
 		{
 			bool quitter = false;
 			string choixTypeArticle = "";
@@ -368,22 +371,22 @@ namespace fastfood
 				{
 					case "1":
 						choixTypeArticle = "";
-						Choix(1);
+						Choix(1, commande);
 						break;
 
 					case "2":
 						choixTypeArticle = "";
-						Choix(2);
+						Choix(2, commande);
 						break;
 
 					case "3":
 						choixTypeArticle = "";
-						Choix(3);
+						Choix(3, commande);
 						break;
 
 					case "4":
 						choixTypeArticle = "";
-						Choix(4);
+						Choix(4, commande);
 						break;
 
 					case "5":

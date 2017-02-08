@@ -23,7 +23,7 @@
         /// </summary>
         private bool _paye = false;
 
-		public static Article[] ListeArticle = {};
+		public Article[] ListeArticle = {};
 
 		// Constructeurs
 		/// <summary>

@@ -36,8 +36,22 @@
 		/// <returns>Renvoie le tableau d'article complété.</returns>
 		public static Article[] ChoixArticle(Article[] tabArticle, Article newArticle)
 		{
-			bool added = false;
-			Article[] newTabArticle = new Article[tabArticle.Length + 1];
+			bool added = false, check = false;
+			Article[] newTabArticle;
+
+			for (int i = 0; i < tabArticle.Length; i++)
+			{
+				if (tabArticle[i].Nom == newArticle.Nom)
+				{
+					newTabArticle = new Article[tabArticle.Length];
+					check = true;
+				}
+			}
+			if (!check)
+			{
+				newTabArticle = new Article[tabArticle.Length + newArticle.Quantite];
+			}
+				
 			if (tabArticle.Length == 0)
 				newTabArticle[0] = newArticle;
 			else
