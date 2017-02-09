@@ -31,9 +31,5 @@ namespace fastfood
             Console.WriteLine("PAS CONTENT ! PAS CONTENT ! PAS CONTENT !");
         }
 
-        ///
-        // test 
-        ///
-        
     }
 }
