@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace fastfood
 {
-    class Program
+    /// <summary>
+	/// Programme principal
+	/// </summary>
+	class Program
     {
 		static void Main(string[] args)
 		{

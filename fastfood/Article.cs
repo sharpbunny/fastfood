@@ -43,6 +43,10 @@
 		}
 
 		// Getters & Setters
+		/// <summary>
+		/// Quantité d'article
+		/// </summary>
+		/// <return>un entier correspondant à la quantité</return> 
 		public int Quantite
 		{
 			get
@@ -57,6 +61,10 @@
 			}
 		}
 
+		/// <summary>
+		/// Nom de l'article
+		/// </summary>
+		/// <return>une chaine correspondant au nom</return> 
 		public string Nom
 		{
 			get
@@ -69,6 +77,10 @@
 			}
 		}
 
+		/// <summary>
+		/// Prix de l'article
+		/// </summary>
+		/// <return>un double indiquent le prix de l'article</return> 
 		public double Prix
 		{
 			get
@@ -81,6 +93,10 @@
 			}
 		}
 
+		/// <summary>
+		/// Catégorie de l'articlee. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// </summary>
+		/// <return>un short correspondant à la catégorie</return> 
 		public short Categorie
 		{
 			get
@@ -94,6 +110,10 @@
 			}
 		}
 
+		/// <summary>
+		/// Prix de l'article
+		/// </summary>
+		/// <return>un double correspondant au prix</return> 
 		protected double PrixUnitaire
 		{
 			get
