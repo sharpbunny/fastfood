@@ -14,7 +14,7 @@
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
 		public static Article Fanta = new Article("Fanta", 2, 2);
-		public static Article Cevenole = new Article("Cevenole", 9.50, 3);
+		public static Article Cevenole = new Article("Cévenole", 9.50, 3);
 		public static Article Seitan = new Article("Seitan", 7, 1);
 		public static Article Sprite = new Article("Sprite", 2, 2);
 		public static Article SevenUp = new Article("SevenUp", 2.10, 2);
@@ -22,7 +22,7 @@
 		public static Article Vanille = new Article("Vanille", 3.50, 4);
 		public static Article Fraise = new Article("Fraise", 3.50, 4);
 		public static Article SaladeVerte = new Article("SaladeVerte", 4.20, 3);
-		public static Article Oceane = new Article("Oceane", 4.20, 3);
+		public static Article Oceane = new Article("Océane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
 		public static Article Pistache = new Article("Pistache", 4, 4);
 
@@ -48,7 +48,7 @@
 		public static int debutGlace;
 
 		/// <summary>
-		/// Tableau repertoriant tous les articles disponibles.
+		/// Tableau répertoriant tous les articles disponibles.
 		/// </summary>
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
 

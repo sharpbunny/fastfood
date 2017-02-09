@@ -67,7 +67,7 @@
 		/// <summary>
 		/// Nom de l'article
 		/// </summary>
-		/// <return>une chaine correspondant au nom</return> 
+		/// <return>une chaîne correspondant au nom</return> 
 		public string Nom
 		{
 			get
@@ -97,7 +97,7 @@
 		}
 
 		/// <summary>
-		/// Catégorie de l'articlee. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// Catégorie de l’article. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
 		/// </summary>
 		/// <return>un short correspondant à la catégorie</return> 
 		public short Categorie
