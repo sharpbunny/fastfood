@@ -14,7 +14,7 @@ namespace fastfood
         /// Attend de l'utilisateur un nombre.
         /// </summary>
         /// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
-        /// <returns>Renvoie true si la conversion a réussie et faux si elle a raté.</returns>
+        /// <returns>Renvoie vrai si la conversion a réussie et faux si elle a raté.</returns>
         static public bool lireEntier(out int entier)
         {
             entier = -1;
@@ -95,7 +95,7 @@ namespace fastfood
                 } while (!ChoixValide);
 
                 Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
-                Console.WriteLine("Etes vous sur de votre choix : {0} ?", article.Nom);
+                Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
 
                 do
                 {
@@ -116,7 +116,7 @@ namespace fastfood
             } while (!validerArticle);
 			if (validerArticle)
 			{
-				commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article); // bug si non incremente la quantitée
+				commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article); // bug si non incrémente la quantité
 			}
            
             return article;
@@ -227,7 +227,7 @@ namespace fastfood
         }
 
         /// <summary>
-        /// Choix du Menu Personnel. Preparateur caissier etc
+        /// Choix du Menu Personnel. Préparateur caissier etc
         /// </summary>
         private static void MenuPersonnel()
         {
@@ -292,7 +292,8 @@ namespace fastfood
                         quitter = true;
                         break;
                     case "5":
-                        Paiement(commande);
+						choixDuMenu = "";
+						Paiement(commande);
                         break;
                     default:
                         Console.Clear();
@@ -320,6 +321,14 @@ namespace fastfood
             string choixDuPaiement = "";
             bool quitter = false;
 
+			if (commande.Paye)
+			{
+				Console.WriteLine("La commande est payée.");
+				Console.ReadLine();
+				choixDuPaiement = "Q";
+				quitter = true;
+			}
+
             do
             {
                 switch (choixDuPaiement)
@@ -327,14 +336,15 @@ namespace fastfood
                     case "1":
                         choixDuPaiement = "";
                         Caissier.EncaisserCB(commande);
+						quitter = true;
                         break;
                     case "2":
                         choixDuPaiement = "";
-                        Caissier.EncaisserEspece();
+                        Caissier.EncaisserEspece(commande);
                         break;
                     case "3":
                         choixDuPaiement = "";
-                        Caissier.EncaisserCheque();
+                        Caissier.EncaisserCheque(commande);
                         break;
                     case "Q":
                     case "q":
@@ -365,7 +375,7 @@ namespace fastfood
             Console.WriteLine("Commande {0}", commande.Numero);
             for (short i = 0; i < commande.ListeArticle.Length; i++)
             {
-                Console.WriteLine("{0}. {1,6}*{2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+                Console.WriteLine("{0}. {1,8} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
                 Total = Total + commande.ListeArticle[i].Prix;
             }
             Console.WriteLine("Total : {0} euros.", Total);
@@ -406,11 +416,7 @@ namespace fastfood
                         Choix((short)DonneePublique.Categories.Glace, commande);
                         break;
 
-                    case "5":
-                        choixTypeArticle = "";
-                        MenuPrincipal();
-                        break;
-                    case "Q":
+					case "Q":
                     case "q":
                         quitter = true;
                         break;
@@ -421,7 +427,6 @@ namespace fastfood
                         Console.WriteLine("2. Boisson");
                         Console.WriteLine("3. Salade");
                         Console.WriteLine("4. Glace");
-                        Console.WriteLine("5. Retour");
                         Console.WriteLine("Q. Quitter");
                         Console.WriteLine("\nSaisissez votre choix.");
                         choixTypeArticle = Console.ReadLine();

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 namespace fastfood
 {
-    class Caissier:Personnel
+    /// <summary>
+	/// Classe de gestion des paiements
+	/// </summary>
+	class Caissier:Personnel
     {
         // Attributs.
         // Attributs pour EncaisserEspece.
@@ -23,11 +26,11 @@ namespace fastfood
         // Accesseurs.
         
 
-        // Methodes.
+        // Méthodes.
         /// <summary>
-        /// Paiement en especes par le client.
+        /// Paiement en espèces par le client.
         /// </summary>
-        public static void EncaisserEspece()
+        public static void EncaisserEspece(Commande commande)
         {
             int saisirEspeceClient = 0;
             int sommeTotalCommande = 0;
@@ -63,6 +66,7 @@ namespace fastfood
             if (sommeARendre == 0)
             {
                 Console.WriteLine("Vous avez payé avec l'appoint");
+				commande.Paye = true;
             }
 
             if (sommeARendre < 0)
@@ -83,7 +87,6 @@ namespace fastfood
                 Console.WriteLine("Monnaie à rendre : " + sommeARendreEnPiece + "euro.");
             }
             Console.ReadKey();
-            Fonction.MenuPrincipal();
         }
 
         /// <summary>
@@ -112,8 +115,6 @@ namespace fastfood
                     Console.ReadKey();
                     paiementValider = true;
 					commande.Paye = true;
-                    Fonction.MenuPrincipal();
-
                 }
                 compteurCB++;
             }
@@ -127,9 +128,9 @@ namespace fastfood
         }
 
         /// <summary>
-        /// Paiement cheque par la client.
+        /// Paiement chèque par la client.
         /// </summary>
-        public static void EncaisserCheque()
+        public static void EncaisserCheque(Commande commande)
         {
             List<string> newCheque = new List<string>();
             bool etatCheque = false;
