@@ -89,7 +89,7 @@ namespace fastfood
         /// <summary>
         /// Paiement en carte bancaire par le client.
         /// </summary>
-        public static void EncaisserCB()
+        public static void EncaisserCB(Commande commande)
         {
             int codeCarteCB = 0;
             bool paiementValider = false;
@@ -111,6 +111,7 @@ namespace fastfood
                     Console.WriteLine("Le code est correct. Paiement accepté.");
                     Console.ReadKey();
                     paiementValider = true;
+					commande.Paye = true;
                     Fonction.MenuPrincipal();
 
                 }

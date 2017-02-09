@@ -292,7 +292,7 @@ namespace fastfood
                         quitter = true;
                         break;
                     case "5":
-                        Paiement();
+                        Paiement(commande);
                         break;
                     default:
                         Console.Clear();
@@ -315,7 +315,7 @@ namespace fastfood
         /// <summary>
         /// 
         /// </summary>
-        private static void Paiement()
+        private static void Paiement(Commande commande)
         {
             string choixDuPaiement = "";
             bool quitter = false;
@@ -326,7 +326,7 @@ namespace fastfood
                 {
                     case "1":
                         choixDuPaiement = "";
-                        Caissier.EncaisserCB();
+                        Caissier.EncaisserCB(commande);
                         break;
                     case "2":
                         choixDuPaiement = "";
@@ -342,7 +342,9 @@ namespace fastfood
                         break;
                     default:
                         Console.Clear();
-                        Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
+						Console.WriteLine("Vous allez payer la commande {0}", commande.Numero);
+						AfficherCommande(commande);
+						Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
                         Console.WriteLine("1. Paiement en CB");
                         Console.WriteLine("2. Paiement en espèces");
                         Console.WriteLine("3. Paiement en chèque");
