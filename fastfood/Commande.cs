@@ -10,6 +10,7 @@ namespace fastfood
         // Attributs
 
         /// <summary>
+		/// Compteur d'objet commande, indique le nombre de commandes crées
         /// </summary>
         public static int counter = 0;
 
@@ -30,7 +31,10 @@ namespace fastfood
 
         private Menu _menu;
 
-        public Article[] ListeArticle = { };
+        /// <summary>
+		/// Tableau d'articles de la commande
+		/// </summary>
+		public Article[] ListeArticle = { };
 
         // Constructeurs
         /// <summary>
@@ -57,7 +61,10 @@ namespace fastfood
             }
         }
 
-        public int Numero
+        /// <summary>
+		/// Numéro de commande
+		/// </summary>
+		public int Numero
         {
             get
             {
@@ -70,7 +77,10 @@ namespace fastfood
             }
         }
 
-        public bool Paye
+        /// <summary>
+		/// Indique si la commande est payée
+		/// </summary>
+		public bool Paye
         {
             get
             {
@@ -83,7 +93,10 @@ namespace fastfood
             }
         }
 
-        public Menu Menu
+        /// <summary>
+		/// 
+		/// </summary>
+		public Menu Menu
         {
             get
             {
@@ -98,7 +111,12 @@ namespace fastfood
 
         // Méthodes
 
-        public Article[] attributionListMenu(Menu menu)
+        /// <summary>
+		/// 
+		/// </summary>
+		/// <param name="menu"></param>
+		/// <returns>retourne un tableau d'articles</returns>
+		public Article[] attributionListMenu(Menu menu)
         {
             ListeArticle = menu.TabArticle;
             return ListeArticle;
