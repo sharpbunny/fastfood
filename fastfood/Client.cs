@@ -32,7 +32,6 @@
 		/// </summary>
 		/// <param name="tabArticle">Tableau d'objet Article.</param>
 		/// <param name="newArticle">Le nouvel article selectionné par le client.</param>
-		/// <param name="nombreArticle">Le nombre d'acticle choisi par le cient.</param>
 		/// <returns>Renvoie le tableau d'article complété.</returns>
 		public static Article[] ChoixArticle(Article[] tabArticle, Article newArticle)
 		{
