@@ -114,7 +114,11 @@ namespace fastfood
                 }
 
             } while (!validerArticle);
-            commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
+			if (validerArticle)
+			{
+				commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);/// bug si non incremente la quantitée
+			}
+           
             return article;
         }
 
