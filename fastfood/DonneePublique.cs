@@ -1,5 +1,8 @@
 ﻿namespace fastfood
 {
+	/// <summary>
+	/// Classe permettant d'avoir une liste d'articles sans utiliser de bdd
+	/// </summary>
 	static class DonneePublique
 	{
         // Attributs.
