@@ -2,7 +2,10 @@
 
 namespace fastfood
 {
-    public class Commande
+    /// <summary>
+	/// Classe permettant la gestion des commandes
+	/// </summary>
+	public class Commande
     {
         // Attributs
 
@@ -101,7 +104,12 @@ namespace fastfood
             return ListeArticle;
         }
 
-        public Article[] annulerArticle(Commande commande)
+        /// <summary>
+		/// Fonction qui permet d'annuler un article d'une commande
+		/// </summary>
+		/// <param name="commande"></param>
+		/// <returns>retourne une liste d'articles</returns>
+		public Article[] annulerArticle(Commande commande)
         {
             int entreeUtilisateur;
             bool verifEntreeUtilisateur = false;
