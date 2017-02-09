@@ -291,6 +291,9 @@ namespace fastfood
                     case "q":
                         quitter = true;
                         break;
+                    case "5":
+                        Paiement();
+                        break;
                     default:
                         Console.Clear();
                         AfficherCommande(commande);
