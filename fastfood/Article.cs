@@ -1,5 +1,8 @@
 ﻿namespace fastfood
 {
+	/// <summary>
+	/// Classe de Gestion des Articles.
+	/// </summary>
 	public class Article
 	{
 		// Attributs.
