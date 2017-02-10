@@ -175,5 +175,18 @@ namespace fastfood
             return tabArticle;
         }
 
+        /// <summary>
+        /// Permet de calculer la commande totale.
+        /// </summary>
+        public void CalculerTotalCommande()
+        {
+            Total = 0;
+            for (short i = 0; i < ListeArticle.Length; i++)
+            {
+                Total += ListeArticle[i].Prix;
+            }
+            
+        }
+
     }
 }
