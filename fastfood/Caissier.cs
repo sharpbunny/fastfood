@@ -40,8 +40,8 @@ namespace fastfood
             int compteur10E = 0;
             int compteur5E = 0;
 
-            Console.WriteLine("Entrer le montant à payer : ");
-            sommeTotalCommande = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Entrer le montant à payer : ");
+            //sommeTotalCommande = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Entrer le montant du client : ");
             saisirEspeceClient = int.Parse(Console.ReadLine());
@@ -86,6 +86,7 @@ namespace fastfood
             {
                 Console.WriteLine("Monnaie à rendre : " + sommeARendreEnPiece + "euro.");
             }
+            commande.Paye = true;
             Console.ReadKey();
         }
 
@@ -191,6 +192,22 @@ namespace fastfood
 
             }
             while (!etatCheque);
+
+            commande.Paye = true;
         }
+        public void CalculerTotalCommande(Commande commande)
+        {
+            double Total = 0;
+            
+            for (short i = 0; i < commande.ListeArticle.Length; i++)
+            {
+                
+                Total += commande.ListeArticle[i].Prix;
+            }
+            commande.Total = Total;
+        }
+
+        
+
     }
 }

@@ -25,6 +25,12 @@ namespace fastfood
         private int _numero;
 
         /// <summary>
+        /// Total de la commande.
+        /// </summary>
+        private double _total;
+
+
+        /// <summary>
         /// Commande payée.
         /// </summary>
         private bool _paye = false;
@@ -109,14 +115,30 @@ namespace fastfood
             }
         }
 
+        /// <summary>
+        /// Total de la commande.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return _total;
+            }
+
+            set
+            {
+                _total = value;
+            }
+        }
+
         // Méthodes
 
         /// <summary>
-		/// 
-		/// </summary>
-		/// <param name="menu"></param>
-		/// <returns>retourne un tableau d'articles</returns>
-		public Article[] attributionListMenu(Menu menu)
+        /// 
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns>retourne un tableau d'articles</returns>
+        public Article[] attributionListMenu(Menu menu)
         {
             ListeArticle = menu.TabArticle;
             return ListeArticle;
