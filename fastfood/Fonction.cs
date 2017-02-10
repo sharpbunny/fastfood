@@ -350,10 +350,12 @@ namespace fastfood
                     case "2":
                         choixDuPaiement = "";
                         Caissier.EncaisserEspece(commande);
+                        quitter = true;
                         break;
                     case "3":
                         choixDuPaiement = "";
                         Caissier.EncaisserCheque(commande);
+                        quitter = true;
                         break;
                     case "Q":
                     case "q":
