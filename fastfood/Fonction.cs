@@ -300,9 +300,16 @@ namespace fastfood
                     case "q":
                         quitter = true;
                         break;
+                    
+                        {
+
+                        }
                     case "5":
-						choixDuMenu = "";
-						Paiement(commande);
+                        choixDuMenu = "";
+                        if (commande.ListeArticle.Length > 0)
+                        {
+                            Paiement(commande);
+                        }
                         break;
                     default:
                         Console.Clear();
@@ -313,7 +320,12 @@ namespace fastfood
                         Console.WriteLine("2. Article");
                         Console.WriteLine("3. Annuler un article");
                         Console.WriteLine("4. Annuler le menu");
-                        Console.WriteLine("5. Payer");
+                        if(commande.ListeArticle.Length > 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("5. Payer\n");
+                            Console.ResetColor();
+                        }                        
                         Console.WriteLine("Q. Quitter");
                         Console.WriteLine("\nSaisissez votre choix.");
                         choixDuMenu = Console.ReadLine();
@@ -337,7 +349,8 @@ namespace fastfood
 				choixDuPaiement = "Q";
 				quitter = true;
 			}
-
+            
+           
             do
             {
                 switch (choixDuPaiement)
@@ -345,7 +358,7 @@ namespace fastfood
                     case "1":
                         choixDuPaiement = "";
                         Caissier.EncaisserCB(commande);
-						quitter = true;
+                        quitter = true;
                         break;
                     case "2":
                         choixDuPaiement = "";
@@ -363,9 +376,9 @@ namespace fastfood
                         break;
                     default:
                         Console.Clear();
-						Console.WriteLine("Vous allez payer la commande {0}", commande.Numero);
-						AfficherCommande(commande);
-						Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
+                        Console.WriteLine("Vous allez payer la commande {0}", commande.Numero);
+                        AfficherCommande(commande);
+                        Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
                         Console.WriteLine("1. Paiement en CB");
                         Console.WriteLine("2. Paiement en espèces");
                         Console.WriteLine("3. Paiement en chèque");
@@ -374,7 +387,9 @@ namespace fastfood
                         choixDuPaiement = Console.ReadLine();
                         break;
                 }
-            } while (!quitter);
+            }
+            while (!quitter);
+                        
         }
 
         /// <summary>
