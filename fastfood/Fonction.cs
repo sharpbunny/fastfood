@@ -260,9 +260,18 @@ namespace fastfood
             commande.Numero = Commande.counter;
             listeCommandes.Add(commande);
 
-            do
-            {
-                switch (choixDuMenu)
+
+			do
+			{
+				if (commande.Paye)
+				{
+					Console.WriteLine("La commande est payée.");
+					Console.ReadLine();
+					choixDuMenu = "Q";
+					quitter = true;
+				}
+
+				switch (choixDuMenu)
                 {
                     case "1":
                         choixDuMenu = "";
