@@ -42,6 +42,7 @@ namespace fastfood
             if (sommeARendre < 0)
             {
                 Console.WriteLine("Montant du client insuffisant, ou choisir un autre type de paiement");
+
             }
             
             if (sommeARendre == 0)
@@ -58,7 +59,7 @@ namespace fastfood
         /// </summary>
         public static void EncaisserCB(Commande commande)
         {
-            short codeCarteCB = 0;
+            string codeCarteCB = "";
             bool paiementValider = false;
             short compteurCB = 0;
 
@@ -67,14 +68,14 @@ namespace fastfood
             do
             {
                 Console.WriteLine("Entrer le code CB en 4 chiffres (essai" + (compteurCB + 1) + ")");
-                codeCarteCB = short.Parse(Console.ReadLine());
-                while (codeCarteCB >= 10000)
+                codeCarteCB = Console.ReadLine();
+                while (codeCarteCB.Length > 4)
                 {
                     Console.WriteLine("Code invalide (format incorrect). Saisir à nouveau le code en 4 chiffres.");
                     Console.WriteLine("Entrer le code CB en 4 chiffres : ");
-                    codeCarteCB = short.Parse(Console.ReadLine());
+                    codeCarteCB = Console.ReadLine();
                 }
-                if (codeCarteCB == 1234)
+                if (codeCarteCB == "1234")
                 {
                     
                     Console.WriteLine("Le code est correct. Paiement accepté.");
