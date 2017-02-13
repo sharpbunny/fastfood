@@ -47,9 +47,9 @@
 
 		// Getters & Setters
 		/// <summary>
-		/// Quantité d'article
+		/// Quantité d'articles.
 		/// </summary>
-		/// <return>un entier correspondant à la quantité</return> 
+		/// <return>Int correspondant à la quantité.</return> 
 		public int Quantite
 		{
 			get
@@ -65,9 +65,9 @@
 		}
 
 		/// <summary>
-		/// Nom de l'article
+		/// Nom de l'article.
 		/// </summary>
-		/// <return>une chaîne correspondant au nom</return> 
+		/// <return>une chaîne correspondant au nom.</return> 
 		public string Nom
 		{
 			get
@@ -81,9 +81,9 @@
 		}
 
 		/// <summary>
-		/// Prix de l'article
+		/// Prix de l'article.
 		/// </summary>
-		/// <return>un double indiquent le prix de l'article</return> 
+		/// <return>un double indiquent le prix de l'article.</return> 
 		public double Prix
 		{
 			get
@@ -97,9 +97,9 @@
 		}
 
 		/// <summary>
-		/// Catégorie de l’article. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// Catégorie de l’article. 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
 		/// </summary>
-		/// <return>un short correspondant à la catégorie</return> 
+		/// <return>Short correspondant à la catégorie.</return> 
 		public short Categorie
 		{
 			get
@@ -114,9 +114,9 @@
 		}
 
 		/// <summary>
-		/// Prix de l'article
+		/// Prix de l'article.
 		/// </summary>
-		/// <return>un double correspondant au prix</return> 
+		/// <return>Double correspondant au prix.</return> 
 		public double PrixUnitaire
 		{
 			get

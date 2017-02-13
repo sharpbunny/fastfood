@@ -3,14 +3,14 @@
 namespace fastfood
 {
     /// <summary>
-	/// Classe permettant la gestion des commandes
+	/// Classe permettant la gestion des commandes.
 	/// </summary>
 	public class Commande
     {
         // Attributs
 
         /// <summary>
-		/// Compteur d'objet commande, indique le nombre de commandes crées
+		/// Compteur d'objet commande, indique le nombre de commandes crées.
         /// </summary>
         public static int counter = 0;
 
@@ -68,7 +68,7 @@ namespace fastfood
         }
 
         /// <summary>
-		/// Numéro de commande
+		/// Numéro de commande.
 		/// </summary>
 		public int Numero
         {
@@ -84,7 +84,7 @@ namespace fastfood
         }
 
         /// <summary>
-		/// Indique si la commande est payée
+		/// Indique si la commande est payée.
 		/// </summary>
 		public bool Paye
         {
@@ -145,10 +145,10 @@ namespace fastfood
         }
 
         /// <summary>
-		/// Fonction qui permet d'annuler un article d'une commande
+		/// Fonction qui permet d'annuler un article d'une commande.
 		/// </summary>
 		/// <param name="commande"></param>
-		/// <returns>retourne une liste d'articles</returns>
+		/// <returns>retourne une liste d'articles.</returns>
 		public Article[] annulerArticle(Commande commande)
         {
             int entreeUtilisateur;

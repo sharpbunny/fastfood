@@ -16,7 +16,7 @@ namespace fastfood
 
         // Constructeurs.
 		/// <summary>
-		/// Constructeur de la classe menu
+		/// Constructeur de la classe menu.
 		/// </summary>
         public Menu()
         {
@@ -25,7 +25,7 @@ namespace fastfood
 
         // Accesseurs.
         /// <summary>
-		/// Tableau d'articles qui composent un menu
+		/// Tableau d'articles qui composent un menu.
 		/// </summary>
 		public Article[] TabArticle
         {
@@ -39,7 +39,7 @@ namespace fastfood
         }
 
         /// <summary>
-		/// Type de menu
+		/// Type de menu.
 		/// </summary>
 		public int TypeMenu
         {

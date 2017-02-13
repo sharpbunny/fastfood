@@ -419,7 +419,7 @@ namespace fastfood
             bool quitter = false;
             string choixTypeArticle = "";
 
-            // Boucle forçant le client à choisir un menu valide
+            // Boucle forçant le client à choisir un menu valide.
             do
             {
                 switch (choixTypeArticle)
