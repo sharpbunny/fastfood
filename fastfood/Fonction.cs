@@ -8,6 +8,9 @@ namespace fastfood
     /// </summary>
     abstract class Fonction
     {
+		/// <summary>
+		/// Liste de toutes les commandes.
+		/// </summary>
         static public List<Commande> listeCommandes = new List<Commande>();
 
         /// <summary>

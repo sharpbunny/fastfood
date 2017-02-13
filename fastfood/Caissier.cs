@@ -13,10 +13,8 @@ namespace fastfood
         // Constructeurs.
 
         // Accesseurs.
-        
 
         // Méthodes.
-
         /// <summary>
         /// Paiement en espèces par le client.
         /// </summary>

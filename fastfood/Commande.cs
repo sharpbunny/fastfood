@@ -8,7 +8,6 @@ namespace fastfood
 	public class Commande
     {
         // Attributs
-
         /// <summary>
 		/// Compteur d'objet commande, indique le nombre de commandes crées.
         /// </summary>
@@ -132,7 +131,6 @@ namespace fastfood
         }
 
         // Méthodes
-
         /// <summary>
         /// 
         /// </summary>
