@@ -305,10 +305,6 @@ namespace fastfood
 					case "q":
 						quitter = true;
 						break;
-
-						{
-
-						}
 					case "5":
 						choixDuMenu = "";
 						if (commande.ListeArticle.Length > 0)
@@ -410,7 +406,7 @@ namespace fastfood
 			Console.WriteLine("Commande {0}", commande.Numero);
 			for (short i = 0; i < commande.ListeArticle.Length; i++)
 			{
-				Console.WriteLine("{0}. {1,8} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Console.WriteLine("{0}. {1,12} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
 				Total = Total + commande.ListeArticle[i].Prix;
 			}
 			Console.WriteLine("Total : {0} euros.", Total);
@@ -435,7 +431,7 @@ namespace fastfood
 				do
 				{
 					Console.WriteLine("Quel article souhaitez vous retirer ?");
-					verifEntreeUtilisateur = Fonction.lireEntier(out entreeUtilisateur);
+					verifEntreeUtilisateur = lireEntier(out entreeUtilisateur);
 				} while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > commande.ListeArticle.Length));
 			}
 			else if (commande.ListeArticle.Length == 1)
@@ -446,7 +442,7 @@ namespace fastfood
 			do
 			{
 				Console.WriteLine("Quel quantité de {0} souhaitez vous retirer ?", commande.ListeArticle[entreeUtilisateur - 1].Nom);
-				verifEntreeUtilisateur = Fonction.lireEntier(out entreeQuantité);
+				verifEntreeUtilisateur = lireEntier(out entreeQuantité);
 			} while (!verifEntreeUtilisateur || (entreeQuantité < 1 || entreeQuantité > commande.ListeArticle[entreeUtilisateur - 1].Quantite));
 
 			commande.SupprimerArticle(entreeUtilisateur - 1, entreeQuantité);

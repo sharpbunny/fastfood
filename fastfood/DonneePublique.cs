@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace fastfood
 {
@@ -32,37 +33,30 @@ namespace fastfood
 		public static Article Oceane = new Article("Océane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
 		public static Article Pistache = new Article("Pistache", 4.15, 4);
+		public static Article Citron = new Article("Citron", 4.10, 4);
 
 		/// <summary>
 		/// Tableau répertoriant tous les articles disponibles.
 		/// </summary>
-		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
+		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache, Citron };
 
 		/// <summary>
 		/// Tri Alphabétique d'un tableau.
 		/// </summary>
 		/// <param name="tableauATrier">Le tableau à trier.</param>
 		/// <returns>Renvoie le tableau trié.</returns>
-		public static Article[] TriAlphabetique(Article[] tableauATrier)
+		public static void TriAlphabetique(Article[] tableauATrier)
 		{
-			bool switched = true;
-			while (switched)
+			for (int i = 0; i < tableauATrier.Length - 1; i++)
 			{
-				switched = false;
-
-				for (int i = 0; i < tableauATrier.Length - 1; i++)
+				for (int j=i; j< tableauATrier.Length; j++)
 				{
-					if (tableauATrier[i].Nom[0] > tableauATrier[i + 1].Nom[0])
-						switched = _triBulleArticle(tableauATrier, i, switched);
-
-					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1]))
-						switched = _triBulleArticle(tableauATrier, i, switched);
-
-					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]) && (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2]))
-						switched = _triBulleArticle(tableauATrier, i, switched);
+					if (String.Compare(tableauATrier[i].Nom, tableauATrier[j].Nom) > 0)
+					{
+						PermuteArticle(tableauATrier, i, j);
+					}
 				}
 			}
-			return tableauATrier;
 		}
 
 		/// <summary>
@@ -79,19 +73,16 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Dry du Tri Alphabétique.
+		/// Permutation de deux éléments du tableau.
 		/// </summary>
 		/// <param name="tableauATrier">Le tableauATrier.</param>
-		/// <param name="i">l'indice du tableau en cours.</param>
-		/// <param name="switched">Booléen indiquant si on a effectué une permutation.</param>
-		/// <returns>Retourne le booléen de pérmutation.</returns>
-		private static bool _triBulleArticle(Article[] tableauATrier, int i, bool switched)
+		/// <param name="i">le premier élément du tableau en cours.</param>
+		/// <param name="j">le deuxième élément</param>
+		private static void PermuteArticle(Article[] tableauATrier, int i, int j)
 		{
-			Article temporaryArticle = tableauATrier[0];
-			temporaryArticle = tableauATrier[i + 1];
-			tableauATrier[i + 1] = tableauATrier[i];
+			Article temporaryArticle = tableauATrier[j];
+			tableauATrier[j] = tableauATrier[i];
 			tableauATrier[i] = temporaryArticle;
-			return switched = true;
 		}
 	}
 }

@@ -54,6 +54,6 @@ namespace fastfood
 			}
 		}
 
-		// Methodes.
+		// Méthodes.
 	}
 }
