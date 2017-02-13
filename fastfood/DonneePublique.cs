@@ -29,16 +29,18 @@ namespace fastfood
 		public static Article Chocolat = new Article("Chocolat", 3.50, 4);
 		public static Article Vanille = new Article("Vanille", 3.50, 4);
 		public static Article Fraise = new Article("Fraise", 3.50, 4);
-		public static Article SaladeVerte = new Article("SaladeVerte", 4.20, 3);
+		public static Article SaladeVerte = new Article("Salade Verte", 4.20, 3);
 		public static Article Oceane = new Article("Océane", 4.20, 3);
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
 		public static Article Pistache = new Article("Pistache", 4.15, 4);
 		public static Article Citron = new Article("Citron", 4.10, 4);
+		public static Article Tomate = new Article("Tomate", 3.30, 2);
 
 		/// <summary>
 		/// Tableau répertoriant tous les articles disponibles.
 		/// </summary>
-		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache, Citron };
+		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise,
+												 SaladeVerte, Oceane, Caesar, Cevenole, Pistache, Citron, Tomate };
 
 		/// <summary>
 		/// Tri Alphabétique d'un tableau.
@@ -67,8 +69,12 @@ namespace fastfood
 		{
 			List<Article> listeArticles = new List<Article>();
 			foreach (Article article in ListeArticle)
+			{
 				if (article.Categorie == categorie)
+				{
 					listeArticles.Add(article);
+				}
+			}
 			return listeArticles;
 		}
 
