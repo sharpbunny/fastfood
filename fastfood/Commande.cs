@@ -154,7 +154,7 @@ namespace fastfood
 			Article[] tabArticle;
 
 			int entreeUtilisateur;
-			bool verifEntreeUtilisateur = false, plusieurs = false;
+			bool verifEntreeUtilisateur = false, plusieursMemeArticle = false;
             do
             {
                 Console.WriteLine("Quel article souhaitez vous retirer ?");
@@ -164,9 +164,9 @@ namespace fastfood
 
 			for (int i = 0; i < ListeArticle.Length; i++)
 				if (entreeUtilisateur - 1 == i && ListeArticle[i].Quantite > 1)
-					plusieurs = true;
+					plusieursMemeArticle = true;
 
-			if (plusieurs)
+			if (plusieursMemeArticle)
 			{
 				tabArticle = new Article[ListeArticle.Length];
 

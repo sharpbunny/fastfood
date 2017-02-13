@@ -18,8 +18,8 @@ namespace fastfood
         static public bool lireEntier(out int entier)
         {
             entier = -1;
-            bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
-            return ConversionReussi;
+            bool conversionReussi = int.TryParse(Console.ReadLine(), out entier);
+            return conversionReussi;
         }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace fastfood
 		static public Article Choix(short categorie, Commande commande)
         {
             int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
-            bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
+            bool validerArticle = false, conversionReussie = false, choixValide = false;
             string phraseChoix = "", confirmationChoix = "";
             Article article = new Article("", 0, 0);
 
@@ -76,23 +76,23 @@ namespace fastfood
                             Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].PrixUnitaire);
                         }
 
-                        ConversionReussie = lireEntier(out entreeUtilisateur);
+                        conversionReussie = lireEntier(out entreeUtilisateur);
 
-                    } while (!ConversionReussie);
+                    } while (!conversionReussie);
 
                     entreeUtilisateur = entreeUtilisateur - 1;
 
                     if (entreeUtilisateur >= 0 && entreeUtilisateur < (finBoucle - debutBoucle))
                     {
                         article = DonneePublique.ListeArticle[entreeUtilisateur + debutBoucle];
-                        ChoixValide = true;
+                        choixValide = true;
                     }
                     else
                     {
-                        ChoixValide = false;
+                        choixValide = false;
                     }
 
-                } while (!ChoixValide);
+                } while (!choixValide);
 
                 Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
                 Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
@@ -100,8 +100,8 @@ namespace fastfood
                 do
                 {
                     Console.WriteLine("1.Oui\n2.Non");
-                    ConversionReussie = lireEntier(out entreeUtilisateur);
-                } while (!ConversionReussie);
+                    conversionReussie = lireEntier(out entreeUtilisateur);
+                } while (!conversionReussie);
 
                 if (entreeUtilisateur == 1)
                 {
