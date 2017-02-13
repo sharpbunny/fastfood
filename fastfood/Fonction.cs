@@ -84,7 +84,6 @@ namespace fastfood
                     if (entreeUtilisateur >= 0 && entreeUtilisateur < (finBoucle - debutBoucle))
                     {
                         article = DonneePublique.ListeArticle[entreeUtilisateur + debutBoucle];
-                        article.Quantite++;
                         ChoixValide = true;
                     }
                     else
@@ -106,7 +105,8 @@ namespace fastfood
                 if (entreeUtilisateur == 1)
                 {
                     validerArticle = true;
-                }
+					article.Quantite++;
+				}
                 else
                 {
                     validerArticle = false;
@@ -114,10 +114,8 @@ namespace fastfood
                 }
 
             } while (!validerArticle);
-			if (validerArticle)
-			{
-				commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article); // bug si non incrémente la quantité
-			}
+			
+			commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
            
             return article;
         }
