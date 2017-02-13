@@ -53,12 +53,77 @@ namespace fastfood
 		/// </summary>
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
 
+		// Fonctions.
+		public static Article[] TriageComplet(Article[] tableauATrier)
+		{
+			tableauATrier = _triAlphabetique(tableauATrier);
+			tableauATrier = _triCategorie(tableauATrier, out debutBurger, out debutBoisson, out debutSalade, out debutGlace);
+			return tableauATrier;
+		}
+
+		public static Article[] Triage(Article[] tableauATrier)
+		{
+			tableauATrier = _triAlphabetique(tableauATrier);
+			return tableauATrier;
+		}
+
+		/// <summary>
+		/// Tri par catégorie.
+		/// </summary>
+		/// <param name="tableauATrier">Le tableau à trier.</param>
+		/// <param name="debutBurger">Stockera l'indice du début du tableau de la catégorie Burger.</param>
+		/// <param name="debutBoisson">Stockera l'indice du début du tableau de la catégorie Boisson.</param>
+		/// <param name="debutSalade">Stockera l'indice du début du tableau de la catégorie Salade.</param>
+		/// <param name="debutGlace">Stockera l'indice du début du tableau de la catégorie Glace.</param>
+		/// <returns>Renvoie le tableau trié.</returns>
+		private static Article[] _triCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
+		{
+			Article[] nouveauTableau = new Article[tableauATrier.Length];
+
+			int indiceNouveauTableau = 0;
+			debutBurger = -1; debutBoisson = -1; debutSalade = -1; debutGlace = -1;
+			for (int j = 1; j <= 4; j++)
+				for (int i = 0; i < tableauATrier.Length; i++)
+				{
+
+					if (j == 1 && tableauATrier[i].Categorie == 1)
+					{
+						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutBurger == -1)
+							debutBurger = indiceNouveauTableau;
+						indiceNouveauTableau++;
+					}
+					else if (j == 2 && tableauATrier[i].Categorie == 2)
+					{
+						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutBoisson == -1)
+							debutBoisson = indiceNouveauTableau;
+						indiceNouveauTableau++;
+					}
+					else if (j == 3 && tableauATrier[i].Categorie == 3)
+					{
+						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutSalade == -1)
+							debutSalade = indiceNouveauTableau;
+						indiceNouveauTableau++;
+					}
+					else if (j == 4 && tableauATrier[i].Categorie == 4)
+					{
+						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
+						if (debutGlace == -1)
+							debutGlace = indiceNouveauTableau;
+						indiceNouveauTableau++;
+					}
+				}
+			return nouveauTableau;
+		}
+
 		/// <summary>
 		/// Tri Alphabétique d'un tableau.
 		/// </summary>
 		/// <param name="tableauATrier">Le tableau à trier.</param>
 		/// <returns>Renvoie le tableau trié.</returns>
-		public static Article[] TriAlphabetique(Article[] tableauATrier)
+		private static Article[] _triAlphabetique(Article[] tableauATrier)
 		{
 			bool switched = true;
 			while (switched)

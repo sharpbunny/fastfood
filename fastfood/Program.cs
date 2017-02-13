@@ -13,7 +13,7 @@ namespace fastfood
 	{
 		static void Main(string[] args)
 		{
-			DonneePublique.ListeArticle = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);
+			DonneePublique.ListeArticle = DonneePublique.TriageComplet(DonneePublique.ListeArticle);
 
 			Fonction.AffichageMenuProg();
 		}
