@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace fastfood
 {
 	/// <summary>
-	/// Classe contenant toutes les fonctions utiles au fonctionnement de VégétaFood.
+	/// Classe contenant toutes les fonctions utiles au fonctionnement de VÃ©gÃ©taFood.
 	/// </summary>
 	abstract class Fonction
 	{
@@ -16,8 +16,8 @@ namespace fastfood
 		/// <summary>
 		/// Attend de l'utilisateur un nombre.
 		/// </summary>
-		/// <param name="entier">Stocke l'entier écrit par l'utilisateur(-1 par défaut).</param>
-		/// <returns>Renvoie vrai si la conversion a réussie et faux si elle a raté.</returns>
+		/// <param name="entier">Stocke l'entier Ã©crit par l'utilisateur(-1 par dÃ©faut).</param>
+		/// <returns>Renvoie vrai si la conversion a rÃ©ussie et faux si elle a ratÃ©.</returns>
 		static public bool lireEntier(out int entier)
 		{
 			entier = -1;
@@ -28,7 +28,7 @@ namespace fastfood
 		/// <summary>
 		/// Fonction qui renvoie l'article choisi.
 		/// </summary>
-		/// <param name="categorie">Catégorie de l'article à choisir.</param>
+		/// <param name="categorie">CatÃ©gorie de l'article Ã  choisir.</param>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
@@ -96,7 +96,7 @@ namespace fastfood
 				} while (!choixValide);
 
 				Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
-				Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
+				Console.WriteLine("ÃŠtes vous sur de votre choix : {0} ?", article.Nom);
 
 				do
 				{
@@ -179,7 +179,7 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Choix de l'utilisateur : fonction utile au développeur pour se mettre dans la position du client ou du personnel de Végétafood.
+		/// Choix de l'utilisateur : fonction utile au dÃ©veloppeur pour se mettre dans la position du client ou du personnel de VÃ©gÃ©tafood.
 		/// </summary>
 		public static void AffichageMenuProg()
 		{
@@ -214,8 +214,8 @@ namespace fastfood
 
 					default:
 						Console.Clear();
-						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
-						Console.WriteLine("Veuillez nous indiquer si vous êtes client ou si vous faites partie du personnel :");
+						Console.WriteLine("Bonjour et bienvenue dans VÃ©gÃ©taFood !");
+						Console.WriteLine("Veuillez nous indiquer si vous Ãªtes client ou si vous faites partie du personnel :");
 						Console.WriteLine(" 1.Client");
 						Console.WriteLine(" 2.Personnel");
 						Console.WriteLine(" Q.Quitter");
@@ -228,7 +228,7 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Choix du Menu Personnel. Préparateur caissier etc
+		/// Choix du Menu Personnel. PrÃ©parateur caissier etc
 		/// </summary>
 		private static void MenuPersonnel()
 		{
@@ -270,7 +270,7 @@ namespace fastfood
 			{
 				if (commande.Paye)
 				{
-					Console.WriteLine("La commande est payée.");
+					Console.WriteLine("La commande est payÃ©e.");
 					Console.ReadLine();
 					choixDuMenu = "Q";
 					quitter = true;
@@ -319,7 +319,7 @@ namespace fastfood
 					default:
 						Console.Clear();
 						AfficherCommande(commande);
-						Console.WriteLine("Bonjour et bienvenue dans VégétaFood !");
+						Console.WriteLine("Bonjour et bienvenue dans VÃ©gÃ©taFood !");
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
 						Console.WriteLine("2. Article");
@@ -350,7 +350,7 @@ namespace fastfood
 
 			if (commande.Paye)
 			{
-				Console.WriteLine("La commande est payée.");
+				Console.WriteLine("La commande est payÃ©e.");
 				Console.ReadLine();
 				choixDuPaiement = "Q";
 				quitter = true;
@@ -385,8 +385,8 @@ namespace fastfood
 						AfficherCommande(commande);
 						Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
 						Console.WriteLine("1. Paiement en CB");
-						Console.WriteLine("2. Paiement en espèces");
-						Console.WriteLine("3. Paiement en chèque");
+						Console.WriteLine("2. Paiement en espÃ¨ces");
+						Console.WriteLine("3. Paiement en chÃ¨que");
 						Console.WriteLine("Q. Quitter");
 						Console.WriteLine("\nSaisissez votre choix.");
 						choixDuPaiement = Console.ReadLine();
@@ -398,7 +398,7 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Affiche l'intégralité des articles de la commande en cours.
+		/// Affiche l'intÃ©gralitÃ© des articles de la commande en cours.
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		public static void AfficherCommande(Commande commande)
@@ -411,12 +411,12 @@ namespace fastfood
 				Total = Total + commande.ListeArticle[i].Prix;
 			}
 			Console.WriteLine("Total : {0} euros.", Total);
-			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
+			Console.WriteLine("Commande payÃ©e: {0}", commande.Paye ? "OUI" : "NON");
 			Console.WriteLine();
 		}
 
 		/// <summary>
-		/// Permet à l'utilisateur de choisir des articles un par un.
+		/// Permet Ã  l'utilisateur de choisir des articles un par un.
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		private static void ChoixArticle(Commande commande)
@@ -424,7 +424,7 @@ namespace fastfood
 			bool quitter = false;
 			string choixTypeArticle = "";
 
-			// Boucle forçant le client à choisir un menu valide.
+			// Boucle forÃ§ant le client Ã  choisir un menu valide.
 			do
 			{
 				switch (choixTypeArticle)
@@ -470,3 +470,4 @@ namespace fastfood
 		}
 	}
 }
+
