@@ -231,23 +231,40 @@ namespace fastfood
         /// </summary>
         private static void MenuPersonnel()
         {
+			int choix=0; bool valide = false;
+			do
+			{
+				Console.WriteLine("Bienvenu dans le menu du personnel!");
+				Console.WriteLine("1.Caissier/Manager");
+				Console.WriteLine("2.Préparateur");
+				valide=lireEntier(out choix);
+			}
+			while (!valide);
+			switch (choix)
+			{
+				case 1:
+				Console.WriteLine("Liste des Commandes");
+				if (listeCommandes.Count > 0)
+				{
+					// liste des commandes
+					foreach (Commande commande in listeCommandes)
+					{
+						AfficherCommande(commande);
+					}
+				}
+				else
+				{
+					Console.WriteLine("Pas de commandes");
+				}
+				Console.ReadLine();
+			
+					break;
+				case 2:
+					Preparateur.PreparationCommande(listeCommandes);
+					break;
+			 }
 
-            Console.WriteLine("Liste des Commandes");
-            if (listeCommandes.Count > 0)
-            {
-                // liste des commandes
-                foreach (Commande commande in listeCommandes)
-                {
-                    AfficherCommande(commande);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Pas de commandes");
-            }
-            Console.ReadLine();
-
-        }
+		}
 
         /// <summary>
         /// Choix du Menu Principal. Le client peut choisir son menu ou bien un article, etc. 
