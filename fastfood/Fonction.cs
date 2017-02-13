@@ -28,38 +28,35 @@ namespace fastfood
         /// <returns>Renvoie l'article choisi par le client.</returns>
         static public Article Choix(short categorie, Commande commande)
         {
-            int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
-            bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
-            string phraseChoix = "", confirmationChoix = "";
+			int entreeUtilisateur;
+			bool validerArticle = false;
+			bool ConversionReussie = false;
+			bool ChoixValide = false;
+			string phraseChoix = "";
+			string confirmationChoix = "";
             Article article = new Article("", 0, 0);
+			List<Article> listeChoix = new List<Article>();
+			listeChoix = DonneePublique.ListeArticleParCategorie(categorie);
 
             if (categorie == (short)DonneePublique.Categories.Burger)
             {
                 phraseChoix = "Quel Burger voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi le burger";
-                debutBoucle = DonneePublique.debutBurger;
-                finBoucle = DonneePublique.debutBoisson;
             }
             else if (categorie == (short)DonneePublique.Categories.Boisson)
             {
                 phraseChoix = "Quelle Boisson voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la boisson";
-                debutBoucle = DonneePublique.debutBoisson;
-                finBoucle = DonneePublique.debutSalade;
             }
             else if (categorie == (short)DonneePublique.Categories.Salade)
             {
                 phraseChoix = "Quelle Salade voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la salade";
-                debutBoucle = DonneePublique.debutSalade;
-                finBoucle = DonneePublique.debutGlace;
             }
             else if (categorie == (short)DonneePublique.Categories.Glace)
             {
                 phraseChoix = "Quelle Glace voulez-vous choisir ?";
                 confirmationChoix = "Vous avez choisi la glace";
-                debutBoucle = DonneePublique.debutGlace;
-                finBoucle = DonneePublique.ListeArticle.Length;
             }
 
             do
@@ -70,20 +67,20 @@ namespace fastfood
                     do
                     {
                         Console.WriteLine(phraseChoix);
-                        for (int i = debutBoucle; i < finBoucle; i++)
+						int i = 0;
+                        foreach (Article articleChoix in listeChoix)
                         {
-                            Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].PrixUnitaire);
+                            Console.WriteLine((i+1) + ".{0,12} : {1}", articleChoix.Nom, articleChoix.PrixUnitaire);
+							i++;
                         }
 
                         ConversionReussie = lireEntier(out entreeUtilisateur);
 
                     } while (!ConversionReussie);
 
-                    entreeUtilisateur = entreeUtilisateur - 1;
-
-                    if (entreeUtilisateur >= 0 && entreeUtilisateur < (finBoucle - debutBoucle))
+                    if ((entreeUtilisateur > 0) && (entreeUtilisateur <= listeChoix.Count))
                     {
-                        article = DonneePublique.ListeArticle[entreeUtilisateur + debutBoucle];
+                        article = listeChoix[entreeUtilisateur-1];
                         ChoixValide = true;
                     }
                     else
