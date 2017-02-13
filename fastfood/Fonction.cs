@@ -260,6 +260,10 @@ namespace fastfood
             commande.Numero = Commande.counter;
             listeCommandes.Add(commande);
 
+			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
+			{
+				DonneePublique.ListeArticle[i].Quantite = 0;
+			}
 
 			do
 			{
