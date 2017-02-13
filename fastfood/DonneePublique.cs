@@ -121,13 +121,11 @@
 					if (tableauATrier[i].Nom[0] > tableauATrier[i + 1].Nom[0])
 						switched = _triBulleArticle(tableauATrier, i, switched);
 
-					else if (tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0])
-						if (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1])
-							switched = _triBulleArticle(tableauATrier, i, switched);
+					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1]))
+						switched = _triBulleArticle(tableauATrier, i, switched);
 
-					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]))
-						if (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2])
-							switched = _triBulleArticle(tableauATrier, i, switched);
+					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]) && (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2]))
+						switched = _triBulleArticle(tableauATrier, i, switched);
 				}
 			}
 			return tableauATrier;
