@@ -39,21 +39,13 @@
 			Article[] newTabArticle;
 			int indice = 0;
 			for (int i = 0; i < tabArticle.Length; i++)
-			{
 				if (tabArticle[i].Nom == newArticle.Nom)
-				{
 					check = true;
-				}
-			}
 
 			if (check)
-			{
 				indice = tabArticle.Length;
-			}
 			else
-			{
 				indice = tabArticle.Length + newArticle.Quantite;
-			}
 
 			newTabArticle = new Article[indice];
 

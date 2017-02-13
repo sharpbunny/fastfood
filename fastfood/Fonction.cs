@@ -33,7 +33,6 @@ namespace fastfood
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
 		{
-			Console.Clear();
 			int entreeUtilisateur;
 			bool validerArticle = false;
 			bool conversionReussie = false;
@@ -68,10 +67,13 @@ namespace fastfood
 
 			do
 			{
+				Console.Clear();
 				do
 				{
+					Console.Clear();
 					do
 					{
+						Console.Clear();
 						Console.WriteLine(phraseChoix);
 						int i = 0;
 						foreach (Article articleChoix in listeChoix)
@@ -96,11 +98,12 @@ namespace fastfood
 
 				} while (!choixValide);
 
-				Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
-				Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
-
 				do
 				{
+					Console.Clear();
+					Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
+					Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
+					
 					Console.WriteLine("1.Oui\n2.Non");
 					conversionReussie = lireEntier(out entreeUtilisateur);
 				} while (!conversionReussie);

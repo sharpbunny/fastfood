@@ -8,7 +8,12 @@ namespace fastfood
 	static class DonneePublique
 	{
 		// Attributs.
-		/// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		/// <summary>
+		/// Burger : 1,
+		/// Boisson : 2,
+		/// Salade : 3,
+		/// Glace : 4.
+		/// </summary>
 		public enum Categories { Burger = 1, Boisson, Salade, Glace }
 
 		/// new Article(NOM, PRIX, CATEGORIE) => NPC.
@@ -68,12 +73,8 @@ namespace fastfood
 		{
 			List<Article> listeArticles = new List<Article>();
 			foreach (Article article in ListeArticle)
-			{
 				if (article.Categorie == categorie)
-				{
 					listeArticles.Add(article);
-				}
-			}
 			return listeArticles;
 		}
 

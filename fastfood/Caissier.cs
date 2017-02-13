@@ -24,7 +24,7 @@ namespace fastfood
 			double sommeARendre = 0;
 			bool controleSaisie = false;
 
-			AfficherTotalCassierEnCouleur(commande);
+			AfficherTotalCaissierEnCouleur(commande);
 
 			Console.WriteLine("Entrer le montant du client : ");
 			controleSaisie = double.TryParse(Console.ReadLine(), out saisirEspeceClient);
@@ -61,7 +61,7 @@ namespace fastfood
 			bool paiementValider = false;
 			short compteurCB = 0;
 
-			AfficherTotalCassierEnCouleur(commande);
+			AfficherTotalCaissierEnCouleur(commande);
 
 			do
 			{
@@ -103,7 +103,7 @@ namespace fastfood
 			long iclientRIB = 0;
 			string clientRIB = "";
 
-			AfficherTotalCassierEnCouleur(commande);
+			AfficherTotalCaissierEnCouleur(commande);
 
 			Console.WriteLine("Entrer le nom du client à qui appartient le chèque : ");
 			nomClientCheque = Console.ReadLine();
@@ -149,7 +149,7 @@ namespace fastfood
 		/// Permet d'afficher la somme totale dans la classe Caissier.
 		/// </summary>
 		/// <param name="commande"></param>
-		private static void AfficherTotalCassierEnCouleur(Commande commande)
+		private static void AfficherTotalCaissierEnCouleur(Commande commande)
 		{
 			commande.CalculerTotalCommande();
 			Console.ForegroundColor = ConsoleColor.Red;
