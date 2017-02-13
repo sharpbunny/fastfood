@@ -151,8 +151,10 @@ namespace fastfood
 		/// <returns>retourne une liste d'articles.</returns>
 		public Article[] annulerArticle(Commande commande)
         {
-            int entreeUtilisateur;
-            bool verifEntreeUtilisateur = false;
+			Article[] tabArticle;
+
+			int entreeUtilisateur;
+			bool verifEntreeUtilisateur = false, plusieurs = false;
             do
             {
                 Console.WriteLine("Quel article souhaitez vous retirer ?");
@@ -160,23 +162,40 @@ namespace fastfood
                 verifEntreeUtilisateur = Fonction.lireEntier(out entreeUtilisateur);
             } while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > ListeArticle.Length));
 
-            Article[] tabArticle = new Article[ListeArticle.Length - 1];
+			for (int i = 0; i < ListeArticle.Length; i++)
+				if (entreeUtilisateur - 1 == i && ListeArticle[i].Quantite > 1)
+					plusieurs = true;
 
-            int j = 0;
-            for (int i = 0; i < ListeArticle.Length; i++)
-            {
-				if (entreeUtilisateur - 1 == i)
+			if (plusieurs)
+			{
+				tabArticle = new Article[ListeArticle.Length];
+
+				for (int i = 0; i < ListeArticle.Length; i++)
 				{
-					ListeArticle[i].Quantite = 0;
+					if (entreeUtilisateur - 1 == i)
+						ListeArticle[i].Quantite--;
+
+					tabArticle[i] = ListeArticle[i];
 				}
+			}
+			else
+			{
+				tabArticle = new Article[ListeArticle.Length - 1];
 
-                if (entreeUtilisateur - 1 != i)
-                {
-                    tabArticle[j] = ListeArticle[i];
-                    j++;
-                }
-            }
+				int j = 0;
+				for (int i = 0; i < ListeArticle.Length; i++)
+				{
+					if (entreeUtilisateur - 1 == i)
+						ListeArticle[i].Quantite = 0;
 
+					if (entreeUtilisateur - 1 != i)
+					{
+						tabArticle[j] = ListeArticle[i];
+						j++;
+					}
+				}
+			}
+			
             return tabArticle;
         }
 
@@ -190,8 +209,6 @@ namespace fastfood
             {
                 Total += ListeArticle[i].Prix;
             }
-            
         }
-
     }
 }
