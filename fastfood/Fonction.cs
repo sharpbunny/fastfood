@@ -335,7 +335,7 @@ namespace fastfood
         }
 
         /// <summary>
-        /// 
+        /// Paiement de la commande
         /// </summary>
         private static void Paiement(Commande commande)
         {
@@ -393,8 +393,9 @@ namespace fastfood
         }
 
         /// <summary>
-        /// 
+        /// Affichage du contenu de la commande
         /// </summary>
+		/// <param name="commande">la commande que l'on veut afficher</param>
         public static void AfficherCommande(Commande commande)
         {
             double Total = 0;
@@ -410,8 +411,9 @@ namespace fastfood
         }
 
         /// <summary>
-        /// 
+        /// Choix d'un article pour une commande
         /// </summary>
+		/// <param name="commande">la commande ou l'on veut ajouter l'article</param>
         private static void ChoixArticle(Commande commande)
         {
             bool quitter = false;
