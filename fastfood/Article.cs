@@ -10,12 +10,12 @@
 		/// Nom de l'article.
 		/// </summary>
 		protected string _nom;
-		
+
 		/// <summary>
 		/// Le nombre d'article.
 		/// </summary>
 		protected int _quantite;
-		
+
 		/// <summary>
 		/// Le prix d'un article.
 		/// </summary>

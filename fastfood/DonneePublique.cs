@@ -5,11 +5,11 @@
 	/// </summary>
 	static class DonneePublique
 	{
-        // Attributs.
-        /// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
-        public enum Categories { Burger = 1, Boisson, Salade, Glace }
-		
-        /// new Article(NOM, PRIX, CATEGORIE) => NPC.
+		// Attributs.
+		/// Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
+		public enum Categories { Burger = 1, Boisson, Salade, Glace }
+
+		/// new Article(NOM, PRIX, CATEGORIE) => NPC.
 		public static Article Coca = new Article("Coca", 2.10, 2);
 		public static Article Soja = new Article("Soja", 6.50, 1);
 		public static Article Tofu = new Article("Tofu", 6.50, 1);
@@ -31,17 +31,17 @@
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Burger qui se termine en DonneePublique.DebutBoisson.
 		/// </summary>
 		public static int debutBurger;
-	
+
 		/// <summary>
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Boisson qui se termine en DonneePublique.DebutSalade.
 		/// </summary>
 		public static int debutBoisson;
-	
+
 		/// <summary>
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Salade qui se termine en DonneePublique.DebutGlace.
 		/// </summary>
 		public static int debutSalade;
-	
+
 		/// <summary>
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Glace qui se termine en DonneePublique.ListeArticle.Length.
 		/// </summary>

@@ -1,6 +1,6 @@
 ﻿namespace fastfood
 {
-	class Preparateur:Personnel
+	class Preparateur : Personnel
 	{
 		// Attribut.
 

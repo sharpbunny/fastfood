@@ -5,54 +5,55 @@
 
 namespace fastfood
 {
-    /// <summary>
-    /// Classe qui permet de gérer les menus, les prix et les quantités d'articles commandés.
-    /// </summary>
-    public class Menu
-    {
-        // Attributs.
-        private Article[] _tabArticle;
-        private int typeMenu;
+	/// <summary>
+	/// Classe qui permet de gérer les menus, les prix et les quantités d'articles commandés.
+	/// </summary>
+	public class Menu
+	{
+		// Attributs.
+		private Article[] _tabArticle;
+		private int typeMenu;
 
-        // Constructeurs.
+		// Constructeurs.
 		/// <summary>
 		/// Constructeur de la classe menu.
 		/// </summary>
-        public Menu()
-        {
+		public Menu()
+		{
 
-        }
+		}
 
-        // Accesseurs.
-        /// <summary>
+		// Accesseurs.
+		/// <summary>
 		/// Tableau d'articles qui composent un menu.
 		/// </summary>
 		public Article[] TabArticle
-        {
-            get
+		{
+			get
 			{
 				return _tabArticle;
 			}
-            set
+			set
 			{
-				_tabArticle = value; }
-        }
+				_tabArticle = value;
+			}
+		}
 
-        /// <summary>
+		/// <summary>
 		/// Type de menu.
 		/// </summary>
 		public int TypeMenu
-        {
-            get
+		{
+			get
 			{
 				return typeMenu;
 			}
-            set
+			set
 			{
 				typeMenu = value;
 			}
-        }
+		}
 
-        // Methodes.
-    }
+		// Methodes.
+	}
 }
