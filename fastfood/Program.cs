@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace fastfood
 {
-    /// <summary>
+	/// <summary>
 	/// Programme principal.
 	/// </summary>
 	class Program
-    {
+	{
 		static void Main(string[] args)
 		{
 			DonneePublique.ListeArticle = DonneePublique.TriAlphabetique(DonneePublique.ListeArticle);

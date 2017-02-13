@@ -29,6 +29,26 @@ namespace fastfood
 		public static Article Pistache = new Article("Pistache", 4.15, 4);
 
 		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Burger qui se termine en DonneePublique.DebutBoisson.
+		/// </summary>
+		public static int debutBurger;
+
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Boisson qui se termine en DonneePublique.DebutSalade.
+		/// </summary>
+		public static int debutBoisson;
+
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Salade qui se termine en DonneePublique.DebutGlace.
+		/// </summary>
+		public static int debutSalade;
+
+		/// <summary>
+		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Glace qui se termine en DonneePublique.ListeArticle.Length.
+		/// </summary>
+		public static int debutGlace;
+
+		/// <summary>
 		/// Tableau répertoriant tous les articles disponibles.
 		/// </summary>
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
