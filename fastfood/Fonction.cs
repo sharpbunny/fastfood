@@ -32,83 +32,81 @@ namespace fastfood
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
-		{
-			int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
-			bool validerArticle = false, conversionReussie = false, choixValide = false;
-			string phraseChoix = "", confirmationChoix = "";
+        {
+			int entreeUtilisateur;
+			bool validerArticle = false;
+			bool conversionReussie = false;
+			bool choixValide = false;
+			string phraseChoix = "";
+			string confirmationChoix = "";
+
 			Article article = new Article("", 0, 0);
+			List<Article> listeChoix = new List<Article>();
+			listeChoix = DonneePublique.ListeArticleParCategorie(categorie);
 
-			if (categorie == (short)DonneePublique.Categories.Burger)
-			{
-				phraseChoix = "Quel Burger voulez-vous choisir ?";
-				confirmationChoix = "Vous avez choisi le burger";
-				debutBoucle = DonneePublique.debutBurger;
-				finBoucle = DonneePublique.debutBoisson;
-			}
-			else if (categorie == (short)DonneePublique.Categories.Boisson)
-			{
-				phraseChoix = "Quelle Boisson voulez-vous choisir ?";
-				confirmationChoix = "Vous avez choisi la boisson";
-				debutBoucle = DonneePublique.debutBoisson;
-				finBoucle = DonneePublique.debutSalade;
-			}
-			else if (categorie == (short)DonneePublique.Categories.Salade)
-			{
-				phraseChoix = "Quelle Salade voulez-vous choisir ?";
-				confirmationChoix = "Vous avez choisi la salade";
-				debutBoucle = DonneePublique.debutSalade;
-				finBoucle = DonneePublique.debutGlace;
-			}
-			else if (categorie == (short)DonneePublique.Categories.Glace)
-			{
-				phraseChoix = "Quelle Glace voulez-vous choisir ?";
-				confirmationChoix = "Vous avez choisi la glace";
-				debutBoucle = DonneePublique.debutGlace;
-				finBoucle = DonneePublique.ListeArticle.Length;
-			}
+            if (categorie == (short)DonneePublique.Categories.Burger)
+            {
+                phraseChoix = "Quel Burger voulez-vous choisir ?";
+                confirmationChoix = "Vous avez choisi le burger";
+            }
+            else if (categorie == (short)DonneePublique.Categories.Boisson)
+            {
+                phraseChoix = "Quelle Boisson voulez-vous choisir ?";
+                confirmationChoix = "Vous avez choisi la boisson";
+            }
+            else if (categorie == (short)DonneePublique.Categories.Salade)
+            {
+                phraseChoix = "Quelle Salade voulez-vous choisir ?";
+                confirmationChoix = "Vous avez choisi la salade";
+            }
+            else if (categorie == (short)DonneePublique.Categories.Glace)
+            {
+                phraseChoix = "Quelle Glace voulez-vous choisir ?";
+                confirmationChoix = "Vous avez choisi la glace";
+            }
 
-			do
-			{
-				do
-				{
-					do
-					{
-						Console.WriteLine(phraseChoix);
-						for (int i = debutBoucle; i < finBoucle; i++)
-						{
-							Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].PrixUnitaire);
-						}
+            do
+            {
+                do
+                {
+                    do
+                    {
+                        Console.WriteLine(phraseChoix);
+						int i = 0;
+                        foreach (Article articleChoix in listeChoix)
+                        {
+                            Console.WriteLine((i+1) + ".{0,12} : {1}", articleChoix.Nom, articleChoix.PrixUnitaire);
+							i++;
+                        }
 
-						conversionReussie = lireEntier(out entreeUtilisateur);
+                        conversionReussie = lireEntier(out entreeUtilisateur);
 
-					} while (!conversionReussie);
+                    } while (!conversionReussie);
 
-					entreeUtilisateur = entreeUtilisateur - 1;
+                    if ((entreeUtilisateur > 0) && (entreeUtilisateur <= listeChoix.Count))
+                    {
+                        article = listeChoix[entreeUtilisateur-1];
+                        choixValide = true;
+                    }
+                    else
+                    {
+                        choixValide = false;
+                    }
 
-					if (entreeUtilisateur >= 0 && entreeUtilisateur < (finBoucle - debutBoucle))
-					{
-						article = DonneePublique.ListeArticle[entreeUtilisateur + debutBoucle];
-						choixValide = true;
-					}
-					else
-					{
-						choixValide = false;
-					}
+                } while (!choixValide);
 
-				} while (!choixValide);
+                Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
+                Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
 
-				Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
-				Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
+                do
+                {
+                    Console.WriteLine("1.Oui\n2.Non");
+                    conversionReussie = lireEntier(out entreeUtilisateur);
+                } while (!conversionReussie);
 
-				do
-				{
-					Console.WriteLine("1.Oui\n2.Non");
-					conversionReussie = lireEntier(out entreeUtilisateur);
-				} while (!conversionReussie);
-
-				if (entreeUtilisateur == 1)
-				{
-					validerArticle = true;
+                if (entreeUtilisateur == 1)
+                {
+                    validerArticle = true;
 					article.Quantite++;
 				}
 				else

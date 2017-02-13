@@ -1,4 +1,6 @@
-﻿namespace fastfood
+﻿using System.Collections.Generic;
+
+namespace fastfood
 {
 	/// <summary>
 	/// Classe permettant d'avoir une liste d'articles sans utiliser de bdd.
@@ -26,7 +28,6 @@
 		public static Article Caesar = new Article("Caesar", 4.20, 3);
 		public static Article Pistache = new Article("Pistache", 4.15, 4);
 
-
 		/// <summary>
 		/// Indice du tableau DonneePublique.ListeArticle où commence la catégorie Burger qui se termine en DonneePublique.DebutBoisson.
 		/// </summary>
@@ -52,60 +53,8 @@
 		/// </summary>
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
 
-		// Fonctions.
 		/// <summary>
-		/// Tri par catégorie.
-		/// </summary>
-		/// <param name="tableauATrier">Le tableau à trier.</param>
-		/// <param name="debutBurger">Stockera l'indice du début du tableau de la catégorie Burger.</param>
-		/// <param name="debutBoisson">Stockera l'indice du début du tableau de la catégorie Boisson.</param>
-		/// <param name="debutSalade">Stockera l'indice du début du tableau de la catégorie Salade.</param>
-		/// <param name="debutGlace">Stockera l'indice du début du tableau de la catégorie Glace.</param>
-		/// <returns>Renvoie le tableau trié.</returns>
-		public static Article[] TriCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
-		{
-			Article[] nouveauTableau = new Article[tableauATrier.Length];
-
-			int indiceNouveauTableau = 0;
-			debutBurger = -1; debutBoisson = -1; debutSalade = -1; debutGlace = -1;
-			for (int j = 1; j <= 4; j++)
-				for (int i = 0; i < tableauATrier.Length; i++)
-				{
-
-					if (j == 1 && tableauATrier[i].Categorie == 1)
-					{
-						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
-						if (debutBurger == -1)
-							debutBurger = indiceNouveauTableau;
-						indiceNouveauTableau++;
-					}
-					else if (j == 2 && tableauATrier[i].Categorie == 2)
-					{
-						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
-						if (debutBoisson == -1)
-							debutBoisson = indiceNouveauTableau;
-						indiceNouveauTableau++;
-					}
-					else if (j == 3 && tableauATrier[i].Categorie == 3)
-					{
-						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
-						if (debutSalade == -1)
-							debutSalade = indiceNouveauTableau;
-						indiceNouveauTableau++;
-					}
-					else if (j == 4 && tableauATrier[i].Categorie == 4)
-					{
-						nouveauTableau[indiceNouveauTableau] = tableauATrier[i];
-						if (debutGlace == -1)
-							debutGlace = indiceNouveauTableau;
-						indiceNouveauTableau++;
-					}
-				}
-			return nouveauTableau;
-		}
-
-		/// <summary>
-		/// Tri Alphabétique.
+		/// Tri Alphabétique d'un tableau.
 		/// </summary>
 		/// <param name="tableauATrier">Le tableau à trier.</param>
 		/// <returns>Renvoie le tableau trié.</returns>
@@ -129,6 +78,23 @@
 				}
 			}
 			return tableauATrier;
+		}
+
+		/// <summary>
+		/// Renvoie une liste d'article triée appartenant à une catégorie.
+		/// </summary>
+		/// <param name="categorie">Catégorie de l'article.</param>
+		public static List<Article> ListeArticleParCategorie(short categorie)
+		{
+			List<Article> listeArticles = new List<Article>();
+			foreach (Article article in DonneePublique.ListeArticle)
+			{
+				if (article.Categorie == categorie)
+				{
+					listeArticles.Add(article);
+				}
+			}
+			return listeArticles;
 		}
 
 		/// <summary>
