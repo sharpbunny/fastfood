@@ -15,22 +15,42 @@ namespace fastfood
         private int typeMenu;
 
         // Constructeurs.
+		/// <summary>
+		/// Constructeur de la classe menu
+		/// </summary>
         public Menu()
         {
 
         }
 
         // Accesseurs.
-        public Article[] TabArticle
+        /// <summary>
+		/// Tableau d'articles qui composent un menu
+		/// </summary>
+		public Article[] TabArticle
         {
-            get { return _tabArticle; }
-            set { _tabArticle = value; }
+            get
+			{
+				return _tabArticle;
+			}
+            set
+			{
+				_tabArticle = value; }
         }
 
-        public int TypeMenu
+        /// <summary>
+		/// Type de menu
+		/// </summary>
+		public int TypeMenu
         {
-            get { return typeMenu; }
-            set { typeMenu = value; }
+            get
+			{
+				return typeMenu;
+			}
+            set
+			{
+				typeMenu = value;
+			}
         }
 
         // Methodes.
