@@ -18,23 +18,26 @@ namespace fastfood
         static public bool lireEntier(out int entier)
         {
             entier = -1;
-            bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
-            return ConversionReussi;
+            bool conversionReussi = int.TryParse(Console.ReadLine(), out entier);
+            return conversionReussi;
         }
 
-        /// <summary>
-        /// Fonction qui renvoie l'article choisi.
-        /// </summary>
-        /// <returns>Renvoie l'article choisi par le client.</returns>
-        static public Article Choix(short categorie, Commande commande)
+		/// <summary>
+		/// Fonction qui renvoie l'article choisi.
+		/// </summary>
+		/// <param name="categorie">Catégorie de l'article à choisir.</param>
+		/// <param name="commande">Conserve la commande en cours.</param>
+		/// <returns>Renvoie l'article choisi par le client.</returns>
+		static public Article Choix(short categorie, Commande commande)
         {
 			int entreeUtilisateur;
 			bool validerArticle = false;
-			bool ConversionReussie = false;
-			bool ChoixValide = false;
+			bool conversionReussie = false;
+			bool choixValide = false;
 			string phraseChoix = "";
 			string confirmationChoix = "";
-            Article article = new Article("", 0, 0);
+
+			Article article = new Article("", 0, 0);
 			List<Article> listeChoix = new List<Article>();
 			listeChoix = DonneePublique.ListeArticleParCategorie(categorie);
 
@@ -63,7 +66,6 @@ namespace fastfood
             {
                 do
                 {
-
                     do
                     {
                         Console.WriteLine(phraseChoix);
@@ -74,21 +76,21 @@ namespace fastfood
 							i++;
                         }
 
-                        ConversionReussie = lireEntier(out entreeUtilisateur);
+                        conversionReussie = lireEntier(out entreeUtilisateur);
 
-                    } while (!ConversionReussie);
+                    } while (!conversionReussie);
 
                     if ((entreeUtilisateur > 0) && (entreeUtilisateur <= listeChoix.Count))
                     {
                         article = listeChoix[entreeUtilisateur-1];
-                        ChoixValide = true;
+                        choixValide = true;
                     }
                     else
                     {
-                        ChoixValide = false;
+                        choixValide = false;
                     }
 
-                } while (!ChoixValide);
+                } while (!choixValide);
 
                 Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
                 Console.WriteLine("Êtes vous sur de votre choix : {0} ?", article.Nom);
@@ -96,8 +98,8 @@ namespace fastfood
                 do
                 {
                     Console.WriteLine("1.Oui\n2.Non");
-                    ConversionReussie = lireEntier(out entreeUtilisateur);
-                } while (!ConversionReussie);
+                    conversionReussie = lireEntier(out entreeUtilisateur);
+                } while (!conversionReussie);
 
                 if (entreeUtilisateur == 1)
                 {
@@ -117,11 +119,12 @@ namespace fastfood
             return article;
         }
 
-        /// <summary>
-        /// Permet de choisir le type du menu.
-        /// </summary>
-        /// <returns>Renvoie un menu.</returns>
-        public static Menu ChoixTypeMenu(Commande commande)
+		/// <summary>
+		/// Permet de choisir le type du menu.
+		/// </summary>
+		/// <param name="commande">Conserve la commande en cours.</param>
+		/// <returns>Renvoie un menu.</returns>
+		public static Menu ChoixTypeMenu(Commande commande)
         {
             Menu menu = new Menu();
             bool quitter = false;
@@ -255,6 +258,10 @@ namespace fastfood
             commande.Numero = Commande.counter;
             listeCommandes.Add(commande);
 
+			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
+			{
+				DonneePublique.ListeArticle[i].Quantite = 0;
+			}
 
 			do
 			{
@@ -329,10 +336,11 @@ namespace fastfood
             } while (!quitter);
         }
 
-        /// <summary>
-        /// Paiement de la commande
-        /// </summary>
-        private static void Paiement(Commande commande)
+		/// <summary>
+		/// Menu du choix de Paiement.
+		/// </summary>
+		/// <param name="commande">Conserve la commande en cours.</param>
+		private static void Paiement(Commande commande)
         {
             string choixDuPaiement = "";
             bool quitter = false;
@@ -345,7 +353,6 @@ namespace fastfood
 				quitter = true;
 			}
             
-           
             do
             {
                 switch (choixDuPaiement)
@@ -387,11 +394,11 @@ namespace fastfood
                         
         }
 
-        /// <summary>
-        /// Affichage du contenu de la commande
-        /// </summary>
-		/// <param name="commande">la commande que l'on veut afficher</param>
-        public static void AfficherCommande(Commande commande)
+		/// <summary>
+		/// Affiche l'intégralité des articles de la commande en cours.
+		/// </summary>
+		/// <param name="commande">Conserve la commande en cours.</param>
+		public static void AfficherCommande(Commande commande)
         {
             double Total = 0;
             Console.WriteLine("Commande {0}", commande.Numero);
@@ -405,16 +412,16 @@ namespace fastfood
             Console.WriteLine();
         }
 
-        /// <summary>
-        /// Choix d'un article pour une commande
-        /// </summary>
-		/// <param name="commande">la commande ou l'on veut ajouter l'article</param>
-        private static void ChoixArticle(Commande commande)
+		/// <summary>
+		/// Permet à l'utilisateur de choisir des articles un par un.
+		/// </summary>
+		/// <param name="commande">Conserve la commande en cours.</param>
+		private static void ChoixArticle(Commande commande)
         {
             bool quitter = false;
             string choixTypeArticle = "";
 
-            //Boucle forçant le client à choisir un menu valide
+            // Boucle forçant le client à choisir un menu valide.
             do
             {
                 switch (choixTypeArticle)
@@ -454,8 +461,8 @@ namespace fastfood
                         Console.WriteLine("\nSaisissez votre choix.");
                         choixTypeArticle = Console.ReadLine();
                         break;
-
                 }
+
             } while (!quitter);
         }
     }

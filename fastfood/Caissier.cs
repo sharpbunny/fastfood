@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace fastfood
 {
     /// <summary>
-	/// Classe de gestion des paiements
+	/// Classe de gestion des paiements.
 	/// </summary>
 	class Caissier:Personnel
     {

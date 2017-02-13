@@ -3,7 +3,7 @@
 namespace fastfood
 {
 	/// <summary>
-	/// Classe permettant d'avoir une liste d'articles sans utiliser de bdd
+	/// Classe permettant d'avoir une liste d'articles sans utiliser de bdd.
 	/// </summary>
 	static class DonneePublique
 	{
@@ -40,7 +40,6 @@ namespace fastfood
 		/// <returns>Renvoie le tableau trié.</returns>
 		public static Article[] TriAlphabetique(Article[] tableauATrier)
 		{
-			Article temporaryArticle = tableauATrier[0];
 			bool switched = true;
 			while (switched)
 			{
@@ -49,32 +48,13 @@ namespace fastfood
 				for (int i = 0; i < tableauATrier.Length - 1; i++)
 				{
 					if (tableauATrier[i].Nom[0] > tableauATrier[i + 1].Nom[0])
-					{
-						temporaryArticle = tableauATrier[i + 1];
-						tableauATrier[i + 1] = tableauATrier[i];
-						tableauATrier[i] = temporaryArticle;
-						switched = true;
-					}
-					else if (tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0])
-					{
-						if (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1])
-						{
-							temporaryArticle = tableauATrier[i + 1];
-							tableauATrier[i + 1] = tableauATrier[i];
-							tableauATrier[i] = temporaryArticle;
-							switched = true;
-						}
-					}
-					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]))
-					{
-						if (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2])
-						{
-							temporaryArticle = tableauATrier[i + 1];
-							tableauATrier[i + 1] = tableauATrier[i];
-							tableauATrier[i] = temporaryArticle;
-							switched = true;
-						}
-					}
+						switched = _triBulleArticle(tableauATrier, i, switched);
+
+					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] > tableauATrier[i + 1].Nom[1]))
+						switched = _triBulleArticle(tableauATrier, i, switched);
+
+					else if ((tableauATrier[i].Nom[0] == tableauATrier[i + 1].Nom[0]) && (tableauATrier[i].Nom[1] == tableauATrier[i + 1].Nom[1]) && (tableauATrier[i].Nom[2] > tableauATrier[i + 1].Nom[2]))
+						switched = _triBulleArticle(tableauATrier, i, switched);
 				}
 			}
 			return tableauATrier;
@@ -95,6 +75,22 @@ namespace fastfood
 				}
 			}
 			return listeArticles;
+		}
+
+		/// <summary>
+		/// Dry du Tri Alphabétique.
+		/// </summary>
+		/// <param name="tableauATrier">Le tableauATrier.</param>
+		/// <param name="i">l'indice du tableau en cours.</param>
+		/// <param name="switched">Booléen indiquant si on a effectué une permutation.</param>
+		/// <returns>Retourne le booléen de pérmutation.</returns>
+		private static bool _triBulleArticle(Article[] tableauATrier, int i, bool switched)
+		{
+			Article temporaryArticle = tableauATrier[0];
+			temporaryArticle = tableauATrier[i + 1];
+			tableauATrier[i + 1] = tableauATrier[i];
+			tableauATrier[i] = temporaryArticle;
+			return switched = true;
 		}
 	}
 }

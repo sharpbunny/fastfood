@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace fastfood
 {
     /// <summary>
-	/// Programme principal
+	/// Programme principal.
 	/// </summary>
 	class Program
     {
