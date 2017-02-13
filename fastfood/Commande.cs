@@ -165,6 +165,11 @@ namespace fastfood
             int j = 0;
             for (int i = 0; i < ListeArticle.Length; i++)
             {
+				if (entreeUtilisateur - 1 == i)
+				{
+					ListeArticle[i].Quantite = 0;
+				}
+
                 if (entreeUtilisateur - 1 != i)
                 {
                     tabArticle[j] = ListeArticle[i];
