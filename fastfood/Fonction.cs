@@ -72,7 +72,7 @@ namespace fastfood
                         Console.WriteLine(phraseChoix);
                         for (int i = debutBoucle; i < finBoucle; i++)
                         {
-                            Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].Prix);
+                            Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].PrixUnitaire);
                         }
 
                         ConversionReussie = lireEntier(out entreeUtilisateur);

@@ -117,7 +117,7 @@
 		/// Prix de l'article
 		/// </summary>
 		/// <return>un double correspondant au prix</return> 
-		protected double PrixUnitaire
+		public double PrixUnitaire
 		{
 			get
 			{
