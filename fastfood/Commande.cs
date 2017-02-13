@@ -143,59 +143,27 @@ namespace fastfood
 		}
 
 		/// <summary>
-		/// Fonction qui permet d'annuler un article d'une commande.
+		/// Méthode pour retirer un article de la commande
 		/// </summary>
-		/// <param name="commande"></param>
-		/// <returns>retourne une liste d'articles.</returns>
-		public Article[] annulerArticle(Commande commande)
+		/// <param name="idarticle">L'id de l'article dans le tableau à retirer</param>
+		/// <param name="quantité">La quantité</param>
+		public void SupprimerArticle(int idarticle, int quantité)
 		{
-			Console.Clear();
-			Article[] tabArticle;
-
-			int entreeUtilisateur;
-			bool verifEntreeUtilisateur = false, plusieursMemeArticle = false;
-			do
+			int i;
+			ListeArticle[idarticle].Quantite -= quantité;
+			if (ListeArticle[idarticle].Quantite ==0)
 			{
-				Console.WriteLine("Quel article souhaitez vous retirer ?");
-				Fonction.AfficherCommande(commande);
-				verifEntreeUtilisateur = Fonction.lireEntier(out entreeUtilisateur);
-			} while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > ListeArticle.Length));
-
-			for (int i = 0; i < ListeArticle.Length; i++)
-				if (entreeUtilisateur - 1 == i && ListeArticle[i].Quantite > 1)
-					plusieursMemeArticle = true;
-
-			if (plusieursMemeArticle)
-			{
-				tabArticle = new Article[ListeArticle.Length];
-
-				for (int i = 0; i < ListeArticle.Length; i++)
+				Article[] tempTab = new Article[ListeArticle.Length - 1];
+				for (i = 0; i < idarticle - 1; i++)
 				{
-					if (entreeUtilisateur - 1 == i)
-						ListeArticle[i].Quantite--;
-
-					tabArticle[i] = ListeArticle[i];
+					tempTab[i] = ListeArticle[i];
 				}
-			}
-			else
-			{
-				tabArticle = new Article[ListeArticle.Length - 1];
-
-				int j = 0;
-				for (int i = 0; i < ListeArticle.Length; i++)
+				for (i=idarticle; i<ListeArticle.Length-1; i++)
 				{
-					if (entreeUtilisateur - 1 == i)
-						ListeArticle[i].Quantite = 0;
-
-					if (entreeUtilisateur - 1 != i)
-					{
-						tabArticle[j] = ListeArticle[i];
-						j++;
-					}
+					tempTab[i] = ListeArticle[i + 1];
 				}
+				ListeArticle = tempTab;
 			}
-
-			return tabArticle;
 		}
 
 		/// <summary>

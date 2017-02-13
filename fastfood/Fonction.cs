@@ -293,15 +293,7 @@ namespace fastfood
 						break;
 					case "3":
 						choixDuMenu = "";
-						if (commande.ListeArticle.Length > 1)
-						{
-							commande.ListeArticle = commande.annulerArticle(commande);
-						}
-						else if (commande.ListeArticle.Length == 1)
-						{
-							Article[] videTabArt = { };
-							commande.ListeArticle = videTabArt;
-						}
+						SupprimerArticle(commande);
 						break;
 					case "4":
 						choixDuMenu = "";
@@ -418,6 +410,40 @@ namespace fastfood
 			Console.WriteLine("Total : {0} euros.", Total);
 			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
 			Console.WriteLine();
+		}
+
+		/// <summary>
+		/// Choix de l'article et de la quantité à supprimer
+		/// </summary>
+		/// <param name="commande"></param>
+		private static void SupprimerArticle(Commande commande)
+		{
+			int entreeUtilisateur = 0;
+			int entreeQuantité;
+			bool verifEntreeUtilisateur = false;
+			
+			Console.Clear();
+			AfficherCommande(commande);
+			if (commande.ListeArticle.Length > 1)
+			{
+				do
+				{
+					Console.WriteLine("Quel article souhaitez vous retirer ?");
+					verifEntreeUtilisateur = Fonction.lireEntier(out entreeUtilisateur);
+				} while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > commande.ListeArticle.Length));
+			}
+			else if (commande.ListeArticle.Length == 1)
+			{
+				entreeUtilisateur = 1;
+			}
+
+			do
+			{
+				Console.WriteLine("Quel quantité de {0} souhaitez vous retirer ?", commande.ListeArticle[entreeUtilisateur - 1].Nom);
+				verifEntreeUtilisateur = Fonction.lireEntier(out entreeQuantité);
+			} while (!verifEntreeUtilisateur || (entreeQuantité < 1 || entreeQuantité > commande.ListeArticle[entreeUtilisateur - 1].Quantite));
+
+			commande.SupprimerArticle(entreeUtilisateur - 1, entreeQuantité);
 		}
 
 		/// <summary>
