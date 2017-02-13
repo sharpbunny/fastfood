@@ -293,7 +293,10 @@ namespace fastfood
 						break;
 					case "3":
 						choixDuMenu = "";
-						SupprimerArticle(commande);
+						if (commande.ListeArticle.Length > 0)
+						{
+							SupprimerArticle(commande);
+						}
 						break;
 					case "4":
 						choixDuMenu = "";
@@ -320,7 +323,10 @@ namespace fastfood
 						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
 						Console.WriteLine("1. Menu");
 						Console.WriteLine("2. Article");
-						Console.WriteLine("3. Annuler un article");
+						if (commande.ListeArticle.Length > 0)
+						{
+							Console.WriteLine("3. Annuler un article");
+						}
 						Console.WriteLine("4. Annuler le menu");
 						if (commande.ListeArticle.Length > 0)
 						{
