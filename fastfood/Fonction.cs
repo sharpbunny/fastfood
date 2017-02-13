@@ -406,6 +406,7 @@ namespace fastfood
 		public static void AfficherCommande(Commande commande)
 		{
 			double Total = 0;
+			DonneePublique.Triage(commande.ListeArticle);
 			Console.WriteLine("Commande {0}", commande.Numero);
 			for (short i = 0; i < commande.ListeArticle.Length; i++)
 			{

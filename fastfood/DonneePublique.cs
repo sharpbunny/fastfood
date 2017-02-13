@@ -53,6 +53,19 @@
 		public static Article[] ListeArticle = { Coca, Soja, Tofu, Fanta, Seitan, Sprite, SevenUp, Chocolat, Vanille, Fraise, SaladeVerte, Oceane, Caesar, Cevenole, Pistache };
 
 		// Fonctions.
+		public static Article[] TriageComplet(Article[] tableauATrier)
+		{
+			tableauATrier = _triAlphabetique(tableauATrier);
+			tableauATrier = _triCategorie(tableauATrier, out debutBurger, out debutBoisson, out debutSalade, out debutGlace);
+			return tableauATrier;
+		}
+
+		public static Article[] Triage(Article[] tableauATrier)
+		{
+			tableauATrier = _triAlphabetique(tableauATrier);
+			return tableauATrier;
+		}
+
 		/// <summary>
 		/// Tri par catégorie.
 		/// </summary>
@@ -62,7 +75,7 @@
 		/// <param name="debutSalade">Stockera l'indice du début du tableau de la catégorie Salade.</param>
 		/// <param name="debutGlace">Stockera l'indice du début du tableau de la catégorie Glace.</param>
 		/// <returns>Renvoie le tableau trié.</returns>
-		public static Article[] TriCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
+		private static Article[] _triCategorie(Article[] tableauATrier, out int debutBurger, out int debutBoisson, out int debutSalade, out int debutGlace)
 		{
 			Article[] nouveauTableau = new Article[tableauATrier.Length];
 
@@ -109,7 +122,7 @@
 		/// </summary>
 		/// <param name="tableauATrier">Le tableau à trier.</param>
 		/// <returns>Renvoie le tableau trié.</returns>
-		public static Article[] TriAlphabetique(Article[] tableauATrier)
+		private static Article[] _triAlphabetique(Article[] tableauATrier)
 		{
 			bool switched = true;
 			while (switched)
