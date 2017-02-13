@@ -33,6 +33,7 @@ namespace fastfood
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
 		{
+			Console.Clear();
 			int entreeUtilisateur;
 			bool validerArticle = false;
 			bool conversionReussie = false;
@@ -129,6 +130,7 @@ namespace fastfood
 		/// <returns>Renvoie un menu.</returns>
 		public static Menu ChoixTypeMenu(Commande commande)
 		{
+			Console.Clear();
 			Menu menu = new Menu();
 			bool quitter = false;
 			string choix = "";

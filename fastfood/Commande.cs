@@ -149,6 +149,7 @@ namespace fastfood
 		/// <returns>retourne une liste d'articles.</returns>
 		public Article[] annulerArticle(Commande commande)
 		{
+			Console.Clear();
 			Article[] tabArticle;
 
 			int entreeUtilisateur;
