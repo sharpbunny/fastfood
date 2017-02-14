@@ -28,8 +28,9 @@ namespace fastfood
 
 			Console.WriteLine("Entrer le montant du client : ");
 			controleSaisie = double.TryParse(Console.ReadLine(), out saisirEspeceClient);
-
+			Console.WriteLine(saisirEspeceClient);
 			sommeARendre = saisirEspeceClient - commande.Total;
+			sommeARendre = Math.Round(sommeARendre, 1); // Ce que j'ai modifié pour éviter de rendre 0.9999999 euros.
 
 			if (sommeARendre > 0)
 			{
