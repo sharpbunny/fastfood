@@ -12,24 +12,19 @@
 		protected string _nom;
 
 		/// <summary>
-		/// Le nombre d'article.
-		/// </summary>
-		protected int _quantite;
-
-		/// <summary>
 		/// Le prix d'un article.
 		/// </summary>
 		protected double _prix;
 
 		/// <summary>
-		/// Le prix d'un article.
-		/// </summary>
-		protected double prixUnitaire;
-
-		/// <summary>
 		/// Le n° de la catégorie de l'article. Catégorie 1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace.
 		/// </summary>
 		protected short _categorie;
+		
+		/// <summary>
+		/// Quantité en stock de l'article.
+		/// </summary>
+		private int _stock;
 
 		// Constructeurs.
 		/// <summary>
@@ -38,31 +33,16 @@
 		/// <param name="nom">Nom de l'article.</param>
 		/// <param name="prix">Prix unitaire de l'article.</param>
 		/// <param name="categorie">Catégorie de l'article (1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace).</param>
-		public Article(string nom, double prix, short categorie)
+		/// <param name="stock">Quantité en stock</param>
+		public Article(string nom, double prix, short categorie, int stock)
 		{
 			Nom = nom;
-			PrixUnitaire = prix;
+			Prix = prix;
 			Categorie = categorie;
+			Stock = stock;
 		}
 
 		// Getters & Setters
-		/// <summary>
-		/// Quantité d'articles.
-		/// </summary>
-		/// <return>Int correspondant à la quantité.</return> 
-		public int Quantite
-		{
-			get
-			{
-				return _quantite;
-			}
-
-			set
-			{
-				_quantite = value;
-				_prix = PrixUnitaire * Quantite;
-			}
-		}
 
 		/// <summary>
 		/// Nom de l'article.
@@ -114,19 +94,19 @@
 		}
 
 		/// <summary>
-		/// Prix de l'article.
+		/// Quantité en stock de l'article.
 		/// </summary>
-		/// <return>Double correspondant au prix.</return> 
-		public double PrixUnitaire
+		/// <return>Une valeur entière</return>
+		protected int Stock
 		{
 			get
 			{
-				return prixUnitaire;
+				return _stock;
 			}
 
 			set
 			{
-				prixUnitaire = value;
+				_stock = value;
 			}
 		}
 	}

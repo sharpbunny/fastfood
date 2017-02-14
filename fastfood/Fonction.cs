@@ -31,7 +31,7 @@ namespace fastfood
 		/// <param name="categorie">Catégorie de l'article à choisir.</param>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie l'article choisi par le client.</returns>
-		static public Article Choix(short categorie, Commande commande)
+		static public void Choix(short categorie, Commande commande)
 		{
 			int entreeUtilisateur;
 			bool validerArticle = false;
@@ -40,7 +40,7 @@ namespace fastfood
 			string phraseChoix = "";
 			string confirmationChoix = "";
 
-			Article article = new Article("", 0, 0);
+			Article article = new Article("",0,0,0);
 			List<Article> listeChoix = new List<Article>();
 			listeChoix = DonneePublique.ListeArticleParCategorie(categorie);
 
@@ -78,7 +78,7 @@ namespace fastfood
 						int i = 0;
 						foreach (Article articleChoix in listeChoix)
 						{
-							Console.WriteLine((i + 1) + ".{0,12} : {1}", articleChoix.Nom, articleChoix.PrixUnitaire);
+							Console.WriteLine((i + 1) + ".{0,12} : {1}", articleChoix.Nom, articleChoix.Prix);
 							i++;
 						}
 
@@ -111,19 +111,18 @@ namespace fastfood
 				if (entreeUtilisateur == 1)
 				{
 					validerArticle = true;
-					article.Quantite++;
+					//article.Quantite++;
 				}
 				else
 				{
 					validerArticle = false;
-					article = new Article("", 0, 0);
+					//article = new Article("",0,0,0);
 				}
 
 			} while (!validerArticle);
 
-			commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
+			commande.AjouterArticle(article, 1);
 
-			return article;
 		}
 
 		/// <summary>
@@ -131,10 +130,9 @@ namespace fastfood
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie un menu.</returns>
-		public static Menu ChoixTypeMenu(Commande commande)
+		public static void ChoixTypeMenu(Commande commande)
 		{
 			Console.Clear();
-			Menu menu = new Menu();
 			bool quitter = false;
 			string choix = "";
 			do
@@ -142,27 +140,21 @@ namespace fastfood
 				switch (choix)
 				{
 					case "1":
-						menu.TypeMenu = 1;
-						menu.TabArticle = new Article[2];
-						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+						Choix((short)DonneePublique.Categories.Burger, commande);
+						Choix((short)DonneePublique.Categories.Boisson, commande);
 						quitter = true;
 						break;
 					case "2":
-						menu.TypeMenu = 2;
-						menu.TabArticle = new Article[3];
-						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
-						menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
+						Choix((short)DonneePublique.Categories.Burger, commande);
+						Choix((short)DonneePublique.Categories.Boisson, commande);
+						Choix((short)DonneePublique.Categories.Salade, commande);
 						quitter = true;
 						break;
 					case "3":
-						menu.TypeMenu = 3;
-						menu.TabArticle = new Article[4];
-						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
-						menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
-						menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace, commande);
+						Choix((short)DonneePublique.Categories.Burger, commande);
+						Choix((short)DonneePublique.Categories.Boisson, commande);
+						Choix((short)DonneePublique.Categories.Salade, commande);
+						Choix((short)DonneePublique.Categories.Glace, commande);
 						quitter = true;
 						break;
 					case "Q":
@@ -180,7 +172,6 @@ namespace fastfood
 						break;
 				}
 			} while (!quitter);
-			return menu;
 		}
 
 		/// <summary>
@@ -265,11 +256,11 @@ namespace fastfood
 			Commande commande = new Commande();
 			commande.Numero = Commande.counter;
 			listeCommandes.Add(commande);
-
-			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
-			{
-				DonneePublique.ListeArticle[i].Quantite = 0;
-			}
+			//commande.AjouterArticle(DonneePublique.Caesar, 1);
+			//for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
+			//{
+			//	DonneePublique.ListeArticle[i].Quantite = 0;
+			//}
 
 			do
 			{
@@ -406,8 +397,8 @@ namespace fastfood
 			Console.WriteLine("Commande {0}", commande.Numero);
 			for (short i = 0; i < commande.ListeArticle.Length; i++)
 			{
-				Console.WriteLine("{0}. {1,12} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
-				Total = Total + commande.ListeArticle[i].Prix;
+				Console.WriteLine("{0}. {1,12} * {2} Prix unit: {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Total += commande.ListeArticle[i].Prix * commande.ListeArticle[i].Quantite;
 			}
 			Console.WriteLine("Total : {0} euros.", Total);
 			Console.WriteLine("Commande payée: {0}", commande.Paye ? "OUI" : "NON");
