@@ -120,7 +120,6 @@ namespace fastfood
 				}
 
 			} while (!validerArticle);
-
 			commande.AjouterArticle(article, 1);
 
 		}

@@ -163,7 +163,6 @@ namespace fastfood
 		public void AjouterArticle(Article article, int quantité)
 		{
 			bool found = false;
-			Console.WriteLine(ListeArticle.Length);
 			for (int i=0; i<ListeArticle.Length; i++)
 			{
 				if (ListeArticle[i].Nom == article.Nom)
@@ -180,9 +179,7 @@ namespace fastfood
 				{
 					tempTab[i] = ListeArticle[i];
 				}
-				tempTab[i].Nom = article.Nom;
-				//tempTab[ListeArticle.Length].Prix = article.Prix;
-				//tempTab[ListeArticle.Length].Quantite = quantité;
+				tempTab[i] = new ArticleCommande(article.Nom, article.Prix, quantité);
 				ListeArticle = tempTab;
 			}
 		}
@@ -224,61 +221,4 @@ namespace fastfood
 		}
 	}
 
-	/// <summary>
-	/// Article d'une commande.
-	/// </summary>
-	public class ArticleCommande
-	{
-		private string _nom;
-		private double _prix;
-		private int _quantite;
-
-		/// <summary>
-		/// Nom de l'article d'une commande.
-		/// </summary>
-		public string Nom
-		{
-			get
-			{
-				return _nom;
-			}
-
-			set
-			{
-				_nom = value;
-			}
-		}
-
-		/// <summary>
-		/// Prix de l'article d'une commande
-		/// </summary>
-		public double Prix
-		{
-			get
-			{
-				return _prix;
-			}
-
-			set
-			{
-				_prix = value;
-			}
-		}
-
-		/// <summary>
-		/// Quantité d'article dans une commande.
-		/// </summary>
-		public int Quantite
-		{
-			get
-			{
-				return _quantite;
-			}
-
-			set
-			{
-				_quantite = value;
-			}
-		}
-	}
 }
