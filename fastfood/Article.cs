@@ -38,6 +38,10 @@
 		/// <param name="nom">Nom de l'article.</param>
 		/// <param name="prix">Prix unitaire de l'article.</param>
 		/// <param name="categorie">Catégorie de l'article (1 : Burger, 2 : Boisson, 3 : Salade, 4 : Glace).</param>
+		public Article(int Quantite)
+		{
+
+		}
 		public Article(string nom, double prix, short categorie)
 		{
 			Nom = nom;

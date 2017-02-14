@@ -111,7 +111,7 @@ namespace fastfood
                 else
                 {
                     validerArticle = false;
-                    article = new Article("", 0, 0);
+                   // article = new Article("", 0, 0);
                 }
 
             } while (!validerArticle);
