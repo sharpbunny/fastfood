@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace fastfood
 {
-	class Preparateur:Personnel
+	class Preparateur : Personnel
 	{
 		// Attribut.
 		static public List<Commande> Prepacommande = new List<Commande>();

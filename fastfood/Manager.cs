@@ -1,6 +1,6 @@
 ﻿namespace fastfood
 {
-	class Manager:Personnel
+	class Manager : Personnel
 	{
 		// Attribut.
 

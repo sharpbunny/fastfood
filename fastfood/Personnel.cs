@@ -1,35 +1,55 @@
 ﻿using System;
 namespace fastfood
 {
-    abstract class Personnel
-    {
-        // Attributs.
-        private string _nom;
-        private string _prenom;
+	abstract class Personnel
+	{
+		// Attributs.
+		/// <summary>
+		/// Nom du personnel.
+		/// </summary>
+		private string _nom;
 
-        // Accesseurs et muttateurs.
-        public string Nom
-        {
-            get { return _nom; }
-            set { _nom = value; }
-        }
+		/// <summary>
+		/// Prénom du personnel.
+		/// </summary>
+		private string _prenom;
 
-        public string Prenom
-        {
-            get { return _prenom; }
-            set { _prenom = value; }
-        }
+		// Accesseurs et muttateurs.
+		/// <summary>
+		/// Le nom.
+		/// </summary>
+		public string Nom
+		{
+			get { return _nom; }
+			set { _nom = value; }
+		}
 
-        // Methodes.
-        public void ConsultePlanning()
-        {
-            Console.WriteLine(" consulte le planning ");
-        }
 
-        public void FaitLaGreve()
-        {
-            Console.WriteLine("PAS CONTENT ! PAS CONTENT ! PAS CONTENT !");
-        }
+		/// <summary>
+		/// Le prénom.
+		/// </summary>
+		public string Prenom
+		{
+			get { return _prenom; }
+			set { _prenom = value; }
+		}
 
-    }
+		// Methodes.
+		/// <summary>
+		/// Consulter le planning.
+		/// </summary>
+		public void ConsultePlanning()
+		{
+			Console.WriteLine(" consulte le planning ");
+		}
+
+		/// <summary>
+		/// Exprimer son mécontentement !
+		/// </summary>
+		public void FaitLaGreve()
+		{
+			Console.WriteLine("PAS CONTENT ! PAS CONTENT ! PAS CONTENT !");
+		}
+
+	}
 }

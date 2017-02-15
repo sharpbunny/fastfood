@@ -3,123 +3,128 @@ using System.Collections.Generic;
 
 namespace fastfood
 {
-    /// <summary>
-    /// Classe contenant toutes les fonctions utiles au fonctionnement de VÈgÈtaFood.
-    /// </summary>
-    abstract class Fonction
-    {
-        static public List<Commande> listeCommandes = new List<Commande>();
+	/// <summary>
+	/// Classe contenant toutes les fonctions utiles au fonctionnement de V√©g√©taFood.
+	/// </summary>
+	abstract class Fonction
+	{
+		/// <summary>
+		/// Liste de toutes les commandes.
+		/// </summary>
+		static public List<Commande> listeCommandes = new List<Commande>();
 
-        /// <summary>
-        /// Attend de l'utilisateur un nombre.
-        /// </summary>
-        /// <param name="entier">Stocke l'entier Ècrit par l'utilisateur(-1 par dÈfaut).</param>
-        /// <returns>Renvoie vrai si la conversion a rÈussie et faux si elle a ratÈ.</returns>
-        static public bool lireEntier(out int entier)
-        {
-            entier = -1;
-            bool ConversionReussi = int.TryParse(Console.ReadLine(), out entier);
-            return ConversionReussi;
-        }
+		/// <summary>
+		/// Attend de l'utilisateur un nombre.
+		/// </summary>
+		/// <param name="entier">Stocke l'entier √©crit par l'utilisateur(-1 par d√©faut).</param>
+		/// <returns>Renvoie vrai si la conversion a r√©ussie et faux si elle a rat√©.</returns>
+		static public bool lireEntier(out int entier)
+		{
+			entier = -1;
+			bool conversionReussi = int.TryParse(Console.ReadLine(), out entier);
+			return conversionReussi;
+		}
 
 		/// <summary>
 		/// Fonction qui renvoie l'article choisi.
 		/// </summary>
-		/// <param name="categorie">CatÈgorie de l'article ‡ choisir.</param>
+		/// <param name="categorie">Cat√©gorie de l'article √† choisir.</param>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie l'article choisi par le client.</returns>
 		static public Article Choix(short categorie, Commande commande)
-        {
-            int entreeUtilisateur, debutBoucle = -1, finBoucle = -1;
-            bool validerArticle = false, ConversionReussie = false, ChoixValide = false;
-            string phraseChoix = "", confirmationChoix = "";
-            Article article = new Article("", 0, 0);
+		{
+			int entreeUtilisateur;
+			bool validerArticle = false;
+			bool conversionReussie = false;
+			bool choixValide = false;
+			string phraseChoix = "";
+			string confirmationChoix = "";
 
-            if (categorie == (short)DonneePublique.Categories.Burger)
-            {
-                phraseChoix = "Quel Burger voulez-vous choisir ?";
-                confirmationChoix = "Vous avez choisi le burger";
-                debutBoucle = DonneePublique.debutBurger;
-                finBoucle = DonneePublique.debutBoisson;
-            }
-            else if (categorie == (short)DonneePublique.Categories.Boisson)
-            {
-                phraseChoix = "Quelle Boisson voulez-vous choisir ?";
-                confirmationChoix = "Vous avez choisi la boisson";
-                debutBoucle = DonneePublique.debutBoisson;
-                finBoucle = DonneePublique.debutSalade;
-            }
-            else if (categorie == (short)DonneePublique.Categories.Salade)
-            {
-                phraseChoix = "Quelle Salade voulez-vous choisir ?";
-                confirmationChoix = "Vous avez choisi la salade";
-                debutBoucle = DonneePublique.debutSalade;
-                finBoucle = DonneePublique.debutGlace;
-            }
-            else if (categorie == (short)DonneePublique.Categories.Glace)
-            {
-                phraseChoix = "Quelle Glace voulez-vous choisir ?";
-                confirmationChoix = "Vous avez choisi la glace";
-                debutBoucle = DonneePublique.debutGlace;
-                finBoucle = DonneePublique.ListeArticle.Length;
-            }
+			Article article = new Article("", 0, 0);
+			List<Article> listeChoix = new List<Article>();
+			listeChoix = DonneePublique.ListeArticleParCategorie(categorie);
 
-            do
-            {
-                do
-                {
-                    do
-                    {
-                        Console.WriteLine(phraseChoix);
-                        for (int i = debutBoucle; i < finBoucle; i++)
-                        {
-                            Console.WriteLine((i - debutBoucle + 1) + ".{0,8} : {1}", DonneePublique.ListeArticle[i].Nom, DonneePublique.ListeArticle[i].PrixUnitaire);
-                        }
+			if (categorie == (short)DonneePublique.Categories.Burger)
+			{
+				phraseChoix = "Quel Burger voulez-vous choisir ?";
+				confirmationChoix = "Vous avez choisi le burger";
+			}
+			else if (categorie == (short)DonneePublique.Categories.Boisson)
+			{
+				phraseChoix = "Quelle Boisson voulez-vous choisir ?";
+				confirmationChoix = "Vous avez choisi la boisson";
+			}
+			else if (categorie == (short)DonneePublique.Categories.Salade)
+			{
+				phraseChoix = "Quelle Salade voulez-vous choisir ?";
+				confirmationChoix = "Vous avez choisi la salade";
+			}
+			else if (categorie == (short)DonneePublique.Categories.Glace)
+			{
+				phraseChoix = "Quelle Glace voulez-vous choisir ?";
+				confirmationChoix = "Vous avez choisi la glace";
+			}
 
-                        ConversionReussie = lireEntier(out entreeUtilisateur);
+			do
+			{
+				Console.Clear();
+				do
+				{
+					Console.Clear();
+					do
+					{
+						Console.Clear();
+						Console.WriteLine(phraseChoix);
+						int i = 0;
+						foreach (Article articleChoix in listeChoix)
+						{
+							Console.WriteLine((i + 1) + ".{0,12} : {1}", articleChoix.Nom, articleChoix.PrixUnitaire);
+							i++;
+						}
 
-                    } while (!ConversionReussie);
+						conversionReussie = lireEntier(out entreeUtilisateur);
 
-                    entreeUtilisateur = entreeUtilisateur - 1;
+					} while (!conversionReussie);
 
-                    if (entreeUtilisateur >= 0 && entreeUtilisateur < (finBoucle - debutBoucle))
-                    {
-                        article = DonneePublique.ListeArticle[entreeUtilisateur + debutBoucle];
-                        ChoixValide = true;
-                    }
-                    else
-                    {
-                        ChoixValide = false;
-                    }
+					if ((entreeUtilisateur > 0) && (entreeUtilisateur <= listeChoix.Count))
+					{
+						article = listeChoix[entreeUtilisateur - 1];
+						choixValide = true;
+					}
+					else
+					{
+						choixValide = false;
+					}
 
-                } while (!ChoixValide);
+				} while (!choixValide);
 
-                Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
-                Console.WriteLine(" tes vous sur de votre choix : {0} ?", article.Nom);
+				do
+				{
+					Console.Clear();
+					Console.WriteLine("{0} : {1}", confirmationChoix, article.Nom);
+					Console.WriteLine("√ätes vous sur de votre choix : {0} ?", article.Nom);
+					
+					Console.WriteLine("1.Oui\n2.Non");
+					conversionReussie = lireEntier(out entreeUtilisateur);
+				} while (!conversionReussie);
 
-                do
-                {
-                    Console.WriteLine("1.Oui\n2.Non");
-                    ConversionReussie = lireEntier(out entreeUtilisateur);
-                } while (!ConversionReussie);
-
-                if (entreeUtilisateur == 1)
-                {
-                    validerArticle = true;
+				if (entreeUtilisateur == 1)
+				{
+					validerArticle = true;
 					article.Quantite++;
 				}
-                else
-                {
-                    validerArticle = false;
-                   // article = new Article("", 0, 0);
-                }
+				else
+				{
+					validerArticle = false;
+					//article = new Article("", 0, 0);
+				}
 
-            } while (!validerArticle);
-			
+			} while (!validerArticle);
+
 			commande.ListeArticle = Client.ChoixArticle(commande.ListeArticle, article);
-           
-            return article;
-        }
+
+			return article;
+		}
 
 		/// <summary>
 		/// Permet de choisir le type du menu.
@@ -127,116 +132,118 @@ namespace fastfood
 		/// <param name="commande">Conserve la commande en cours.</param>
 		/// <returns>Renvoie un menu.</returns>
 		public static Menu ChoixTypeMenu(Commande commande)
-        {
-            Menu menu = new Menu();
-            bool quitter = false;
-            string choix = "";
-            do
-            {
-                switch (choix)
-                {
-                    case "1":
-                        menu.TypeMenu = 1;
-                        menu.TabArticle = new Article[2];
-                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
-                        quitter = true;
-                        break;
-                    case "2":
-                        menu.TypeMenu = 2;
-                        menu.TabArticle = new Article[3];
-                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
-                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
-                        quitter = true;
-                        break;
-                    case "3":
-                        menu.TypeMenu = 3;
-                        menu.TabArticle = new Article[4];
-                        menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
-                        menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
-                        menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
-                        menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace, commande);
-                        quitter = true;
-                        break;
-                    case "Q":
-                    case "q":
-                        quitter = true;
-                        break;
-                    default:
-                        Console.WriteLine("Quel Menu voulez vous choisir : ");
-                        Console.WriteLine("1. Petit");
-                        Console.WriteLine("2. Moyen");
-                        Console.WriteLine("3. Grand");
-                        Console.WriteLine("Q. Quitter");
-                        Console.WriteLine("\nSaisissez votre choix.");
-                        choix = Console.ReadLine();
-                        break;
-                }
-            } while (!quitter);
-            return menu;
-        }
+		{
+			Console.Clear();
+			Menu menu = new Menu();
+			bool quitter = false;
+			string choix = "";
+			do
+			{
+				switch (choix)
+				{
+					case "1":
+						menu.TypeMenu = 1;
+						menu.TabArticle = new Article[2];
+						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+						quitter = true;
+						break;
+					case "2":
+						menu.TypeMenu = 2;
+						menu.TabArticle = new Article[3];
+						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+						menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
+						quitter = true;
+						break;
+					case "3":
+						menu.TypeMenu = 3;
+						menu.TabArticle = new Article[4];
+						menu.TabArticle[0] = Choix((short)DonneePublique.Categories.Burger, commande);
+						menu.TabArticle[1] = Choix((short)DonneePublique.Categories.Boisson, commande);
+						menu.TabArticle[2] = Choix((short)DonneePublique.Categories.Salade, commande);
+						menu.TabArticle[3] = Choix((short)DonneePublique.Categories.Glace, commande);
+						quitter = true;
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.WriteLine("Quel Menu voulez vous choisir : ");
+						Console.WriteLine("1. Petit");
+						Console.WriteLine("2. Moyen");
+						Console.WriteLine("3. Grand");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choix = Console.ReadLine();
+						break;
+				}
+			} while (!quitter);
+			return menu;
+		}
 
-        /// <summary>
-        /// Choix de l'utilisateur : fonction utile au dÈveloppeur pour se mettre dans la position du client ou du personnel de VÈgÈtafood.
-        /// </summary>
-        public static void AffichageMenuProg()
-        {
-            bool quitter = false;
-            string choixDuPersonnage = "";
+		/// <summary>
+		/// Choix de l'utilisateur : fonction utile au d√©veloppeur pour se mettre dans la position du client ou du personnel de V√©g√©tafood.
+		/// </summary>
+		public static void AffichageMenuProg()
+		{
+			bool quitter = false;
+			string choixDuPersonnage = "";
 
-            do
-            {
-                switch (choixDuPersonnage)
-                {
-                    //Dans le cas d'un client
-                    case "1":
-                        choixDuPersonnage = "";
-                        Console.Clear();
-                        MenuPrincipal();
-                        break;
+			do
+			{
+				switch (choixDuPersonnage)
+				{
+					//Dans le cas d'un client
+					case "1":
+						choixDuPersonnage = "";
+						Console.Clear();
+						MenuPrincipal();
+						break;
 
-                    //Dans le cas du personnel
-                    case "2":
-                        choixDuPersonnage = "";
-                        Console.Clear();
-                        MenuPersonnel();
-                        break;
+					//Dans le cas du personnel
+					case "2":
+						choixDuPersonnage = "";
+						Console.Clear();
+						MenuPersonnel();
+						break;
 
-                    // pour sortir du programme
-                    case "Q":
-                    case "q":
-                        choixDuPersonnage = "";
-                        quitter = true;
-                        Console.WriteLine("The end...");
-                        break;
+					// pour sortir du programme
+					case "Q":
+					case "q":
+						choixDuPersonnage = "";
+						quitter = true;
+						Console.WriteLine("The end...");
+						break;
 
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Bonjour et bienvenue dans VÈgÈtaFood !");
-                        Console.WriteLine("Veuillez nous indiquer si vous Ítes client ou si vous faites partie du personnel :");
-                        Console.WriteLine(" 1.Client");
-                        Console.WriteLine(" 2.Personnel");
-                        Console.WriteLine(" Q.Quitter");
-                        Console.WriteLine("\nSaisissez votre choix.");
-                        choixDuPersonnage = Console.ReadLine();
-                        break;
+					default:
+						Console.Clear();
+						Console.WriteLine("Bonjour et bienvenue dans V√©g√©taFood !");
+						Console.WriteLine("Veuillez nous indiquer si vous √™tes client ou si vous faites partie du personnel :");
+						Console.WriteLine(" 1.Client");
+						Console.WriteLine(" 2.Personnel");
+						Console.WriteLine(" Q.Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixDuPersonnage = Console.ReadLine();
+						break;
 
-                }
-            } while (!quitter);
-        }
+				}
+			} while (!quitter);
+		}
 
-        /// <summary>
-        /// Choix du Menu Personnel. PrÈparateur caissier etc
-        /// </summary>
-        private static void MenuPersonnel()
-        {
+		/// <summary>
+		/// Choix du Menu Personnel. Pr√©parateur caissier etc
+		/// </summary>
+		private static void MenuPersonnel()
+		{
+
 			int choix=0; bool valide = false;
 			do
 			{
 				Console.WriteLine("Bienvenu dans le menu du personnel!");
 				Console.WriteLine("1.Caissier/Manager");
-				Console.WriteLine("2.PrÈparateur");
+				Console.WriteLine("2.Pr√©parateur");
 				valide=lireEntier(out choix);
 			}
 			while (!valide);
@@ -266,16 +273,16 @@ namespace fastfood
 
 		}
 
-        /// <summary>
-        /// Choix du Menu Principal. Le client peut choisir son menu ou bien un article, etc. 
-        /// </summary>
-        public static void MenuPrincipal()
-        {
-            bool quitter = false;
-            string choixDuMenu = "";
-            Commande commande = new Commande();
-            commande.Numero = Commande.counter;
-            listeCommandes.Add(commande);
+		/// <summary>
+		/// Choix du Menu Principal. Le client peut choisir son menu ou bien un article, etc. 
+		/// </summary>
+		public static void MenuPrincipal()
+		{
+			bool quitter = false;
+			string choixDuMenu = "";
+			Commande commande = new Commande();
+			commande.Numero = Commande.counter;
+			listeCommandes.Add(commande);
 
 			for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
 			{
@@ -286,203 +293,232 @@ namespace fastfood
 			{
 				if (commande.Paye)
 				{
-					Console.WriteLine("La commande est payÈe.");
+					Console.WriteLine("La commande est pay√©e.");
 					Console.ReadLine();
 					choixDuMenu = "Q";
 					quitter = true;
 				}
 
 				switch (choixDuMenu)
-                {
-                    case "1":
-                        choixDuMenu = "";
-                        ChoixTypeMenu(commande);
-                        break;
-                    case "2":
-                        choixDuMenu = "";
-                        ChoixArticle(commande);
-                        break;
-                    case "3":
-                        choixDuMenu = "";
-                        if (commande.ListeArticle.Length > 1)
-                        {
-                            commande.ListeArticle = commande.annulerArticle(commande);
-                        }
-                        else if (commande.ListeArticle.Length == 1)
-                        {
-                            Article[] videTabArt = { };
-                            commande.ListeArticle = videTabArt;
-                        }
-                        break;
-                    case "4":
-                        choixDuMenu = "";
-                        break;
-                    case "Q":
-                    case "q":
-                        quitter = true;
-                        break;
-                    
-                        {
-
-                        }
-                    case "5":
-                        choixDuMenu = "";
-                        if (commande.ListeArticle.Length > 0)
-                        {
-                            Paiement(commande);
-                        }
-                        break;
-                    default:
-                        Console.Clear();
-                        AfficherCommande(commande);
-                        Console.WriteLine("Bonjour et bienvenue dans VÈgÈtaFood !");
-                        Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
-                        Console.WriteLine("1. Menu");
-                        Console.WriteLine("2. Article");
-                        Console.WriteLine("3. Annuler un article");
-                        Console.WriteLine("4. Annuler le menu");
-                        if(commande.ListeArticle.Length > 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("5. Payer\n");
-                            Console.ResetColor();
-                        }                        
-                        Console.WriteLine("Q. Quitter");
-                        Console.WriteLine("\nSaisissez votre choix.");
-                        choixDuMenu = Console.ReadLine();
-                        break;
-                }
-            } while (!quitter);
-        }
+				{
+					case "1":
+						choixDuMenu = "";
+						ChoixTypeMenu(commande);
+						break;
+					case "2":
+						choixDuMenu = "";
+						ChoixArticle(commande);
+						break;
+					case "3":
+						choixDuMenu = "";
+						if (commande.ListeArticle.Length > 0)
+						{
+							SupprimerArticle(commande);
+						}
+						break;
+					case "4":
+						choixDuMenu = "";
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					case "5":
+						choixDuMenu = "";
+						if (commande.ListeArticle.Length > 0)
+						{
+							Paiement(commande);
+						}
+						break;
+					default:
+						Console.Clear();
+						AfficherCommande(commande);
+						Console.WriteLine("Bonjour et bienvenue dans V√©g√©taFood !");
+						Console.WriteLine("--- CHOIX DE VOTRE COMMANDE --- ");
+						Console.WriteLine("1. Menu");
+						Console.WriteLine("2. Article");
+						if (commande.ListeArticle.Length > 0)
+						{
+							Console.WriteLine("3. Annuler un article");
+						}
+						Console.WriteLine("4. Annuler le menu");
+						if (commande.ListeArticle.Length > 0)
+						{
+							Console.ForegroundColor = ConsoleColor.Green;
+							Console.Write("5. Payer\n");
+							Console.ResetColor();
+						}
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixDuMenu = Console.ReadLine();
+						break;
+				}
+			} while (!quitter);
+		}
 
 		/// <summary>
 		/// Menu du choix de Paiement.
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		private static void Paiement(Commande commande)
-        {
-            string choixDuPaiement = "";
-            bool quitter = false;
+		{
+			string choixDuPaiement = "";
+			bool quitter = false;
 
 			if (commande.Paye)
 			{
-				Console.WriteLine("La commande est payÈe.");
+				Console.WriteLine("La commande est pay√©e.");
 				Console.ReadLine();
 				choixDuPaiement = "Q";
 				quitter = true;
 			}
-            
-            do
-            {
-                switch (choixDuPaiement)
-                {
-                    case "1":
-                        choixDuPaiement = "";
-                        Caissier.EncaisserCB(commande);
-                        quitter = true;
-                        break;
-                    case "2":
-                        choixDuPaiement = "";
-                        Caissier.EncaisserEspece(commande);
-                        quitter = true;
-                        break;
-                    case "3":
-                        choixDuPaiement = "";
-                        Caissier.EncaisserCheque(commande);
-                        quitter = true;
-                        break;
-                    case "Q":
-                    case "q":
-                        quitter = true;
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Vous allez payer la commande {0}", commande.Numero);
-                        AfficherCommande(commande);
-                        Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
-                        Console.WriteLine("1. Paiement en CB");
-                        Console.WriteLine("2. Paiement en espËces");
-                        Console.WriteLine("3. Paiement en chËque");
-                        Console.WriteLine("Q. Quitter");
-                        Console.WriteLine("\nSaisissez votre choix.");
-                        choixDuPaiement = Console.ReadLine();
-                        break;
-                }
-            }
-            while (!quitter);
-                        
-        }
+
+			do
+			{
+				switch (choixDuPaiement)
+				{
+					case "1":
+						choixDuPaiement = "";
+						Caissier.EncaisserCB(commande);
+						quitter = true;
+						break;
+					case "2":
+						choixDuPaiement = "";
+						Caissier.EncaisserEspece(commande);
+						quitter = true;
+						break;
+					case "3":
+						choixDuPaiement = "";
+						Caissier.EncaisserCheque(commande);
+						quitter = true;
+						break;
+					case "Q":
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.Clear();
+						Console.WriteLine("Vous allez payer la commande {0}", commande.Numero);
+						AfficherCommande(commande);
+						Console.WriteLine("--- CHOIX DE VOTRE PAIEMENT --- ");
+						Console.WriteLine("1. Paiement en CB");
+						Console.WriteLine("2. Paiement en esp√®ces");
+						Console.WriteLine("3. Paiement en ch√®que");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixDuPaiement = Console.ReadLine();
+						break;
+				}
+			}
+			while (!quitter);
+
+		}
 
 		/// <summary>
-		/// Affiche l'intÈgralitÈ des articles de la commande en cours.
+		/// Affiche l'int√©gralit√© des articles de la commande en cours.
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		public static void AfficherCommande(Commande commande)
-        {
-            double Total = 0;
-            Console.WriteLine("Commande {0}", commande.Numero);
-            for (short i = 0; i < commande.ListeArticle.Length; i++)
-            {
-                Console.WriteLine("{0}. {1,8} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
-                Total = Total + commande.ListeArticle[i].Prix;
-            }
-            Console.WriteLine("Total : {0} euros.", Total);
-            Console.WriteLine("Commande payÈe: {0}", commande.Paye ? "OUI" : "NON");
-            Console.WriteLine();
-        }
+		{
+			double Total = 0;
+			Console.WriteLine("Commande {0}", commande.Numero);
+			for (short i = 0; i < commande.ListeArticle.Length; i++)
+			{
+				Console.WriteLine("{0}. {1,12} * {2} Prix : {3} euros.", i + 1, commande.ListeArticle[i].Nom, commande.ListeArticle[i].Quantite, commande.ListeArticle[i].Prix);
+				Total = Total + commande.ListeArticle[i].Prix;
+			}
+			Console.WriteLine("Total : {0} euros.", Total);
+			Console.WriteLine("Commande pay√©e: {0}", commande.Paye ? "OUI" : "NON");
+			Console.WriteLine();
+		}
 
 		/// <summary>
-		/// Permet ‡ l'utilisateur de choisir des articles un par un.
+		/// Choix de l'article et de la quantit√© √† supprimer
+		/// </summary>
+		/// <param name="commande"></param>
+		private static void SupprimerArticle(Commande commande)
+		{
+			int entreeUtilisateur = 0;
+			int entreeQuantit√©;
+			bool verifEntreeUtilisateur = false;
+			
+			Console.Clear();
+			AfficherCommande(commande);
+			if (commande.ListeArticle.Length > 1)
+			{
+				do
+				{
+					Console.WriteLine("Quel article souhaitez vous retirer ?");
+					verifEntreeUtilisateur = lireEntier(out entreeUtilisateur);
+				} while (!verifEntreeUtilisateur || (entreeUtilisateur < 1 || entreeUtilisateur > commande.ListeArticle.Length));
+			}
+			else if (commande.ListeArticle.Length == 1)
+			{
+				entreeUtilisateur = 1;
+			}
+
+			do
+			{
+				Console.WriteLine("Quel quantit√© de {0} souhaitez vous retirer ?", commande.ListeArticle[entreeUtilisateur - 1].Nom);
+				verifEntreeUtilisateur = lireEntier(out entreeQuantit√©);
+			} while (!verifEntreeUtilisateur || (entreeQuantit√© < 1 || entreeQuantit√© > commande.ListeArticle[entreeUtilisateur - 1].Quantite));
+
+			commande.SupprimerArticle(entreeUtilisateur - 1, entreeQuantit√©);
+		}
+
+		/// <summary>
+		/// Permet √† l'utilisateur de choisir des articles un par un.
 		/// </summary>
 		/// <param name="commande">Conserve la commande en cours.</param>
 		private static void ChoixArticle(Commande commande)
-        {
-            bool quitter = false;
-            string choixTypeArticle = "";
+		{
+			bool quitter = false;
+			string choixTypeArticle = "";
 
-            // Boucle forÁant le client ‡ choisir un menu valide.
-            do
-            {
-                switch (choixTypeArticle)
-                {
-                    case "1":
-                        choixTypeArticle = "";
-                        Choix((short)DonneePublique.Categories.Burger, commande);
-                        break;
+			// Boucle for√ßant le client √† choisir un menu valide.
+			do
+			{
+				switch (choixTypeArticle)
+				{
+					case "1":
+						choixTypeArticle = "";
+						Choix((short)DonneePublique.Categories.Burger, commande);
+						break;
 
-                    case "2":
-                        choixTypeArticle = "";
-                        Choix((short)DonneePublique.Categories.Boisson, commande);
-                        break;
+					case "2":
+						choixTypeArticle = "";
+						Choix((short)DonneePublique.Categories.Boisson, commande);
+						break;
 
-                    case "3":
-                        choixTypeArticle = "";
-                        Choix((short)DonneePublique.Categories.Salade, commande);
-                        break;
+					case "3":
+						choixTypeArticle = "";
+						Choix((short)DonneePublique.Categories.Salade, commande);
+						break;
 
-                    case "4":
-                        choixTypeArticle = "";
-                        Choix((short)DonneePublique.Categories.Glace, commande);
-                        break;
+					case "4":
+						choixTypeArticle = "";
+						Choix((short)DonneePublique.Categories.Glace, commande);
+						break;
 
 					case "Q":
-                    case "q":
-                        quitter = true;
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
-                        Console.WriteLine("1. Burger");
-                        Console.WriteLine("2. Boisson");
-                        Console.WriteLine("3. Salade");
-                        Console.WriteLine("4. Glace");
-                        Console.WriteLine("Q. Quitter");
-                        Console.WriteLine("\nSaisissez votre choix.");
-                        choixTypeArticle = Console.ReadLine();
-                        break;
-                }
+					case "q":
+						quitter = true;
+						break;
+					default:
+						Console.Clear();
+						Console.WriteLine("--- CHOIX DE VOS ARTICLES --- ");
+						Console.WriteLine("1. Burger");
+						Console.WriteLine("2. Boisson");
+						Console.WriteLine("3. Salade");
+						Console.WriteLine("4. Glace");
+						Console.WriteLine("Q. Quitter");
+						Console.WriteLine("\nSaisissez votre choix.");
+						choixTypeArticle = Console.ReadLine();
+						break;
+				}
 
-            } while (!quitter);
-        }
-    }
+			} while (!quitter);
+		}
+	}
 }
+
