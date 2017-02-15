@@ -14,7 +14,18 @@ namespace fastfood.Tests
 		[TestMethod()]
 		public void PayerTest()
 		{
+			double rendu;
+			bool result;
 
+			Client client = new Client();
+
+			result = client.Payer(10, 12, out rendu);
+			Assert.IsTrue(result);
+			Assert.AreEqual(rendu, 2);
+
+			result = client.Payer(12, 10, out rendu);
+			Assert.IsFalse(result);
+			Assert.AreEqual(rendu, -2);
 		}
 	}
 }
