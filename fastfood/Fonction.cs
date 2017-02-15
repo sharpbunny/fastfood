@@ -255,11 +255,6 @@ namespace fastfood
 			Commande commande = new Commande();
 			commande.Numero = Commande.counter;
 			listeCommandes.Add(commande);
-			//commande.AjouterArticle(DonneePublique.Caesar, 1);
-			//for (int i = 0; i < DonneePublique.ListeArticle.Length; i++)
-			//{
-			//	DonneePublique.ListeArticle[i].Quantite = 0;
-			//}
 
 			do
 			{
