@@ -1,6 +1,6 @@
 ﻿namespace fastfood
 {
-	class Client
+	public class Client
 	{
 		// Attributs.
 		/// <summary>
