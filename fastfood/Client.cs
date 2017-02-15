@@ -33,10 +33,10 @@
 		/// <param name="tabArticle">Tableau d'objet Article.</param>
 		/// <param name="newArticle">Le nouvel article sélectionné par le client.</param>
 		/// <returns>Renvoie le tableau d'article complété.</returns>
-		public static Article[] ChoixArticle(Article[] tabArticle, Article newArticle)
+		public static ArticleCommande[] ChoixArticle(ArticleCommande[] tabArticle, ArticleCommande newArticle)
 		{
 			bool added = false, check = false;
-			Article[] newTabArticle;
+			ArticleCommande[] newTabArticle;
 			int indice = 0;
 			for (int i = 0; i < tabArticle.Length; i++)
 				if (tabArticle[i].Nom == newArticle.Nom)
@@ -47,7 +47,7 @@
 			else
 				indice = tabArticle.Length + newArticle.Quantite;
 
-			newTabArticle = new Article[indice];
+			newTabArticle = new ArticleCommande[indice];
 
 			if (tabArticle.Length == 0)
 				newTabArticle[0] = newArticle;
@@ -80,10 +80,24 @@
 			bool paiementValide = false;
 			rendu = 0;
 			double diff = prixPaye - prixMenu;
-			if (diff == 0) { paiementValide = true; }
-			else if (diff < 0) { paiementValide = false; rendu = diff; }
-			else if (diff > 0) { paiementValide = true; rendu = diff; }
-			else { paiementValide = false; }
+			if (diff == 0)
+			{
+				paiementValide = true;
+			}
+			else if (diff < 0)
+			{
+				paiementValide = false;
+				rendu = diff;
+			}
+			else if (diff > 0)
+			{
+				paiementValide = true;
+				rendu = diff;
+			}
+			else
+			{
+				paiementValide = false;
+			}
 			return paiementValide;
 		}
 	}

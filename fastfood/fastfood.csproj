@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="ArticleCommande.cs" />
     <Compile Include="Caissier.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Commande.cs" />
@@ -98,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="fastfood_CléTemporaire.pfx" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>

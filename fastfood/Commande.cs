@@ -36,10 +36,22 @@ namespace fastfood
 
 		private Menu _menu;
 
+		private ArticleCommande[] _listeArticle;
+
 		/// <summary>
 		/// Tableau d'articles de la commande
 		/// </summary>
-		public Article[] ListeArticle = { };
+		public ArticleCommande[] ListeArticle
+		{
+			get
+			{
+				return _listeArticle;
+			}
+			set
+			{
+				_listeArticle = value;
+			}
+		}
 
 		// Constructeurs
 		/// <summary>
@@ -48,6 +60,7 @@ namespace fastfood
 		public Commande()
 		{
 			counter++;
+			ListeArticle = new ArticleCommande[] { };
 		}
 
 		// Getters - Setters
@@ -136,10 +149,43 @@ namespace fastfood
 		/// </summary>
 		/// <param name="menu"></param>
 		/// <returns>retourne un tableau d'articles</returns>
-		public Article[] attributionListMenu(Menu menu)
+		//public ArticleCommande[] attributionListMenu(Menu menu)
+		//{
+		//	ListeArticle = menu.TabArticle;
+		//	return ListeArticle;
+		//}
+
+		/// <summary>
+		/// Méthode pour ajouter un article à la commande
+		/// </summary>
+		/// <param name="article">L'article dans le tableau à ajouter</param>
+		/// <param name="quantité">La quantité</param>
+		public void AjouterArticle(Article article, int quantité)
 		{
-			ListeArticle = menu.TabArticle;
-			return ListeArticle;
+			bool found = false;
+			for (int i=0; i<ListeArticle.Length; i++)
+			{
+				if (ListeArticle[i].Nom == article.Nom)
+				{
+					// La ligne existe, on modifie la quantité
+					ListeArticle[i].Quantite += quantité;
+					found = true;
+				}
+			}
+			if (! found)
+			{
+				int i;
+				// on crée un tableau temporaire plus grand pour ajouter la ligne de commande
+				ArticleCommande[] tempTab = new ArticleCommande[ListeArticle.Length+1];
+				for (i = 0; i < ListeArticle.Length; i++)
+				{
+					tempTab[i] = ListeArticle[i];
+				}
+				// on crée la nouvelle ligne de commande
+				tempTab[i] = new ArticleCommande(article.Nom, article.Prix, quantité);
+				// on remplace la liste d'articles commandés par la nouvelle
+				ListeArticle = tempTab;
+			}
 		}
 
 		/// <summary>
@@ -149,16 +195,15 @@ namespace fastfood
 		/// <param name="quantité">La quantité</param>
 		public void SupprimerArticle(int idarticle, int quantité)
 		{
-			int i;
 			ListeArticle[idarticle].Quantite -= quantité;
 			if (ListeArticle[idarticle].Quantite ==0)
 			{
-				Article[] tempTab = new Article[ListeArticle.Length - 1];
-				for (i = 0; i < idarticle - 1; i++)
+				ArticleCommande[] tempTab = new ArticleCommande[ListeArticle.Length - 1];
+				for (int i = 0; i < idarticle; i++)
 				{
 					tempTab[i] = ListeArticle[i];
 				}
-				for (i=idarticle; i<ListeArticle.Length-1; i++)
+				for (int i=idarticle; i<ListeArticle.Length-1; i++)
 				{
 					tempTab[i] = ListeArticle[i + 1];
 				}
@@ -174,8 +219,9 @@ namespace fastfood
 			Total = 0;
 			for (short i = 0; i < ListeArticle.Length; i++)
 			{
-				Total += ListeArticle[i].Prix;
+				Total += ListeArticle[i].Prix * ListeArticle[i].Quantite;
 			}
 		}
 	}
+
 }

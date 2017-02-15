@@ -18,23 +18,23 @@ namespace fastfood
 		public enum Categories { Burger = 1, Boisson, Salade, Glace }
 
 		/// new Article(NOM, PRIX, CATEGORIE) => NPC.
-		public static Article Coca = new Article("Coca", 2.10, 2);
-		public static Article Soja = new Article("Soja", 6.50, 1);
-		public static Article Tofu = new Article("Tofu", 6.50, 1);
-		public static Article Fanta = new Article("Fanta", 2.20, 2);
-		public static Article Cevenole = new Article("Cévenole", 9.50, 3);
-		public static Article Seitan = new Article("Seitan", 7.20, 1);
-		public static Article Sprite = new Article("Sprite", 2.30, 2);
-		public static Article SevenUp = new Article("SevenUp", 2.10, 2);
-		public static Article Chocolat = new Article("Chocolat", 3.50, 4);
-		public static Article Vanille = new Article("Vanille", 3.50, 4);
-		public static Article Fraise = new Article("Fraise", 3.50, 4);
-		public static Article SaladeVerte = new Article("Salade Verte", 4.20, 3);
-		public static Article Oceane = new Article("Océane", 4.20, 3);
-		public static Article Caesar = new Article("Caesar", 4.20, 3);
-		public static Article Pistache = new Article("Pistache", 4.15, 4);
-		public static Article Citron = new Article("Citron", 4.10, 4);
-		public static Article Tomate = new Article("Tomate", 3.30, 2);
+		public static Article Coca = new Article("Coca", 2.10, 2, 10);
+		public static Article Soja = new Article("Soja", 6.50, 1, 10);
+		public static Article Tofu = new Article("Tofu", 6.50, 1, 10);
+		public static Article Fanta = new Article("Fanta", 2.20, 2, 10);
+		public static Article Cevenole = new Article("Cévenole", 9.50, 3, 10);
+		public static Article Seitan = new Article("Seitan", 7.20, 1, 10);
+		public static Article Sprite = new Article("Sprite", 2.30, 2, 10);
+		public static Article SevenUp = new Article("SevenUp", 2.10, 2, 10);
+		public static Article Chocolat = new Article("Chocolat", 3.50, 4, 10);
+		public static Article Vanille = new Article("Vanille", 3.50, 4, 10);
+		public static Article Fraise = new Article("Fraise", 3.50, 4, 10);
+		public static Article SaladeVerte = new Article("Salade Verte", 4.20, 3, 10);
+		public static Article Oceane = new Article("Océane", 4.20, 3, 10);
+		public static Article Caesar = new Article("Caesar", 4.20, 3, 10);
+		public static Article Pistache = new Article("Pistache", 4.15, 4, 10);
+		public static Article Citron = new Article("Citron", 4.10, 4, 10);
+		public static Article Tomate = new Article("Tomate", 3.30, 2, 10);
 
 		/// <summary>
 		/// Tableau répertoriant tous les articles disponibles.
