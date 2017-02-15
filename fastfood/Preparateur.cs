@@ -143,15 +143,16 @@ namespace fastfood
 				Preparateur[] PreparateurTab = new Preparateur[compter];
 					
 				//Article SaveQuantite = new Article(Quantite);
-				Console.WriteLine("---------------");
-				Console.WriteLine("| Qté | Article|");
-				Console.WriteLine("-------------");
+				Console.WriteLine("┌─────┬────────┐");
+				Console.WriteLine("│ Qté │ Article│");
+				Console.WriteLine("├─────┼────────┤");
 				while (k < Prepacommande.Count)
 				{
-					foreach (Article item in Prepacommande[k].ListeArticle)
+					foreach (ArticleCommande item in Prepacommande[k].ListeArticle)
 					{
-						Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, item.Categorie);
-						if (k % 2 != 0 && x < compter)
+						//Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, item.Categorie);
+					Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, 1);
+					if (k % 2 != 0 && x < compter)
 						{
 							PreparateurTab[x] = CloneArticle;
 							Console.ForegroundColor = ConsoleColor.Cyan;
@@ -173,7 +174,8 @@ namespace fastfood
 
 					k++;
 				}
-			
+			Console.WriteLine("└─────┴────────┘");
+
 			Console.ReadLine();
 		
 			return PreparateurTab;
