@@ -6,7 +6,7 @@ namespace fastfood
 	class Preparateur : Personnel
 	{
 		// Attribut.
-		static public List<Commande> Prepacommande = new List<Commande>();
+		static public List<ArticleCommande> Prepacommande = new List<ArticleCommande>();
 		static private Article[] PreparateurTab = { };
 		static private int  _saveQuantité;
 		static private int _debut;
@@ -114,42 +114,28 @@ namespace fastfood
 		
 		// Methode.
 
-		static public Preparateur [] PreparationCommande(List<Commande> Prepacommande) 
+		static public Preparateur [] PreparationCommande(ArticleCommande[] Prepacommande) 
 		{
 			int compter = 0, j = 0, k = 0, x=0;
 			int CapacityTotal=0;
-			for (int i = 0; i < Prepacommande.Count; i++)
-			{
-
-				while (j < Prepacommande[i].ListeArticle.Length)
-				{
-					if (Prepacommande[i].ListeArticle[j].Quantite > 1)
-					{
-						CapacityTotal = CapacityTotal + Prepacommande[i].ListeArticle.GetLength(i);
-						compter = compter + Prepacommande[i].ListeArticle[j].Quantite;
-					}
-					else
-					{
-						CapacityTotal++;
-						compter++;
-					}
-					j++;
-				}
+			for (int i = 0; i < Prepacommande.Length; i++)
+			{									
+				compter++;				
 			}
-			Console.WriteLine("Commande:" + Prepacommande.Count);
-			Console.WriteLine("CapacityTotal:" + CapacityTotal);
+			Console.WriteLine("Commande:" + Prepacommande.Length);
+			Console.WriteLine(" Prepacommande.Length:" + Prepacommande.Length);
 			Console.WriteLine("compter:" + compter);
 			
-				Preparateur[] PreparateurTab = new Preparateur[compter];
-					
+				Preparateur[] PreparateurTab = new Preparateur[Prepacommande.Length];				
 				//Article SaveQuantite = new Article(Quantite);
 				Console.WriteLine("┌─────┬────────┐");
 				Console.WriteLine("│ Qté │ Article│");
 				Console.WriteLine("├─────┼────────┤");
-				while (k < Prepacommande.Count)
+				while (k < Prepacommande.Length)
 				{
-					foreach (ArticleCommande item in Prepacommande[k].ListeArticle)
+					foreach (ArticleCommande item in Prepacommande)
 					{
+					
 						//Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, item.Categorie);
 					Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, 1);
 					if (k % 2 != 0 && x < compter)
@@ -171,11 +157,9 @@ namespace fastfood
 							x++;
 						}
 					}
-
 					k++;
 				}
 			Console.WriteLine("└─────┴────────┘");
-
 			Console.ReadLine();
 		
 			return PreparateurTab;

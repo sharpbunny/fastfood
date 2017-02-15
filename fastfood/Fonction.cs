@@ -258,7 +258,12 @@ namespace fastfood
 			
 					break;
 				case 2:
-					Preparateur.PreparationCommande(listeCommandes);
+					//Commande appelListe = new Commande();
+					foreach (Commande appelListe in listeCommandes)
+					{
+						Preparateur.PreparationCommande(appelListe.ListeArticle);
+
+					}
 					break;
 			 }
 

@@ -160,7 +160,7 @@ namespace fastfood
 		/// </summary>
 		/// <param name="article">L'article dans le tableau à ajouter</param>
 		/// <param name="quantité">La quantité</param>
-		public void AjouterArticle(Article article, int quantité)
+		public ArticleCommande [] AjouterArticle(Article article, int quantité)
 		{
 			bool found = false;
 			for (int i=0; i<ListeArticle.Length; i++)
@@ -186,6 +186,7 @@ namespace fastfood
 				// on remplace la liste d'articles commandés par la nouvelle
 				ListeArticle = tempTab;
 			}
+			return  ListeArticle;
 		}
 
 		/// <summary>
