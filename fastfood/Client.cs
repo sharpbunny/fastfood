@@ -80,10 +80,24 @@
 			bool paiementValide = false;
 			rendu = 0;
 			double diff = prixPaye - prixMenu;
-			if (diff == 0) { paiementValide = true; }
-			else if (diff < 0) { paiementValide = false; rendu = diff; }
-			else if (diff > 0) { paiementValide = true; rendu = diff; }
-			else { paiementValide = false; }
+			if (diff == 0)
+			{
+				paiementValide = true;
+			}
+			else if (diff < 0)
+			{
+				paiementValide = false;
+				rendu = diff;
+			}
+			else if (diff > 0)
+			{
+				paiementValide = true;
+				rendu = diff;
+			}
+			else
+			{
+				paiementValide = false;
+			}
 			return paiementValide;
 		}
 	}

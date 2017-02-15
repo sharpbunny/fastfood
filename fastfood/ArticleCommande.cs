@@ -62,10 +62,20 @@ namespace fastfood
 			}
 		}
 
+		/// <summary>
+		/// Constructeur de ArticleCommande.
+		/// </summary>
 		public ArticleCommande()
 		{
 
 		}
+		
+		/// <summary>
+		/// Constructeur de ArticleCommande.
+		/// </summary>
+		/// <param name="nom">Nom de l'article commandé</param>
+		/// <param name="prix">Prix de l'article commandé</param>
+		/// <param name="quantite">Quantité commandée</param>
 		public ArticleCommande(string nom, double prix, int quantite)
 		{
 			Nom = nom;
