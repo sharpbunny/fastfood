@@ -7,7 +7,7 @@ namespace fastfood
 	{
 		// Attribut.
 		static public List<Commande> Prepacommande = new List<Commande>();
-		static private Article[] PrepaTabArticle = { };
+		static private Article[] PreparateurTab = { };
 		static private int  _saveQuantité;
 		static private int _debut;
 		static private int _fin;
@@ -114,7 +114,7 @@ namespace fastfood
 		
 		// Methode.
 
-		static public Article [] PreparationCommande(List<Commande> Prepacommande) 
+		static public Preparateur [] PreparationCommande(List<Commande> Prepacommande) 
 		{
 			int compter = 0, j = 0, k = 0, x=0;
 			int CapacityTotal=0;
@@ -136,51 +136,47 @@ namespace fastfood
 					j++;
 				}
 			}
-
-			
+			Console.WriteLine("Commande:" + Prepacommande.Count);
 			Console.WriteLine("CapacityTotal:" + CapacityTotal);
 			Console.WriteLine("compter:" + compter);
-			Preparateur	[] PreparateurTab = new Preparateur	[compter];
-		
-									
-			//Article SaveQuantite = new Article(Quantite);
-			Console.WriteLine("---------------");
-			Console.WriteLine("| Qté | Article|");
-			Console.WriteLine("-------------");
-			while (k < Prepacommande.Count)
-			{
-				foreach (Article item in Prepacommande[k].ListeArticle)
+			
+				Preparateur[] PreparateurTab = new Preparateur[compter];
+					
+				//Article SaveQuantite = new Article(Quantite);
+				Console.WriteLine("---------------");
+				Console.WriteLine("| Qté | Article|");
+				Console.WriteLine("-------------");
+				while (k < Prepacommande.Count)
 				{
-					Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, item.Categorie);
-					if (k % 2 == 1)
+					foreach (Article item in Prepacommande[k].ListeArticle)
 					{
-						PreparateurTab[x]= CloneArticle;
-						Console.ForegroundColor = ConsoleColor.Cyan;
-						Console.WriteLine("| " + PreparateurTab[x].Quantite + "  |  " + PreparateurTab[x].Nomarticle);
-						//Console.WriteLine("| " + item.Quantite + "  |  " + item.Nom);
-						Console.ResetColor();
-						x++;
+						Preparateur CloneArticle = new Preparateur(item.Nom, item.Quantite, item.Categorie);
+						if (k % 2 != 0 && x < compter)
+						{
+							PreparateurTab[x] = CloneArticle;
+							Console.ForegroundColor = ConsoleColor.Cyan;
+							Console.WriteLine("| " + PreparateurTab[x].Quantite + "  |  " + PreparateurTab[x].Nomarticle);
+							//Console.WriteLine("| " + item.Quantite + "  |  " + item.Nom);
+							Console.ResetColor();
+							x++;
+						}
+						else if (k % 2 == 0 && x < compter)
+						{
+							PreparateurTab[x] = CloneArticle;
+							Console.ForegroundColor = ConsoleColor.Magenta;
+							Console.WriteLine("| " + PreparateurTab[x].Quantite + "  |  " + PreparateurTab[x].Nomarticle);
+							//Console.WriteLine("| " + item.Quantite + "  |  " + item.Nom);
+							Console.ResetColor();
+							x++;
+						}
 					}
-					else
-					{
-						
-						PreparateurTab[x] = CloneArticle;
-						Console.ForegroundColor = ConsoleColor.Magenta;
-						Console.WriteLine("| " + PreparateurTab[x].Quantite + "  |  " + PreparateurTab[x].Nomarticle);
-						//Console.WriteLine("| " + item.Quantite + "  |  " + item.Nom);
-						Console.ResetColor();
-						x++;
-					}
+
+					k++;
 				}
-				
-			k++;
-			}
-
-
-
+			
 			Console.ReadLine();
 		
-			return PrepaTabArticle;
+			return PreparateurTab;
 		}
 
 
